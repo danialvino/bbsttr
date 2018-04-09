@@ -16,6 +16,9 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem 'jquery-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
