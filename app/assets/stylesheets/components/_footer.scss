@@ -1,0 +1,45 @@
+/* Main navbar */
+.footer-bar {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  background: #182130;
+  transition: all 0.3s ease;
+  height: 40px;
+  padding: 0px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  font-family: 'open sans', "sans-serif";
+  // margin-top: 80px;
+  bottom: 0;
+  font-size: 16px;
+}
+
+/* Right section */
+.footer-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Basic navbar item */
+.footer-left {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+/* Navbar link */
+.footer-link {
+  color: white;
+  font-size: 20px;
+}
+.footer-link:hover {
+  color: #E27A3F;
+  text-decoration: none;
+}
+// itens
+.footer-item {
+  margin:5px;
+}
