@@ -1,0 +1,8 @@
+<div class="container">
+  <%= simple_form_for @sitter do |f| %>
+  <%= f.input :pay_rate,label: "Valor por hora R$", hint: "Quanto você cobra por uma hora de trabalho?", error: "Não pode estar em branco!"%>
+  <%= f.input :about, label: "Sua descrição do perfil", hint: "Nos conte mais sobre você!"%>
+  <%= f.input :skills, label: "Habilidades:", collection: ["Cozinhar".to_sym, "Lavar louças".to_sym,"Lavar roupas".to_sym, "Cuidar de bebês".to_sym, "Cuidar de crianças".to_sym, "Falar inglês".to_sym, "Falar francês".to_sym, "Falar espanhol".to_sym], as: :check_boxes %>
+  <%= f.submit %>
+  <% end %>
+</div>
