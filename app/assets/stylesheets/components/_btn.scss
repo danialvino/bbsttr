@@ -1,0 +1,50 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins);
+
+.btn-pink {
+  background-color: #FF8E9B;
+  color: white;
+  text-decoration: none;
+  padding: 9px 18px;
+  border-radius: 12px;
+  &:hover {
+    filter: brightness(120%);
+    color: white;
+  }
+}
+
+.btn-light-blue {
+  background-color: #61C0BF;
+  color: white;
+  text-decoration: none;
+  padding: 9px 18px;
+  border-radius: 12px;
+  &:hover {
+    filter: brightness(110%);
+    color: white;
+  }
+}
+
+.btn-light-green {
+  background-color: #A4DBA6;
+  color: white;
+  text-decoration: none;
+  padding: 9px 18px;
+  border-radius: 12px;
+  &:hover {
+    filter: brightness(90%);
+    color: white;
+  }
+}
+
+.btn-red-dark {
+  background-color: #92374D;
+  color: white;
+  text-decoration: none;
+  padding: 9px 18px;
+  border-radius: 12px;
+  &:hover {
+    filter: brightness(110%);
+    color: white;
+  }
+}
+

@@ -1,5 +1,5 @@
 <h1>Lista de babás</h1>
-<% @result.each do |sitter| %>
-  <%= sitter.user.name %>
+<%= @sitters.each do |sitter| %>
+  <%= render "shared/card" %>
 <% end  %>
 
