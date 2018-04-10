@@ -1,25 +1,10 @@
 Rails.application.routes.draw do
-  get 'availables/index'
-
-  get 'availables/show'
-
-  get 'availables/new'
-
-  get 'availables/create'
-
-  get 'availables/edit'
-
-  get 'availables/update'
-
-  get 'availables/destroy'
-
   # user routes
   devise_for :users
   root to: 'pages#home'
   # sitter routes
-  resources :sitters do
-    resources :availables, only: [:new, :create]
-  end
+  resources :sitters
+  resources :availables, only: [:new, :create]
   resources :users, only: [] do
     resources :childs, only: [:new, :create]
   end
