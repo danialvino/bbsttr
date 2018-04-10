@@ -18,6 +18,7 @@ class SittersController < ApplicationController
       redirect_to root_path, alert: "Você já é uma babá!"
     else
       @sitter = Sitter.new
+      @sitter.build_bankinfo
     end
   end
 
@@ -30,7 +31,17 @@ class SittersController < ApplicationController
     else
       render :new
     end
+  end
 
+  def edit
+    @sitter = Sitter.find(params[:id])
+  end
+
+  def update
+    @sitter = Sitter.find(params[:id])
+    if @sitter.update!(user_params)
+      redirect_to root_path, notice: "Update de infos com sucesso"
+    end
   end
 
   private
@@ -38,7 +49,7 @@ class SittersController < ApplicationController
   def user_params
     params.require(:sitter).permit(:pay_rate, :about, :skills, :user_id)
   end
-
+# , :bankinfo => [:agency, :account, :cpf, :bank]
 # Checks an array of sitters if they are available inside the params given in the search
   def available?(sitters)
       @available_sitters = []
