@@ -15,7 +15,7 @@ class AvailablesController < ApplicationController
 
   def create
     @available = Available.new(user_params)
-    @sitter = Sitter.find(current_user.id)
+    @sitter = current_user.sitter
       @available.sitter = @sitter
       if @available.save
         redirect_to root_path
