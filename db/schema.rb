@@ -56,13 +56,6 @@ ActiveRecord::Schema.define(version: 20180410175647) do
     t.index ["user_id"], name: "index_children_on_user_id"
   end
 
-  create_table "childs", force: :cascade do |t|
-    t.string "gender"
-    t.integer "age"
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_childs_on_user_id"
-  end
-
   create_table "sitters", force: :cascade do |t|
     t.integer "pay_rate"
     t.text "about"
@@ -100,6 +93,5 @@ ActiveRecord::Schema.define(version: 20180410175647) do
   add_foreign_key "bookings", "sitters"
   add_foreign_key "bookings", "users"
   add_foreign_key "children", "users"
-  add_foreign_key "childs", "users"
   add_foreign_key "sitters", "users"
 end

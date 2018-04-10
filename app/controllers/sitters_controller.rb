@@ -9,7 +9,11 @@ class SittersController < ApplicationController
   end
 
   def new
-    @sitter = Sitter.new
+    if current_user.sitter?
+      redirect_to root_path, alert: "Você já é uma babá!"
+    else
+      @sitter = Sitter.new
+    end
   end
 
   def create
