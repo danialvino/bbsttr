@@ -10,7 +10,7 @@ class SittersController < ApplicationController
   end
 
   def new
-  @sitter = Sitter.new
+    @sitter = Sitter.new
   end
 
   def create
