@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   def sitter?
-    # to be defined
+    sitter.user == current_user.id
   end
 
 end
