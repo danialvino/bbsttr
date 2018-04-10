@@ -2,6 +2,7 @@ import "bootstrap";
 import $ from 'jquery';
 import 'fullcalendar';
 import 'fullcalendar-scheduler';
+import 'moment';
 
 // document.getElementById('#calendar').fullCalendar({});
 

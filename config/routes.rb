@@ -1,25 +1,10 @@
 Rails.application.routes.draw do
-  get 'availables/index'
-
-  get 'availables/show'
-
-  get 'availables/new'
-
-  get 'availables/create'
-
-  get 'availables/edit'
-
-  get 'availables/update'
-
-  get 'availables/destroy'
-
   # user routes
   devise_for :users
   root to: 'pages#home'
   # sitter routes
-  resources :sitters do
-    resources :availables, only: [:new, :create]
-  end
+  resources :sitters
+  resources :availables, only: [:new, :create]
   resources :users, only: [] do
   end
     resources :children, only: [:new, :create]
@@ -31,4 +16,7 @@ Rails.application.routes.draw do
   get :availables, to: 'availables#myavailables', as: 'my_availables'
   # booked dates routes
   resources :bookings, only: [:index, :show]
+  # update booking status to "canceled"
+  patch '/bookings/:id/change-status-to-canceled', to: "bookings#change_status_to_canceled", as: "change_booking_status_to_canceled"
+
 end

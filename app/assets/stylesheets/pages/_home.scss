@@ -1,9 +1,121 @@
 // Specific CSS for your home-page
-.calendar {
+
+.banner {
+  color: white;
+  text-align: center;
+  height: 100vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.banner h1 {
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+}
+.banner p {
+  font-size: 25px;
+  font-weight: lighter;
+  color: rgb(255, 255, 255);
+  opacity: 0.6;
+  margin-bottom: 30px;
+}
+
+.banner-content {
+  text-align: center;
+}
+
+#instruction-home {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 26px;
+  margin-top: 30px;
+}
+
+#carousel-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 26px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.call-to-action {
+  margin-top: 60px;
+  background-color: #192230;
+  padding: 60px;
+  position: relative;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-section {
+  text-align: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+    h2 {
+      flex-grow: 1;
+      margin:0px;
+    }
+
+    .btn-div {
+      display: flex;
+      align-items: center;
+    }
+}
+
+.grid-photos {
+    width: 50%;
+    float: left;
+    padding: 15px;
+}
+
+.photo {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 300px;
+    display: block;
+    position: relative;
+}
+
+
+#effect {
+    position: absolute;
+    right: 5%;
+    bottom: 15px;
+    font-family: 'Oswald';
+    color: orange;
+    background-color: blue;
+}
+
+@media screen and (max-width: 700px) {
+  .content-section{
+    display: block;
+  }
+
+}
+
+p{
+  font-size: 16px;
+  font-weight: 400;
+  color: 666666;
+}
+
+  .calendar {
+}
+
 .fc button {
   height:30px;
 }
+
 .fc-toolbar.fc-header-toolbar{
   margin-bottom: 0px
 }
