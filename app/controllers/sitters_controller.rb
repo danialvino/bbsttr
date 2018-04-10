@@ -1,7 +1,12 @@
 class SittersController < ApplicationController
 
   def index
-    @sitters = Sitter.all
+    if params[:start_time].present? && params[:end_time].present?
+      @sitters = Sitter.all
+      @result = available?(@sitters)
+    else
+      @sitters = Sitter.all
+    end
   end
 
   def show
@@ -34,4 +39,32 @@ class SittersController < ApplicationController
     params.require(:sitter).permit(:pay_rate, :about, :skills, :user_id)
   end
 
+# Checks an array of sitters if they are available inside the params given in the search
+  def available?(sitters)
+      @available_sitters = []
+      sitters.each do |sitter|
+       availabledates = sitter.availables
+       availabledates.each do |h|
+        daterange = (h.start_time..h.end_time)
+        if daterange.cover?(params[:start_time].to_datetime) && daterange.cover?(params[:end_time].to_datetime)
+           @available_sitters << sitter
+        end
+      end
+    end
+    return @available_sitters
+  end
 end
+      # Search params
+      # <%= form_tag sitters_path, method: :get do %>
+      #   <%= text_field_tag :start_time,
+      #     params[:start_time],
+      #     class: "daterange",
+      #     style: "color: black;"
+      #   %>
+      #   <%= text_field_tag :end_time,
+      #     params[:end_time],
+      #     class: "daterange",
+      #     style: "color: black;"
+      #   %>
+      #   <%= submit_tag %>
+      # <% end %>
