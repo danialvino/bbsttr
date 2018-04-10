@@ -1,0 +1,17 @@
+<h1>Preencha seus dados bancários abaixo:</h1>
+
+<%= simple_form_for (@bankinfo) do |f| %>
+<div class="container">
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <div class="form-group">
+      <%= f.input :agency, label: "Agência" %>
+      <%= f.input :account, label: "Conta" %>
+      <%= f.input :bank, label: "Banco" %>
+      <%= f.input :cpf, label: "CPF" %>
+      </div>
+    <div class="text-center"><%= f.submit class: "btn btn-blue" %></div>
+    </div>
+  </div>
+</div>
+<% end %>

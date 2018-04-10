@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410171303) do
+ActiveRecord::Schema.define(version: 20180410175647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20180410171303) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sitter_id"], name: "index_availables_on_sitter_id"
+  end
+
+  create_table "bankinfos", force: :cascade do |t|
+    t.integer "agency"
+    t.integer "account"
+    t.string "bank"
+    t.integer "cpf"
+    t.bigint "sitter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sitter_id"], name: "index_bankinfos_on_sitter_id"
   end
 
   create_table "bookings", force: :cascade do |t|
@@ -43,6 +54,13 @@ ActiveRecord::Schema.define(version: 20180410171303) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_children_on_user_id"
+  end
+
+  create_table "childs", force: :cascade do |t|
+    t.string "gender"
+    t.integer "age"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_childs_on_user_id"
   end
 
   create_table "sitters", force: :cascade do |t|
@@ -78,8 +96,10 @@ ActiveRecord::Schema.define(version: 20180410171303) do
   end
 
   add_foreign_key "availables", "sitters"
+  add_foreign_key "bankinfos", "sitters"
   add_foreign_key "bookings", "sitters"
   add_foreign_key "bookings", "users"
   add_foreign_key "children", "users"
+  add_foreign_key "childs", "users"
   add_foreign_key "sitters", "users"
 end

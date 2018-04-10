@@ -1,0 +1,7 @@
+<h1>Suas informações bancárias</h1>
+<%= @bankinfos.each do |bankinfo| %>
+<%= bankinfo.agency %>
+<%= bankinfo.account %>
+<%= bankinfo.bank %>
+<%= bankinfo.cpf %>
+  <% end %>
