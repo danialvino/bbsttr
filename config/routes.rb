@@ -21,11 +21,11 @@ Rails.application.routes.draw do
     resources :availables, only: [:new, :create]
   end
   resources :users, only: [] do
-    resources :childs, only: [:new, :create]
   end
+    resources :children, only: [:new, :create]
 
   # childs routes
-  resources :childs, only:  [:index, :edit, :update, :show, :destroy]
+  resources :children, only:  [:index, :edit, :update, :show, :destroy]
   # available dates routes
   resources :availables, only: [:index, :edit, :update, :show]
   get :availables, to: 'availables#myavailables', as: 'my_availables'
