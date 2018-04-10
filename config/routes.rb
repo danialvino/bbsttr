@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   # available dates routes
   resources :availables, only: [:index, :edit, :update, :show]
   get :availables, to: 'availables#myavailables', as: 'my_availables'
+  # bank sitter routes
+  resources :bankinfos, only: [:show, :edit, :update, :new, :create]
   # booked dates routes
   resources :bookings, only: [:index, :show]
   # update booking status to "canceled"
