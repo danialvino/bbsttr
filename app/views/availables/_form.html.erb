@@ -1,0 +1,6 @@
+<div class="container">
+  <%= simple_form_for(@available) do |f| %>
+  <%= f.input :start_time, input_html: { class: "daterange" }, as: :string %>
+  <%= f.input :end_time, input_html: { class: "daterange" }, as: :string %>
+  <%= f.submit %>
+  <% end %></div>
