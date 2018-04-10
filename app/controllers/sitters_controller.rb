@@ -10,12 +10,12 @@ class SittersController < ApplicationController
   end
 
   def new
-  @sitter = Sitter.new
+    @sitter = Sitter.new
   end
 
   def create
     @sitter = Sitter.new(user_params)
-    @user= current_user
+    @user = current_user
     @sitter.user = @user
     if @sitter.save
       redirect_to root_path, notice: "Parabéns! agora você é uma Babá!"
