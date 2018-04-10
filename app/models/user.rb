@@ -7,6 +7,10 @@ class User < ApplicationRecord
   has_many :bookings
 
   def sitter?
-    self.sitter.user_id == self.id
+    if self.sitter.nil?
+      return false
+    else
+      return self.sitter.user_id == self.id
+    end
   end
 end
