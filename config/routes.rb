@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'availables/index'
+
+  get 'availables/show'
+
+  get 'availables/new'
+
+  get 'availables/create'
+
+  get 'availables/edit'
+
+  get 'availables/update'
+
+  get 'availables/destroy'
+
   # user routes
   devise_for :users
   root to: 'pages#home'

@@ -4,5 +4,3 @@
 //= require fullcalendar
 //= require_tree .
 
-// document.getElementById('#calendar').fullCalendar({});
-$('#calendar').fullCalendar({});
