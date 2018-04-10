@@ -1,17 +1,28 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1502124225665-6282a0146f6a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3310f9097eebc99387231721a25a5d8d&auto=format&fit=crop&w=1950&q=80');">
-  <div class="banner-content">
-    <h1>Encontre as melhores baby-sitters</h1>
-    <p>Easier. Faster. Safer. Bbsttr.</p>
+<div class="header">
 
-    <form class="form-inline">
-      <label class="sr-only" for="inlineFormInputName2">Local</label>
-      <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Meu endereço">
-      <button type="submit" class="btn btn-primary">Encontrar !</button>
-    </form>
+  <div class="header-left" style="background-image:url(http://www.allwhitebackground.com/images/3/3197.jpg)">
+  </div>
+
+
+  <div class="header-right">
+
+    <div class="header-content">
+      <h1>Encontre as melhores baby-sitters</h1>
+      <p>Easier. Faster. Safer. Bbsttr.</p>
+
+      <form>
+      <input type="text" name="name" class="question" id="nme" required autocomplete="off" />
+      <label for="nme"><span>Meu endereço</span></label>
+      <input type="text" name="name" class="question" id="nme" required autocomplete="off" />
+      <label for="nme"><span>Dia & horario</span></label>
+      <input type="text" name="name" class="question" id="nme" required autocomplete="off" />
+      <label for="nme"><span>Duração estimada</span></label>
+      <input type="submit" class="btn btn-primary" value="Buscar !" />
+
+      </form>
+
+    </div>
   </div>
 </div>
 
-<%= render "content" %>
-
-
-
+<%= render 'pages/content' %>
