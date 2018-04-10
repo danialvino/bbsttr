@@ -3,7 +3,8 @@ import $ from 'jquery';
 import 'fullcalendar';
 import 'fullcalendar-scheduler';
 import 'moment';
-
+import { loadDynamicBannerText } from '../components/banner';
+loadDynamicBannerText();
 // document.getElementById('#calendar').fullCalendar({});
 
   // $('#calendar').fullCalendar({
