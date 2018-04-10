@@ -1,5 +1,4 @@
 // Specific CSS for your home-page
-// Specific CSS for your home-page
 
 .banner {
   color: white;
@@ -108,4 +107,12 @@ p{
   font-size: 16px;
   font-weight: 400;
   color: 666666;
+
+  .calendar {
+}
+.fc button {
+  height:30px;
+}
+.fc-toolbar.fc-header-toolbar{
+  margin-bottom: 0px
 }
