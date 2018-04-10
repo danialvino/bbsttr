@@ -1,4 +1,4 @@
-class ChildsController < ApplicationController
+class ChildrenController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :set_user, only: [:create]
 
@@ -14,7 +14,7 @@ class ChildsController < ApplicationController
     @child = Child.new(user_params)
     @child.user = @user
      if @child.save
-      redirect_to childs_path
+      redirect_to children_path
     else
       render :new
     end
