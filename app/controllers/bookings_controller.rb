@@ -15,4 +15,18 @@ class BookingsController < ApplicationController
     # to do : update availables
   end
 
+  def new
+    @booking = Booking.new
+  end
+
+  def create
+    @booking = Booking.new(user_params)
+    @booking.save
+  end
+
+  private
+
+  def user_params
+    params(:booking).permit(:start_time, :end_time, :user_id, :sitter_id)
+  end
 end
