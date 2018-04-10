@@ -1,0 +1,77 @@
+.card {
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  color: white;
+  position: relative;
+  height: 200px;
+  width: 500px;
+  // border-style: solid;
+  // border-color: black;
+  // border-size: 1px;
+  border-radius: 2px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  margin: 10px;
+}
+
+.card-left {
+  width: 30%;
+}
+
+.card-right {
+  width: 70%;
+  position: relative;
+}
+
+.card-price {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+
+.card-user {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+.card-username {
+  position: absolute;
+  left: 150px;
+  top: 15px;
+}
+
+.card-category {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+.card-description {
+  position: absolute;
+  top: 80px;
+  left: 150px;
+}
+
+.card-description h2 {
+  font-size: 24px;
+}
+.card-description p {
+  font-size: 14px;
+  opacity: 0.7;
+  font-weight: lighter;
+}
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 2;
+  background: black;
+  opacity: 0;
+}
+.card-link:hover {
+  opacity: 0.1;
+}
