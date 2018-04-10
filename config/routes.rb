@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   get :availables, to: 'availables#myavailables', as: 'my_availables'
   # booked dates routes
   resources :bookings, only: [:index, :show]
+  # update booking status to "canceled"
+  patch '/bookings/:id/change-status-to-canceled', to: "bookings#change_status_to_canceled", as: "change_booking_status_to_canceled"
+
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409185725) do
+ActiveRecord::Schema.define(version: 20180410142746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,10 @@ ActiveRecord::Schema.define(version: 20180409185725) do
     t.bigint "sitter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
+    t.bigint "user_id"
     t.index ["sitter_id"], name: "index_bookings_on_sitter_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "children", force: :cascade do |t|
@@ -71,6 +74,7 @@ ActiveRecord::Schema.define(version: 20180409185725) do
 
   add_foreign_key "availables", "sitters"
   add_foreign_key "bookings", "sitters"
+  add_foreign_key "bookings", "users"
   add_foreign_key "children", "users"
   add_foreign_key "sitters", "users"
 end
