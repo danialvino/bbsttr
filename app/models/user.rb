@@ -3,11 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  
+  has_one :sitter
   has_many :bookings
 
   def sitter?
-    sitter.user == current_user.id
+    if self.sitter.nil?
+      return false
+    else
+      return self.sitter.user_id == self.id
+    end
   end
-
 end
