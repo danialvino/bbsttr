@@ -18,7 +18,7 @@ class AvailablesController < ApplicationController
     @sitter = Sitter.find(current_user.id)
       @available.sitter = @sitter
       if @available.save
-        redirect_to root
+        redirect_to root_path
       else
         render :new
       end
@@ -39,6 +39,6 @@ class AvailablesController < ApplicationController
   private
 
   def user_params
-    params.require(:available).permit(:start_time, :end_time)
+    params.require(:available).permit(:start_time, :end_time, :sitter_id)
   end
 end
