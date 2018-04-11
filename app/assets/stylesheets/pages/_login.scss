@@ -1,0 +1,44 @@
+.centered {
+  text-align: center;
+  float: none;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+body {
+  height: 100%;
+  background: #fff;
+  margin: 0;
+  display: block;
+  color: #4D5055;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.section {
+  padding: 65px 20px;
+}
+
+.subsection {
+  max-width: 720px;
+  padding: 15px 0;
+  margin: 0 auto;
+
+}
+
+#box {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 440px;
+  padding: 30px;
+  border: 1px solid #dadada;
+  margin: 20px auto;
+  font-family: Proxima Nova, sans-serif;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.teste {
+  font-size: 17px;
+  text-align: left;
+}

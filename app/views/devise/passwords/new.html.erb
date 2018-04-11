@@ -1,15 +1,29 @@
-<h2>Forgot your password?</h2>
+<body class="centered page-loaded">
+  <div class="section">
+    <div class="subsection">
+      <div class="logobby">
+        <a class="logo" href="/" class="logo"></a>
+        <img width="35" height="35" src="http://oi67.tinypic.com/2ugm9mu.jpg" alt="logo icon">
+      </div>
+      <div id="main-region">
+        <h3>Esqueceu sua senha?</h3>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+        <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+        <div id="box">
+          <h5>Email<%= f.input :email, label: false, required: true, autofocus: true %></h5>
+          <div class="form-actions">
+            <%= f.button :submit, "Esqueci minha senha", class: "btn btn-pink" %>
+          </div>
+        </div>
+
+
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+</div>

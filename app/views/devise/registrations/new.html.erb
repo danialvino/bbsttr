@@ -1,24 +1,35 @@
-<div class="container">
-  <h2>Sign up</h2>
+<body class="centered page-loaded">
+  <div class="section">
+    <div class="subsection">
+      <div class="logobby">
+        <a class="logo" href="/" class="logo"></a>
+        <img width="35" height="35" src="http://oi67.tinypic.com/2ugm9mu.jpg" alt="logo icon">
+      </div>
+      <div id="main-region">
+        <h4>Cadastre-se</h4>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :name, required: true, label: "Nome", required: true %>
-      <%= f.input :email, required: true, autofocus: true, required: true %>
-      <%= f.input :password, required: true, label: "Senha", hint: ("#{@minimum_password_length} Caracteres mínimo." if @minimum_password_length) %>
-      <%= f.input :password_confirmation, required: true %>
-      <%= f.input :address, label: "Endereço", required: true %>
-      <%= f.input :phone, label: "Celular", required: true %>
-      <%= f.input :birthday, label: "Data de nascimento", required: true %>
-      <%= f.input :gender, collection: ['Masculino', 'Feminino'], required: true  %>
+        <div id="box">
+          <h5>Nome<%= f.input :name, required: true, label: false, required: true %></h5>
+          <h5>Email<%= f.input :email, required: true, label: false, autofocus: true, required: true %></h5>
+          <h5>Senha<%= f.input :password, required: true, label: false, hint: ("#{@minimum_password_length} Caracteres mínimo." if @minimum_password_length) %>
+            <h5>Confirme sua senha<%= f.input :password_confirmation, label: false, required: true %></h5>
+            <h5>Endereço<%= f.input :address, label: false, required: true %></h5>
+            <h5>Celular<%= f.input :phone, label: false, required: true %></h5>
+            <h5>Data de nascimento<%= f.input :birthday, label: false, required: true %></h5>
+            <h5>Sexo<%= f.input :gender, label: false, collection: ['Masculino', 'Feminino'], required: true  %></h5>
+            <div class="form-actions">
+              <%= f.button :submit, "Cadastrar", class: "btn btn-pink" %>
+            </div>
+          </div>
+
+
+          <% end %>
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
-    </div>
-  <% end %>
-<%= render "devise/shared/links" %>
+  </div>
 </div>
-
