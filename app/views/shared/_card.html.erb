@@ -17,24 +17,20 @@
   <div class="card-rating">
       <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
       <p> 5 /5 (12 avaliações)
-    </div>
+  </div>
 
-    <div class="card-favorite">
-      <i class="far fa-heart"></i> <%= sitter.user.name.capitalize %> is one of your favorites baby-sitter
-    </div>
+ <div class="card-details">
+  <ul>
+      <li><i class="far fa-heart"></i> <%= sitter.user.name.capitalize %> is one of your favorites baby-sitter</li>
+      <li><i class="far fa-thumbs-up"></i> 3 of your friends already booked <%= sitter.user.name.capitalize %></li>
+      <li><i class="far fa-calendar-alt"></i> You already booked <%= sitter.user.name.capitalize %> on XXX</li>
+      <li><i class="far fa-user-circle"></i> Acessar o perfil detalhado de <%= sitter.user.name.capitalize %></li>
+  </ul>
+ </div>
 
-    <div class="card-socialgraph">
-      <i class="far fa-thumbs-up"></i> 3 of your friends already booked <%= sitter.user.name.capitalize %>
-    </div>
-
-    <div class="card-history">
-      <i class="far fa-calendar-alt"></i> You already booked <%= sitter.user.name.capitalize %> on XXX
-    </div>
-
-    <div class="card-button">
-      <button type="button" class="btn btn-success btn-lg">Contratar</button>
-      <button type="button" class="btn btn-info  btn-lg">Ver perfil detalhado</button>
-    </div>
+  <div class="card-button">
+      <button type="button" class="btn btn-light-green btn-lg">Contratar</button>
+  </div>
 
 
   </div>

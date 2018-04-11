@@ -1,41 +1,50 @@
 .card {
   color: black;
   position: relative;
-  height: 300px;
+  height: 350px;
   border: 0.1px solid black;
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.19), 0 1px 1px rgba(0, 0, 0, 0.23);
   margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .card-left {
-  width: 30%;
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5px;
 }
 
 .card-right {
-  width: 70%;
-  position: relative;
-}
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 5px;
 
-.card-price {
-  position: absolute;
-  left: 50px;
-  bottom: 5px;
-  text-align: center;
 }
 
 .card-user {
-  position: absolute;
-  left: 15px;
-  top: 15px;
   width: 180px;
   border-radius: 2%;
 }
 
+.card-price {
+  vertical-align: bottom;
+  text-align: center;
+}
+
 .card-username {
-  position: absolute;
-  left: 220px;
-  top: 15px;
+  vertical-align: top;
+  text-align: left;
+  width: 100%;
 }
 
 
@@ -43,19 +52,11 @@
   margin: 0px;
 }
 
-
-.card-category {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 15px;
-  text-transform: uppercase;
-}
-
 .card-rating {
-  position: absolute;
-  left: 220px;
-  top: 60px;
+  vertical-align: top;
+  text-align: left;
+    width: 100%
+
 }
 
 .card-rating h2 {
@@ -71,43 +72,21 @@
   font-size: 14px;
   opacity: 0.7;
   font-weight: lighter;
-}
-.card-link {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  z-index: 2;
-  background: black;
-  opacity: 0;
-}
-.card-link:hover {
-  opacity: 0.1;
+
 }
 
-.card-favorite {
-  position: absolute;
-  left: 220px;
-  top: 140px;
-}
+.card-details {
+    vertical-align: top;
+  text-align: left;
+  font-size: 16px;
+    width: 100%
 
-.card-socialgraph  {
-  position: absolute;
-  left: 220px;
-  top: 165px;
-}
-
-.card-history  {
-  position: absolute;
-  left: 220px;
-  top: 190px;
 }
 
 .card-button  {
-  position: absolute;
+    vertical-align: top;
   text-align: center;
-  left: 220px;
-  top: 225px;
+    width: 100%
+
 }
 
