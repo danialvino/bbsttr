@@ -2,8 +2,11 @@ class SittersController < ApplicationController
 
   def index
     if params[:start_time].present? && params[:end_time].present?
+      cookies["start_time"] = params[:start_time]
+      cookies["end_time"] = params[:end_time]
       @sitters = Sitter.all
       @result = available?(@sitters)
+      @result_availables = available_hours?(@sitters)
     else
       @sitters = Sitter.all
     end
@@ -66,6 +69,19 @@ class SittersController < ApplicationController
       end
     end
     return @available_sitters
+  end
+    def available_hours?(sitters)
+      @available_hours = []
+      sitters.each do |sitter|
+       availabledates = sitter.availables
+       availabledates.each do |h|
+        daterange = (h.start_time..h.end_time)
+        if daterange.cover?(params[:start_time].to_datetime) && daterange.cover?(params[:end_time].to_datetime)
+           @available_hours << h
+        end
+      end
+    end
+    return @available_hours
   end
 end
       # Search params
