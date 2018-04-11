@@ -1,14 +1,10 @@
 .card {
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  color: white;
+  color: black;
   position: relative;
-  height: 200px;
-  width: 500px;
-  // border-style: solid;
-  // border-color: black;
-  // border-size: 1px;
-  border-radius: 2px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  height: 300px;
+  border: 0.1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.19), 0 1px 1px rgba(0, 0, 0, 0.23);
   margin: 10px;
 }
 
@@ -23,23 +19,30 @@
 
 .card-price {
   position: absolute;
-  left: 10px;
-  bottom: 10px;
+  left: 50px;
+  bottom: 5px;
+  text-align: center;
 }
 
 .card-user {
   position: absolute;
   left: 15px;
   top: 15px;
-  width: 120px;
-  border-radius: 50%;
+  width: 180px;
+  border-radius: 2%;
 }
 
 .card-username {
   position: absolute;
-  left: 150px;
+  left: 220px;
   top: 15px;
 }
+
+
+.card-username h2 {
+  margin: 0px;
+}
+
 
 .card-category {
   position: absolute;
@@ -48,16 +51,23 @@
   font-size: 15px;
   text-transform: uppercase;
 }
-.card-description {
+
+.card-rating {
   position: absolute;
-  top: 80px;
-  left: 150px;
+  left: 220px;
+  top: 60px;
 }
 
-.card-description h2 {
+.card-rating h2 {
   font-size: 24px;
 }
-.card-description p {
+
+.fa-star {
+  color: #FECB00;
+  opacity: 1;
+}
+
+.card-rating p {
   font-size: 14px;
   opacity: 0.7;
   font-weight: lighter;
@@ -75,3 +85,29 @@
 .card-link:hover {
   opacity: 0.1;
 }
+
+.card-favorite {
+  position: absolute;
+  left: 220px;
+  top: 140px;
+}
+
+.card-socialgraph  {
+  position: absolute;
+  left: 220px;
+  top: 165px;
+}
+
+.card-history  {
+  position: absolute;
+  left: 220px;
+  top: 190px;
+}
+
+.card-button  {
+  position: absolute;
+  text-align: center;
+  left: 220px;
+  top: 225px;
+}
+
