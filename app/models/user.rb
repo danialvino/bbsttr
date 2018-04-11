@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_one :sitter
   has_many :bookings
+  has_many :children
 
   def sitter?
     if self.sitter.nil?
