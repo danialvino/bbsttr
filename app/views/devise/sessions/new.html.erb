@@ -1,16 +1,28 @@
-<div class="container">
-  <h2>Log in</h2>
+<body class="centered page-loaded">
+  <div class="section">
+    <div class="subsection">
+      <div class="logobby">
+        <a class="logo" href="/" class="logo"></a>
+        <img width="35" height="35" src="http://oi67.tinypic.com/2ugm9mu.jpg" alt="logo icon">
+      </div>
+      <div id="main-region">
+        <h3>Entrar</h3>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <!-- <div class="form-inputs"> -->
+          <div id="box">
+            <h5>Email<%= f.input :email, required: false, autofocus: true, label: false %></h5>
+            <h5>Senha<%= f.input :password, required: false, label: false %></h5>
+            <h5><%= f.input :remember_me, label: "Lembrar", label_html: { class: 'teste' }, as: :boolean if devise_mapping.rememberable? %></h5>
+            <div class="form-actions">
+              <%= f.button :submit, "Entrar", class: "btn btn-pink" %>
+            </div>
+          </div>
 
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-inputs">
-      <%= f.input :email, required: false, autofocus: true %>
-      <%= f.input :password, required: false %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-    </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
+          <% end %>
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
     </div>
-  <% end %>
-<%= render "devise/shared/links" %>
+  </div>
 </div>
