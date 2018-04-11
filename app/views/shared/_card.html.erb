@@ -1,34 +1,34 @@
 <div class="card">
   <div class="card-left">
     <div class="user_image">
-      <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+      <img class="card-user" src="https://media.istockphoto.com/photos/happy-young-woman-smiling-portrait-picture-id485734753?k=6&m=485734753&s=612x612&w=0&h=481qIkH2Jpr4uJAsUohYZo8gl3AlA-58vnVwlXjzxtM=">
     </div>
     <div class="card-price">
-      <h2>R$ 85</h2>
-      <p>por X horas <i class="fas fa-info-circle"></i></p>
+      <h2>R$ <%= sitter.pay_rate %>  </h2>
+      <p>por hora <i class="fas fa-info-circle"></i></p>
     </div>
   </div>
 
   <div class="card-right">
     <div class="card-username">
-      <h2>Name</i></h2>
+      <h2><%= sitter.user.name.capitalize %></i></h2>
     </div>
 
   <div class="card-rating">
       <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-      <p> 5/5 (12 avaliações)
+      <p> 5 /5 (12 avaliações)
     </div>
 
     <div class="card-favorite">
-      <i class="far fa-heart"></i> XXX is one of your favorites baby-sitter
+      <i class="far fa-heart"></i> <%= sitter.user.name.capitalize %> is one of your favorites baby-sitter
     </div>
 
     <div class="card-socialgraph">
-      <i class="far fa-thumbs-up"></i> 3 of your friends already booked XXX
+      <i class="far fa-thumbs-up"></i> 3 of your friends already booked <%= sitter.user.name.capitalize %>
     </div>
 
     <div class="card-history">
-      <i class="far fa-calendar-alt"></i> You already booked XXXX on XXX
+      <i class="far fa-calendar-alt"></i> You already booked <%= sitter.user.name.capitalize %> on XXX
     </div>
 
     <div class="card-button">

@@ -1,28 +1,6 @@
-<h1>Lista de babás</h1>
-<%= @sitters.each do |sitter| %>
-  <%= render "shared/card" %>
-<% end  %>
-
-
-TEST CARD LAYOUT
-
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-lg-12">
-      <!-- insert <div class="card"> -->
-          <%= render "shared/card" %>
-
-    </div>
-    <div class="col-xs-12 col-sm-12 col-lg-12">
-      <!-- insert <div class="card"> -->
-          <%= render "shared/card" %>
-
-    </div>
-    <div class="col-xs-12 col-sm-12 col-lg-12">
-      <!-- insert <div class="card"> -->
-          <%= render "shared/card" %>
-
-    </div>
-  </div>
+    <h1>Achamos <%= pluralize(@sitters.count, 'baby-sitter disponivel', 'baby-sitters disponiveis') %> </h1>
+  <% @sitters.each do |sitter| %>
+  <%= render "shared/card", sitter: sitter %>
+  <% end  %>
 </div>
-
