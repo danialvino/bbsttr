@@ -14,7 +14,7 @@
             <h5>Senha<%= f.input :password, required: false, label: false %></h5>
             <h5><%= f.input :remember_me, label: "Lembrar", label_html: { class: 'teste' }, as: :boolean if devise_mapping.rememberable? %></h5>
             <div class="form-actions">
-              <%= f.button :submit, "Entrar", class: "btn btn-pink" %>
+              <%= f.submit value: "Entrar", class: "btn btn-pink" %>
             </div>
           </div>
 
