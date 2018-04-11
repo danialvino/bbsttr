@@ -39,6 +39,7 @@ class SittersController < ApplicationController
 
   def update
     @sitter = Sitter.find(params[:id])
+    binding.pry
     if @sitter.update!(user_params)
       redirect_to root_path, notice: "Update de infos com sucesso"
     end
@@ -47,9 +48,9 @@ class SittersController < ApplicationController
   private
 
   def user_params
-    params.require(:sitter).permit(:pay_rate, :about, :skills, :user_id)
+    params.require(:sitter).permit(:pay_rate, :about, :user_id, :bankinfo => [:agency, :account, :cpf, :bank], skills: [])
   end
-# , :bankinfo => [:agency, :account, :cpf, :bank]
+
 # Checks an array of sitters if they are available inside the params given in the search
   def available?(sitters)
       @available_sitters = []

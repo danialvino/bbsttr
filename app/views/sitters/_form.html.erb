@@ -4,14 +4,14 @@
   <%= f.input :about, label: "Sua descrição do perfil", hint: "Nos conte mais sobre você!"%>
   <%= f.input :skills, label: "Habilidades:", collection:
         [
-          "Cozinhar".to_sym,
-          "Lavar louças".to_sym,
-          "Lavar roupas".to_sym,
-          "Cuidar de bebês".to_sym,
-          "Cuidar de crianças".to_sym,
-          "Falar inglês".to_sym,
-          "Falar francês".to_sym,
-          "Falar espanhol".to_sym
+          "Cozinhar",
+          "Lavar louças",
+          "Lavar roupas",
+          "Cuidar de bebês",
+          "Cuidar de crianças",
+          "Falar inglês",
+          "Falar francês",
+          "Falar espanhol"
         ],
       as: :check_boxes %>
   <%= f.simple_fields_for :bankinfo do |b| %>
