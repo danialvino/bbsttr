@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>As avaliaçoes que você recebeu como baby-sitter</h1>
+  <% if @reviewssitters.count == 0 %>
+    Você ainda não foi avaliada
+  <% else %>
+    <% @reviewssitters.each do |review| %>
+    Data do baby-sitting :
+    <br>
+    Avaliaçao : <%= review.description %>
+    <br>
+    Nota recebida: <%= review.rating %>
+    <br>
+    Pai que fez a avaliaçao : <%= review.user.name %>
+    <% end %>
+  <% end %>
+</div>
+
+

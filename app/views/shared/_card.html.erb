@@ -16,7 +16,12 @@
 
   <div class="card-rating">
       <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-      <p> 5 /5 (12 avaliações)
+      <p>
+      <% if Reviewssitter.where(sitter_id: sitter.id).count == 0 %>
+        Ainda não foi avaliada.
+      <% else %>
+        <%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: sitter.id).count, 'avalição', 'avaliações') %>)
+      <% end %>
   </div>
 
  <div class="card-details">
