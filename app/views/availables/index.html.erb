@@ -2,6 +2,6 @@
   <div id="calendar"></div>
 </div>
 <% @availables.each do |a| %>
-  <div class="hidden available" data-start="<%=  a.start_time.strftime '%Y-%m-%dT%H:%M:%S' %>" data-end="<%= a.end_time.strftime '%Y-%m-%dT%H:%M:%S' %>">
+   <div class="hidden available" data-start="<%=  a.start_time.strftime '%Y-%m-%dT%H:%M:%S' %>" data-end="<%= a.end_time.strftime '%Y-%m-%dT%H:%M:%S' %>">
   </div>
-<% end  %>
+ <% end  %>

@@ -1,5 +1,4 @@
 // Specific CSS for your home-page
-
 .header {
   // color: white;
   // text-align: center;
@@ -172,3 +171,10 @@ textarea.question + label > span {
   }
 }
 
+.fc-axis {
+  width: 100px !important;
+  height: 50px !important;
+  span {
+  font-size: 12px;
+  }
+}
