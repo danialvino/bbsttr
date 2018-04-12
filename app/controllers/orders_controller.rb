@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def create
     sitter = Sitter.find(params[:sitter_id])
-    order  = Order.create!(sitter_id: sitter.id, amount: sitter.price, state: 'pending', user: current_user)
+    order  = Order.create!(sitter_id: sitter.id, amount: sitter.price, state: 'pending', user: current_user, booking_id: 1)
 
     redirect_to new_order_payment_path(order)
   end
