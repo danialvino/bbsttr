@@ -5,6 +5,7 @@ class Sitter < ApplicationRecord
   has_many :bookings
   has_one :bank_info
   accepts_nested_attributes_for :bank_info
-  validates :pay_rate, presence: true
+  validates :price, presence: true
   validates :user_id, uniqueness: true
+  monetize :price_cents
 end

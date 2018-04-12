@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412132317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,12 +63,13 @@ ActiveRecord::Schema.define(version: 20180412132317) do
   end
 
   create_table "sitters", force: :cascade do |t|
-    t.integer "pay_rate"
+    t.integer "price"
     t.text "about"
     t.string "skills"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price_cents", default: 0, null: false
     t.index ["user_id"], name: "index_sitters_on_user_id"
   end
 
