@@ -1,176 +1,60 @@
 // Specific CSS for your home-page
-.header {
-  // color: white;
-  // text-align: center;
-  // height: 100vh;
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  display: flex;
-  align-items: left;
-  justify-content: flex-start;
-  height: 600px;
-  // background-color: white;
-}
-
-.header-left {
-  opacity: .95;
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 30%;
-  height: 600px;
-  max-width: 800px;
-  margin-left: 30px;
-}
-
-.header-right {
-  margin-right: 50px;
-  text-align: right;
-  width: 70%;
-}
-
-.header-content {
-  padding-right: 100px;
-  padding-left: 80px;
-}
-
-.header-content h1 {
-  font-size: 42px;
-  font-weight: bold;
-  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-}
-
-.header-content p {
-  font-size: 25px;
-  font-weight: lighter;
-  color: black;
+.banner {
+  height: 70vh;
+  width: 100%;
   opacity: 0.6;
-  margin-bottom: 30px;
+  visibility: inherit;
+  background-repeat: no-repeat;
+  align-items: top;
+  justify-content: center;
+  display: flex;
 }
 
-
-@media screen and (max-width: 700px) {
-  .content-section{
-    display: block;
-  }
-
+.banner-content {
+  text-align: right;
+  color: black;
+  vertical-align: top;
+  padding-top: 20px;
 }
 
-p{
-  font-size: 16px;
-  font-weight: 400;
-  color: 666666;
+#wrapper-comofunciona {
+  margin-right: auto; /* 1 */
+  margin-left:  auto; /* 1 */
+
+  max-width: 100%; /* 2 */
+  height: 300px;
+
+  padding-right: 10px; /* 3 */
+  padding-left:  10px; /* 3 */
+  text-align: center;
+
+  background-color: $light-gray;
+#wrapper-vantagens {
+  margin-right: auto; /* 1 */
+  margin-left:  auto; /* 1 */
+
+  max-width: 100%; /* 2 */
+  height: 300px;
+
+  padding-right: 10px; /* 3 */
+  padding-left:  10px; /* 3 */
+
+  text-align: center;
 }
 
-input,
-span,
-label,
-textarea {
-  font-family: 'Ubuntu', sans-serif;
-  display: block;
-  margin: 10px;
-  padding: 5px;
-  border: none;
-  font-size: 22px;
-}
+#wrapper-ctababysitter {
+  margin-right: auto; /* 1 */
+  margin-left:  auto; /* 1 */
 
-textarea:focus,
-input:focus {
-  outline: 0;
-}
-/* Question */
+  max-width: 100%; /* 2 */
+  height: 300px;
 
-input.question,
-textarea.question {
-  font-size: 48px;
-  font-weight: 300;
-  border-radius: 2px;
-  margin: 0;
-  border: none;
-  width: 80%;
-  background: rgba(0, 0, 0, 0);
-  transition: padding-top 0.2s ease, margin-top 0.2s ease;
-  overflow-x: hidden; /* Hack to make "rows" attribute apply in Firefox. */
-}
-/* Underline and Placeholder */
+  padding-right: 10px; /* 3 */
+  padding-left:  10px; /* 3 */
+  background-color: $light-gray;
+  text-align: center;
 
-input.question + label,
-textarea.question + label {
-  display: block;
-  position: relative;
-  white-space: nowrap;
-  padding: 0;
-  margin: 0;
-  width: 10%;
-  border-top: 1px solid red;
-  -webkit-transition: width 0.4s ease;
-  transition: width 0.4s ease;
-  height: 0px;
 }
-
-input.question:focus + label,
-textarea.question:focus + label {
-  width: 80%;
-}
-
-input.question:focus,
-input.question:valid {
-  padding-top: 35px;
-}
-
-textarea.question:valid,
-textarea.question:focus {
-  margin-top: 35px;
-}
-
-input.question:focus + label > span,
-input.question:valid + label > span {
-  top: -100px;
-  font-size: 22px;
-  color: #333;
-}
-
-textarea.question:focus + label > span,
-textarea.question:valid + label > span {
-  top: -150px;
-  font-size: 22px;
-  color: #333;
-}
-
-input.question:valid + label,
-textarea.question:valid + label {
-  border-color: green;
-}
-
-input.question:invalid,
-textarea.question:invalid {
-  box-shadow: none;
-}
-
-input.question + label > span,
-textarea.question + label > span {
-  font-weight: 300;
-  margin: 0;
-  position: absolute;
-  color: #8F8F8F;
-  font-size: 48px;
-  top: -66px;
-  left: 0px;
-  z-index: -1;
-  -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
-  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
-}
-
-@-webkit-keyframes appear {
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes appear {
-  100% {
-    opacity: 1;
-  }
-}
-
 .fc-axis {
   width: 100px !important;
   height: 50px !important;
