@@ -1,1 +1,11 @@
-Detalhes do Booking (Show)
+<div class="container">
+  <h3>Não se preocupe. Sua babá está agendada!</h3>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="booking-description">
+        <p>Data e Horário de Chegada: <strong><%= @booking.start_time %></strong>, até <strong><%= @booking.end_time %></strong>.</p>
+        <p>Babá: <%= @booking.sitter.user.name %></p>
+      </div>
+    </div>
+  </div>
+</div>
