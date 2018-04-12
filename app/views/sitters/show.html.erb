@@ -29,7 +29,7 @@
         <% else %>
         <%= Geocoder::Calculations.distance_between(current_user, @sitter.user).to_d.truncate(2).to_f  %>
       <% end %> Km do seu endereço </li>
-      <li><i class="far fa-heart"></i> <%= @sitter.user.name.capitalize %> faz parte dos seus baby-@sitters favoritas</li>
+      <li><i class="far fa-heart"></i> <%= @sitter.user.name.capitalize %> faz parte dos seus baby-sitters favoritas</li>
       <li><i class="far fa-thumbs-up"></i> 3 amigos seus ja reservaram <%= @sitter.user.name.capitalize %></li>
       <li><i class="far fa-calendar-alt"></i>
       <% @bookings_history = Booking.count("user_id = #{current_user.id} AND @sitter_id = #{@sitter.id}") %>
@@ -41,6 +41,15 @@
       </li>
   </ul>
  </div>
+
+<h2> Historico das avaliações</h2>
+ <% Reviewssitter.where(sitter_id: @sitter.id).each do |review| %>
+ <br><%= review.created_at %>
+ <br><%= review.rating %> / 5
+ <br><%= review.description %>
+----
+<br>
+<% end %>
 
     <div class="card-button">
       <%= form_tag orders_path do %>
