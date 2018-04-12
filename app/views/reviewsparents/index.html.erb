@@ -1,0 +1,15 @@
+<div class="container">
+    <h1>As avaliaçoes que você recebeu como pai</h1>
+  <% @reviewsparents.each do |review| %>
+  Data do baby-sitting :
+  <br>
+  Avaliaçao : <%= review.description %>
+  <br>
+  Nota recebida: <%= review.rating %>
+  <br>
+  Sitter que fez a avaliaçao : <%= review.sitter.user.name %>
+  <% end %>
+</div>
+
+
+
