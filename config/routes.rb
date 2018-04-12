@@ -25,5 +25,10 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index, :show, :create]
   # update booking status to "canceled"
   patch '/bookings/:id/change-status-to-canceled', to: "bookings#change_status_to_canceled", as: "change_booking_status_to_canceled"
+  # reviewsparents routes
+  resources :reviewsparents, only: [:index, :new, :create]
+  # reviewssitters routes
+  resources :reviewssitters, only: [:index, :new, :create]
+
 
 end

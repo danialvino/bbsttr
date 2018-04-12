@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412174056) do
+ActiveRecord::Schema.define(version: 20180412194254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,13 +56,6 @@ ActiveRecord::Schema.define(version: 20180412174056) do
     t.index ["user_id"], name: "index_children_on_user_id"
   end
 
-  create_table "childs", force: :cascade do |t|
-    t.string "gender"
-    t.integer "age"
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_childs_on_user_id"
-  end
-
   create_table "orders", force: :cascade do |t|
     t.string "state"
     t.integer "amount_cents", default: 0, null: false
@@ -75,6 +68,28 @@ ActiveRecord::Schema.define(version: 20180412174056) do
     t.bigint "booking_id"
     t.index ["booking_id"], name: "index_orders_on_booking_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "reviewsparents", force: :cascade do |t|
+    t.text "description"
+    t.float "rating"
+    t.bigint "user_id"
+    t.bigint "sitter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sitter_id"], name: "index_reviewsparents_on_sitter_id"
+    t.index ["user_id"], name: "index_reviewsparents_on_user_id"
+  end
+
+  create_table "reviewssitters", force: :cascade do |t|
+    t.text "description"
+    t.float "rating"
+    t.bigint "user_id"
+    t.bigint "sitter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sitter_id"], name: "index_reviewssitters_on_sitter_id"
+    t.index ["user_id"], name: "index_reviewssitters_on_user_id"
   end
 
   create_table "sitters", force: :cascade do |t|
@@ -117,8 +132,11 @@ ActiveRecord::Schema.define(version: 20180412174056) do
   add_foreign_key "bookings", "sitters"
   add_foreign_key "bookings", "users"
   add_foreign_key "children", "users"
-  add_foreign_key "childs", "users"
   add_foreign_key "orders", "bookings"
   add_foreign_key "orders", "users"
+  add_foreign_key "reviewsparents", "sitters"
+  add_foreign_key "reviewsparents", "users"
+  add_foreign_key "reviewssitters", "sitters"
+  add_foreign_key "reviewssitters", "users"
   add_foreign_key "sitters", "users"
 end

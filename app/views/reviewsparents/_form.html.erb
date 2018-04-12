@@ -1,0 +1,12 @@
+<div class="container">
+  <h1> Deixe aqui sua avaliaçao</h1>
+  Baby-sitting feito no dia :
+  <br>
+  Nome do pai :
+  <br>
+  <%= simple_form_for @reviewsparent do |f| %>
+    <%= f.input :description,label: "Descrição", hint: "O seu comentario sobre o serviço", error: "Não pode estar em branco!"%>
+    <%= f.input :rating, label: "Sua avaliação do serviço", hint: "Note até 5!"%>
+    <%= f.submit %>
+  <% end %>
+</div>
