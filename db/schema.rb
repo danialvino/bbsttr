@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412194254) do
+ActiveRecord::Schema.define(version: 20180412204830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,8 @@ ActiveRecord::Schema.define(version: 20180412194254) do
     t.bigint "sitter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "booking_id"
+    t.index ["booking_id"], name: "index_reviewsparents_on_booking_id"
     t.index ["sitter_id"], name: "index_reviewsparents_on_sitter_id"
     t.index ["user_id"], name: "index_reviewsparents_on_user_id"
   end
@@ -88,6 +90,8 @@ ActiveRecord::Schema.define(version: 20180412194254) do
     t.bigint "sitter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "booking_id"
+    t.index ["booking_id"], name: "index_reviewssitters_on_booking_id"
     t.index ["sitter_id"], name: "index_reviewssitters_on_sitter_id"
     t.index ["user_id"], name: "index_reviewssitters_on_user_id"
   end
@@ -134,8 +138,10 @@ ActiveRecord::Schema.define(version: 20180412194254) do
   add_foreign_key "children", "users"
   add_foreign_key "orders", "bookings"
   add_foreign_key "orders", "users"
+  add_foreign_key "reviewsparents", "bookings"
   add_foreign_key "reviewsparents", "sitters"
   add_foreign_key "reviewsparents", "users"
+  add_foreign_key "reviewssitters", "bookings"
   add_foreign_key "reviewssitters", "sitters"
   add_foreign_key "reviewssitters", "users"
   add_foreign_key "sitters", "users"
