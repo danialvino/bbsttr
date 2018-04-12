@@ -9,6 +9,7 @@ gem 'puma'
 gem 'rails', '5.1.6'
 gem 'redis'
 gem 'money-rails'
+gem 'flatpickr_rails'
 gem 'stripe'
 
 gem 'autoprefixer-rails'

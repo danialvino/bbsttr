@@ -1,6 +1,6 @@
 <div class="container">
-    <h1>Achamos <%= pluralize(@sitters_near.count, 'baby-sitter disponivel', 'baby-sitters disponiveis') %> </h1>
-  <% @sitters_near.each do |sitter| %>
+    <h1>Achamos <%= pluralize(@result.count, 'baby-sitter disponivel', 'baby-sitters disponiveis') %> </h1>
+  <% @result.each do |sitter| %>
   <%= render "shared/card", sitter: sitter %>
   <% end %>
 </div>
