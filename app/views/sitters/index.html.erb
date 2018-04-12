@@ -2,5 +2,8 @@
     <h1>Achamos <%= pluralize(@result.count, 'baby-sitter disponivel', 'baby-sitters disponiveis') %> </h1>
   <% @result.each do |sitter| %>
   <%= render "shared/card", sitter: sitter %>
-  <% end  %>
+  <% end %>
 </div>
+
+
+

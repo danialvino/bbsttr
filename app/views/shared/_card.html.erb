@@ -21,10 +21,11 @@
 
  <div class="card-details">
   <ul>
-      <li><i class="far fa-heart"></i> <%= sitter.user.name.capitalize %> is one of your favorites baby-sitter</li>
-      <li><i class="far fa-thumbs-up"></i> 3 of your friends already booked <%= sitter.user.name.capitalize %></li>
-      <li><i class="far fa-calendar-alt"></i> You already booked <%= sitter.user.name.capitalize %> on XXX</li>
-      <li><i class="far fa-user-circle"></i> Acessar o perfil detalhado de <%= sitter.user.name.capitalize %></li>
+      <li><i class="fas fa-map-marker-alt"></i> <%= sitter.user.name.capitalize %> mora <%= Geocoder::Calculations.distance_between(current_user, sitter.user).to_d.truncate(2).to_f  %> Km do seu endereço </li>
+      <li><i class="far fa-heart"></i> <%= sitter.user.name.capitalize %> faz parte dos seus baby-sitters favoritas</li>
+      <li><i class="far fa-thumbs-up"></i> 3 amigos seus ja reservaram <%= sitter.user.name.capitalize %></li>
+      <li><i class="far fa-calendar-alt"></i> Você ja reservou <%= sitter.user.name.capitalize %> no XXX</li>
+      <li><i class="far fa-user-circle"></i> <%=link_to "Acessar o perfil detalhado de #{sitter.user.name.capitalize}", sitter_path(sitter) %> </li>
   </ul>
  </div>
 

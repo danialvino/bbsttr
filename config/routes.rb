@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   end
     resources :children, only: [:new, :create]
 
+  # orders routes
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: [:new, :create]
+    end
+
   # childs routes
   resources :children, only:  [:index, :edit, :update, :show, :destroy]
   # available dates routes
