@@ -21,7 +21,12 @@
 
  <div class="card-details">
   <ul>
-      <li><i class="fas fa-map-marker-alt"></i> <%= sitter.user.name.capitalize %> mora a <%= Geocoder::Calculations.distance_between(current_user, sitter.user).to_d.truncate(2).to_f  %> Km do seu endereço </li>
+      <li><i class="fas fa-map-marker-alt"></i> <%= sitter.user.name.capitalize %> mora a
+      <% if params[:user_address].present? %>
+        <%= Geocoder::Calculations.distance_between(params[:user_address], sitter.user).to_d.truncate(2).to_f  %>
+        <% else %>
+        <%= Geocoder::Calculations.distance_between(current_user, sitter.user).to_d.truncate(2).to_f  %>
+      <% end %> Km do seu endereço </li>
       <li><i class="far fa-heart"></i> <%= sitter.user.name.capitalize %> faz parte dos seus baby-sitters favoritas</li>
       <li><i class="far fa-thumbs-up"></i> 3 amigos seus ja reservaram <%= sitter.user.name.capitalize %></li>
       <li><i class="far fa-calendar-alt"></i>

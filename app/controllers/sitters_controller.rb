@@ -4,13 +4,11 @@ class SittersController < ApplicationController
     if params[:start_time].present? && params[:end_time].present?
       cookies["start_time"] = params[:start_time]
       cookies["end_time"] = params[:end_time]
-      @sitters = Sitter.all
-      @sitters_near = near?(@sitters) #listing sitters living near the parents
-      @result = available?(@sitters_near)
+      @result = near?(Sitter.all)
+      @sitters = available?(@result)
       @result_availables = available_hours?(@sitters)
      else
-      @sitters = Sitter.all
-      @sitters_near = near?(@sitters) #listing sitters living near the parents
+      @sitters = near?(Sitter.all)
     end
   end
 
@@ -90,9 +88,15 @@ class SittersController < ApplicationController
   # creating an array with all available baby-sitters living less than X km from parent
   def near?(sitters)
     @sitters_near = []
-    @sitters.each do |sitter|
-      if Geocoder::Calculations.distance_between(current_user, sitter.user) < 20
-        @sitters_near << sitter
+    sitters.each do |sitter|
+      if params[:user_address].present?
+        if Geocoder::Calculations.distance_between(params[:user_address], sitter.user) < 20
+          @sitters_near << sitter
+        end
+      else
+        if Geocoder::Calculations.distance_between(current_user, sitter.user) < 20
+          @sitters_near << sitter
+        end
       end
     end
     return @sitters_near
