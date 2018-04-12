@@ -56,7 +56,7 @@ User.create!({
   password: "huehue",
   phone: 010101,
   birthday: Date.today,
-  name: "Luiza",
+  name: "Paula",
   gender: "Feminino",
   address: "Av. Nossa Sra. de Copacabana, 493 - Copacabana, Rio de Janeiro "
   })
@@ -90,7 +90,7 @@ Sitter.create!({
     cpf: "050.290.924-00".to_i
     })
   Sitter.create!({
-  pay_rate: 49,
+  pay_rate: 55,
   about: "Hellooooo",
   skills: ["Comer bolos"],
   user_id: 6
