@@ -3,6 +3,7 @@ class AvailablesController < ApplicationController
 
   def index
     @availables = Available.all
+    @available = Available.new
   end
 
   def show
@@ -18,7 +19,7 @@ class AvailablesController < ApplicationController
     @sitter = current_user.sitter
       @available.sitter = @sitter
       if @available.save
-        redirect_to root_path
+        redirect_to availables_path
       else
         render :new
       end

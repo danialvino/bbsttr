@@ -85,16 +85,4 @@ class SittersController < ApplicationController
   end
 end
       # Search params
-      # <%= form_tag sitters_path, method: :get do %>
-      #   <%= text_field_tag :start_time,
-      #     params[:start_time],
-      #     class: "daterange",
-      #     style: "color: black;"
-      #   %>
-      #   <%= text_field_tag :end_time,
-      #     params[:end_time],
-      #     class: "daterange",
-      #     style: "color: black;"
-      #   %>
-      #   <%= submit_tag %>
-      # <% end %>
+

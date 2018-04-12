@@ -29,7 +29,7 @@ for (var i = 0; i < elementsAvailable.length; i++) {
 
 $('#calendar').fullCalendar({
     schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
-    editable: false,
+    editable: true,
     scrollTime: '06:00', // undo default 6am scrollTime
     contentHeight: 455,
     firstDay: 0,
@@ -52,8 +52,11 @@ $('#calendar').fullCalendar({
       },
       listWeek:{
       noEventsMessage: "No kids to take care.",
+      timeFormat: 'H:mm',
       },
     },
     resources: [],
     events: array_available,
   });
+
+

@@ -64,6 +64,8 @@ GEM
     ffi (1.9.23)
     figaro (1.1.1)
       thor (~> 0.14)
+    flatpickr_rails (1.1.0)
+      railties (>= 3.0)
     font-awesome-sass (5.0.9)
       sass (>= 3.2)
     fullcalendar-rails (3.4.0.0)
@@ -215,6 +217,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3)
   devise
   figaro
+  flatpickr_rails
   font-awesome-sass (~> 5.0.9)
   fullcalendar-rails
   geocoder
