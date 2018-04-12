@@ -7,11 +7,11 @@
           <span style="color: white;">das</span>
           <%= text_field_tag :start_time,
             params[:start_time],
-            class: "flatpickr-input"%>
+            class: "flatpickr-input", required: true%>
             <span style="color: white;">até</span>
           <%= text_field_tag :end_time,
             params[:end_time],
-            class: "flatpickr-input" %>
+            class: "flatpickr-input", required: true %>
           <%= submit_tag "Procurar", class: "btn btn-xs btn-light-blue" %>
         <% end %></div>
   </div>

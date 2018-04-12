@@ -1,14 +1,20 @@
 class SittersController < ApplicationController
 
   def index
-    if params[:start_time].present? && params[:end_time].present?
+    if params[:start_time].present? && params[:end_time].present? && params[:user_address].present?
+      cookies["start_time"] = params[:start_time]
+      cookies["end_time"] = params[:end_time]
+      @result = near?(Sitter.all)
+      @sitters = available?(@result)
+      @result_availables = available_hours?(@sitters)
+     elsif params[:start_time].present? && params[:end_time].present?
       cookies["start_time"] = params[:start_time]
       cookies["end_time"] = params[:end_time]
       @result = near?(Sitter.all)
       @sitters = available?(@result)
       @result_availables = available_hours?(@sitters)
      else
-      @sitters = near?(Sitter.all)
+      redirect_to root_path, alert: "Para quando você precisa a babá?"
     end
   end
 
