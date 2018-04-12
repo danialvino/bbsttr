@@ -4,7 +4,7 @@
       <img class="card-user" src="https://media.istockphoto.com/photos/happy-young-woman-smiling-portrait-picture-id485734753?k=6&m=485734753&s=612x612&w=0&h=481qIkH2Jpr4uJAsUohYZo8gl3AlA-58vnVwlXjzxtM=">
     </div>
     <div class="card-price">
-      <h2>R$ <%= sitter.pay_rate %>  </h2>
+      <h2> <%= humanized_money_with_symbol(sitter.price) %>  </h2>
       <p>por hora <i class="fas fa-info-circle"></i></p>
     </div>
   </div>
