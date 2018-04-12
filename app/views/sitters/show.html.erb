@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-price">
-      <h2>R$ <%= @sitter.pay_rate %>  </h2>
+      <h2> <%= humanized_money_with_symbol(@sitter.price)%>  </h2>
       <p>por hora <i class="fas fa-info-circle"></i></p>
     </div>
 
