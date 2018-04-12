@@ -64,7 +64,7 @@ User.create!({
 puts "ok!"
 puts "Create Sitter"
 Sitter.create!({
-  pay_rate: 69,
+  price_cents: 6900,
   about: "Oi meu nome é Baba! esse é meu :about",
   skills: ["Cozinhar"],
   user_id: 4
@@ -77,7 +77,7 @@ Sitter.create!({
     cpf: "050.290.934-00".to_i
     })
 Sitter.create!({
-  pay_rate: 49,
+  price_cents: 4900,
   about: "Oi, esse é meu :about",
   skills: ["Brincar"],
   user_id: 5
@@ -90,7 +90,7 @@ Sitter.create!({
     cpf: "050.290.924-00".to_i
     })
   Sitter.create!({
-  pay_rate: 55,
+  price_cents: 5500,
   about: "Hellooooo",
   skills: ["Comer bolos"],
   user_id: 6
