@@ -21,6 +21,7 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'jquery-rails'
 gem 'bootstrap-daterangepicker-rails'
+gem 'geocoder'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
