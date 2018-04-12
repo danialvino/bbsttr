@@ -91,7 +91,7 @@ class SittersController < ApplicationController
   def near?(sitters)
     @sitters_near = []
     @sitters.each do |sitter|
-      if Geocoder::Calculations.distance_between(current_user, sitter.user) < 50
+      if Geocoder::Calculations.distance_between(current_user, sitter.user) < 20
         @sitters_near << sitter
       end
     end
