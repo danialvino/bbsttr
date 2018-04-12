@@ -17,4 +17,7 @@ class User < ApplicationRecord
       return self.sitter.user_id == self.id
     end
   end
+
+
+
 end
