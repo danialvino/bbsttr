@@ -11,12 +11,11 @@
 
       <!-- if user is a Baby-sitter -->
       <% if current_user.sitter? %>
-        <%= link_to 'Meu Painel'.html_safe, new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to 'Meu Painel'.html_safe, availables_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <% else %>
       <!-- if user is a Parent -->
-        <%= link_to 'Novo pedido'.html_safe, new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to 'Meu Painel'.html_safe, new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to 'Meus agendamentos'.html_safe, bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
 
       <!-- Avatar with dropdown menu -->
@@ -25,26 +24,28 @@
           <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
+            <% if current_user.sitter? %>
+              <%= link_to edit_sitter_path(current_user.sitter) do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Meu perfil") %>
               <% end %>
             </li>
+              <% end %>
             <li>
-              <%= link_to "#" do %>
+              <%= link_to edit_user_registration_path do %>
                 <i class="fa fa-cog"></i>  <%= t(".settings", default: "Opções") %>
               <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Sair") %>
-              <% end %>
             </li>
+            <% end %>
           </ul>
         </div>
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-         <%= link_to t(".sign_in", default: "Quero ser babá"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+         <%= link_to t(".sign_in", default: "Quero ser babá"), new_sitter_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".sign_in", default: "Entrar"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
@@ -54,11 +55,30 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Criar conta</a></li>
-        <li><a href="#">Entrar</a></li>
-        <li><a href="#">xx</a></li>
+    <% if user_signed_in? %>
+      <% if current_user.sitter? %>
+      <!-- if user is a Baby-sitter -->
+        <li>
+          <%= link_to edit_sitter_path(current_user.sitter) do %>
+            <i class="fa fa-user"></i> <%= t(".profile", default: "Meu perfil") %>
+          <% end %>
+        </li>
+        <li><%= link_to 'Meu Painel'.html_safe, availables_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+      <% else %>
+      <!-- if user is a Parent -->
+        <li><%= link_to 'Agendamentos'.html_safe, bookings_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+      <% end %>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Sair") %>
+            <% end %>
+            </li>
+
+    <% else %>
+     <li><%= link_to t(".sign_in", default: "Quero ser babá"), new_sitter_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+      <li><%= link_to t(".sign_in", default: "Entrar"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+      <% end %>
       </ul>
     </div>
   </div>
 </div>
-
