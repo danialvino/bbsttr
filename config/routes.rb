@@ -4,18 +4,21 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # sitter routes
   resources :sitters
+  # available dates routes
   resources :availables, only: [:new, :create]
-  resources :users, only: [] do
+  # API routes
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :availables, only: [ :index ]
+    end
   end
-    resources :children, only: [:new, :create]
-
   # orders routes
   resources :orders, only: [:show, :create] do
     resources :payments, only: [:new, :create]
     end
 
   # childs routes
-  resources :children, only:  [:index, :edit, :update, :show, :destroy]
+  resources :children, only:  [:index, :edit, :update, :show, :destroy, :new, :create]
   # available dates routes
   resources :availables, only: [:index, :edit, :update, :show]
   get :availables, to: 'availables#myavailables', as: 'my_availables'
