@@ -74,10 +74,9 @@
 
     <div class="button">
       <%= link_to "Voltar", :back, class: 'btn btn-pink btn-md' %>
-      <%= form_tag orders_path do %>
-      <%= hidden_field_tag 'sitter_id', @sitter.id %>
-      <%= submit_tag 'Contratar', class: 'btn btn-light-green btn-md' %>
-      <% end %>
-    </div>
+      <%= link_to "Contratar", bookings_path(available: @result_availables.select{|av| av.sitter_id == sitter.id }[0].id, sitter_id: sitter.id), method: :post, class: "btn btn-light-green btn-lg"%>
+        </div>
+
+
   </div>
 </div>
