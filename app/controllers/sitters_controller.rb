@@ -1,10 +1,11 @@
 class SittersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     if params[:start_time].present? && params[:end_time].present? && params[:user_address].present?
       cookies["start_time"] = params[:start_time]
       cookies["end_time"] = params[:end_time]
+      cookies["user_address"] = params[:user_address]
       @result = near?(Sitter.all)
       @sitters = available?(@result)
       @result_availables = available_hours?(@sitters)

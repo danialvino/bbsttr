@@ -25,19 +25,23 @@
   <ul>
       <li><i class="fas fa-map-marker-alt"></i> <%= @sitter.user.name.capitalize %> mora a
       <% if params[:user_address].present? %>
-        <%= Geocoder::Calculations.distance_between(params[:user_address], @sitter.user).to_d.truncate(2).to_f  %>
+        <%= Geocoder::Calculations.distance_between(cookies[:user_address], @sitter.user).to_d.truncate(2).to_f  %>
         <% else %>
         <%= Geocoder::Calculations.distance_between(current_user, @sitter.user).to_d.truncate(2).to_f  %>
       <% end %> Km do seu endereço </li>
       <li><i class="far fa-heart"></i> <%= @sitter.user.name.capitalize %> faz parte dos seus baby-sitters favoritas</li>
       <li><i class="far fa-thumbs-up"></i> 3 amigos seus ja reservaram <%= @sitter.user.name.capitalize %></li>
       <li><i class="far fa-calendar-alt"></i>
-      <% @bookings_history = Booking.count("user_id = #{current_user.id} AND @sitter_id = #{@sitter.id}") %>
-      <% if @bookings_history == 0 %>
-        Você nunca reservou <%= @sitter.user.name.capitalize %>
-      <% else %>
-        Você ja reservou <%= @sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %>
-      <% end %>
+            <% if user_signed_in? %>
+              <% @bookings_history = Booking.count("user_id = #{current_user.id} AND sitter_id = #{@sitter.id}") %>
+              <% if @bookings_history == 0 %>
+              Você nunca reservou <%= @sitter.user.name.capitalize %>
+              <% else %>
+              Você ja reservou <%= @sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %>
+              <% end %>
+              <% else %>
+              Você nunca reservou <%= @sitter.user.name.capitalize %>
+              <% end %>
       </li>
   </ul>
  </div>
