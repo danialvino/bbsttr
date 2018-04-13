@@ -24,7 +24,7 @@ class SittersController < ApplicationController
 
   def show
     @sitter = Sitter.find(params[:id])
-    @result_availables = available_hours?(@sitter)
+    @result_availables = available_show_hours?(@sitter)
     @favorite = Favorite.new
   end
 
@@ -116,6 +116,17 @@ class SittersController < ApplicationController
     return @sitters_near
   end
 
+def available_show_hours?(sitters)
+      @available_hours = []
+       availabledates = sitter.availables
+       availabledates.each do |h|
+        daterange = (h.start_time..h.end_time)
+        if daterange.cover?(params[:start_time].to_datetime) && daterange.cover?(params[:end_time].to_datetime)
+           @available_hours << h
+        end
+      end
+    return @available_hours
+  end
 end
       # Search params
 
