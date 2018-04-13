@@ -1,19 +1,19 @@
-<div class="banner" style="background-image: url('http://www.space338.com.au/wp-content/uploads/2015/12/Option_Original_Girl.png')">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1482235225574-c37692835cf3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bba87d557cd648d8172d392fe12883e0&auto=format&fit=crop&w=1651&q=80')">
   <div class="banner-content">
       <h1>Encontre uma baba de confiança em poucos cliques.</h1>
       <p>Procure agora as melhores baby-sitters disponiveis.</p>
-      <%= form_tag sitters_path, method: :get do %>
-        <%= text_field_tag :user_address%>
-        das
-        <%= text_field_tag :start_time,
-          params[:start_time],
-          class: "flatpickr-input"%>
-          até
-        <%= text_field_tag :end_time,
-          params[:end_time],
-          class: "flatpickr-input" %>
-        <%= submit_tag %>
-      <% end %>
+      <div class="home-seach"><%= form_tag sitters_path, method: :get do %>
+          <%= text_field_tag :user_address%>
+          <span style="color: white;">das</span>
+          <%= text_field_tag :start_time,
+            params[:start_time],
+            class: "flatpickr-input", required: true%>
+            <span style="color: white;">até</span>
+          <%= text_field_tag :end_time,
+            params[:end_time],
+            class: "flatpickr-input", required: true %>
+          <%= submit_tag "Procurar", class: "btn btn-xs btn-light-blue" %>
+        <% end %></div>
   </div>
 </div>
 

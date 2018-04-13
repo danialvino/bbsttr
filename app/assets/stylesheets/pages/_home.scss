@@ -1,22 +1,30 @@
 // Specific CSS for your home-page
 .banner {
+  color: white;
   height: 70vh;
-  width: 100%;
-  opacity: 0.6;
+  background-size: cover;
+  background-position: center center;
+  opacity: 1;
   visibility: inherit;
   background-repeat: no-repeat;
-  align-items: top;
+  align-items: center;
   justify-content: center;
   display: flex;
 }
 
 .banner-content {
   text-align: right;
-  color: black;
+  color: white;
   vertical-align: top;
   padding-top: 20px;
+    p{
+      color: #FF8E9B;
+    }
 }
 
+.home-seach{
+  color: black;
+}
 #wrapper-comofunciona {
   margin-right: auto; /* 1 */
   margin-left:  auto; /* 1 */

@@ -27,7 +27,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     change_available(@available)
     if @booking.save!
-      redirect_to root_path
+      redirect_to booking_path(@booking)
     end
   end
   # botão com params
@@ -60,18 +60,4 @@ class BookingsController < ApplicationController
     end
   end
 end
-#btn de contratar: <%= link_to "Contratar", bookings_path(available: @result_availables.select{|av| av.sitter_id == sitter.id }[0].id, sitter_id: sitter.id), method: :post%>
-# search form
-# <%= form_tag sitters_path, method: :get do %>
-#         <%= text_field_tag :start_time,
-#           params[:start_time],
-#           class: "daterange",
-#           style: "color: black;"
-#         %>
-#         <%= text_field_tag :end_time,
-#           params[:end_time],
-#           class: "daterange",
-#           style: "color: black;"
-#         %>
-#         <%= submit_tag %>
-#       <% end %>
+# btn de contratar:
