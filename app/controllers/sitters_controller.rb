@@ -1,4 +1,5 @@
 class SittersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     if params[:start_time].present? && params[:end_time].present? && params[:user_address].present?
