@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413133120) do
+ActiveRecord::Schema.define(version: 20180413184302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(version: 20180413133120) do
   end
 
   create_table "bank_infos", force: :cascade do |t|
-    t.integer "agency"
-    t.integer "account"
+    t.string "agency"
+    t.string "account"
     t.string "bank"
-    t.integer "cpf"
+    t.string "cpf"
     t.bigint "sitter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 20180413133120) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "phone"
+    t.string "phone"
     t.date "birthday"
     t.string "name"
     t.string "address"

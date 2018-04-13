@@ -1,8 +1,24 @@
-<div class="container">
+<body class="centered page-loaded">
+  <div class="section">
+    <div class="subsection">
+      <div class="logobby">
+        <a class="logo" href="/" class="logo"></a>
+        <img width="35" height="35" src="http://oi67.tinypic.com/2ugm9mu.jpg" alt="logo icon">
+      </div>
+      <div id="main-region">
+        <h3>Preencha as informações abaixo:</h3>
+
   <%= simple_form_for @sitter do |f| %>
+
+  <div id="box">
+ <h5><strong>Valor por hora R$</h5></strong><%= f.input :price, label: false, hint: "Quanto você cobra por uma hora de trabalho?", error: "Não pode estar em branco!"%>
+  <h5><strong>Sua descrição do perfil</h5></strong><%= f.input :about, label: false, hint: "Nos conte mais sobre você!"%>
+  <h5><strong>Habilidades:</h5></strong><%= f.input :skills, label: false, collection:
+
   <%= f.input :price, label: "Valor por hora R$", hint: "Quanto você cobra por uma hora de trabalho?", error: "Não pode estar em branco!"%>
   <%= f.input :about, label: "Sua descrição do perfil", hint: "Nos conte mais sobre você!"%>
   <%= f.input :skills, label: "Habilidades:", collection:
+
         [
           "Cozinhar",
           "Lavar louças",
@@ -15,11 +31,19 @@
         ],
       as: :check_boxes %>
   <%= f.simple_fields_for :bank_info do |b| %>
-        <%= b.input :agency %>
-        <%= b.input :account %>
-        <%= b.input :bank %>
-        <%= b.input :cpf %>
+      <h5><strong>Agência Bancária:</h5></strong>  <%= b.input :agency, label: false %>
+       <h5><strong>Conta Corrente ou Poupança:</h5></strong> <%= b.input :account, label: false %>
+       <h5><strong>Banco:</h5></strong> <%= b.input :bank, label: false %>
+       <h5><strong>CPF:</h5></strong> <%= b.input :cpf, label: false %>
       <% end %>
-  <%= f.submit %>
+      <div class="form-actions">
+  <%= f.submit value: "Cadastrar", class: "btn btn-pink" %>
+        </div>
+          </div>
+
   <% end %>
+</div>
+      </div>
+    </div>
+  </div>
 </div>
