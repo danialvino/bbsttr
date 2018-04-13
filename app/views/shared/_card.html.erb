@@ -38,6 +38,7 @@
                 <i class="fas fa-heart on"></i><%= sitter.user.name.capitalize %> faz parte dos seus baby-sitters favoritas
               <% else %>
                 <i class="far fa-heart off"></i><%= sitter.user.name.capitalize %> ainda não faz parte dos seus baby-sitters favoritas
+                - <%= simple_form_for @favorite do |f| %> <%= f.hidden_field :sitter_id, value: sitter.id %> <%= f.submit "Adicionar", class: "text-button a" %>
                 <% end %>
               <% end %>
             </li>
@@ -62,8 +63,6 @@
         <div class="card-button">
           <% if params[:start_time].present? && params[:end_time].present? && params[:user_address].present? %>
             <%= link_to "Contratar", bookings_path(available: @result_availables.select{|av| av.sitter_id == sitter.id }[0].id, sitter_id: sitter.id), method: :post, class: "btn btn-light-green btn-lg"%>
-          <% else %>
-            <%= link_to "Buscar disponibilidade", root_path, class: "btn btn-light-green btn-lg"%>
           <% end %>
         </div>
 
