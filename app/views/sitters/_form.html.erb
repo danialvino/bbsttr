@@ -14,11 +14,6 @@
  <h5><strong>Valor por hora R$</h5></strong><%= f.input :price, label: false, hint: "Quanto você cobra por uma hora de trabalho?", error: "Não pode estar em branco!"%>
   <h5><strong>Sua descrição do perfil</h5></strong><%= f.input :about, label: false, hint: "Nos conte mais sobre você!"%>
   <h5><strong>Habilidades:</h5></strong><%= f.input :skills, label: false, collection:
-
-  <%= f.input :price, label: "Valor por hora R$", hint: "Quanto você cobra por uma hora de trabalho?", error: "Não pode estar em branco!"%>
-  <%= f.input :about, label: "Sua descrição do perfil", hint: "Nos conte mais sobre você!"%>
-  <%= f.input :skills, label: "Habilidades:", collection:
-
         [
           "Cozinhar",
           "Lavar louças",
@@ -30,6 +25,7 @@
           "Falar espanhol"
         ],
       as: :check_boxes %>
+
   <%= f.simple_fields_for :bank_info do |b| %>
       <h5><strong>Agência Bancária:</h5></strong>  <%= b.input :agency, label: false %>
        <h5><strong>Conta Corrente ou Poupança:</h5></strong> <%= b.input :account, label: false %>
