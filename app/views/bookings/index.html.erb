@@ -1,6 +1,13 @@
-<h1>Lista de bookings</h1>
+<div class="container">
+    <h1>Você tem <%= pluralize(@bookings.count, 'agendamento', 'agendamentos') %> </h1>
+  <% if @bookings.count == 0 %>
+    Nenhum agendamento planejado.
+  <% else %>
+    <% @bookings.each do |booking| %>
+      <%= booking %>
+    <% end %>
+  <% end %>
+</div>
 
-<% @bookings.each do |booking| %>
-<%= booking %>
-<% end %>
+
 
