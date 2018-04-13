@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-  skip_before_action :authenticate_user!
 
   # Listing the bookings of a given user
   def index
