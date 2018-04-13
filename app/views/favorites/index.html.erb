@@ -4,7 +4,7 @@
     Você ainda não tem nenhuma baby-sitter favorita.
   <% else %>
     <% @favorites.each do |favorite| %>
-      <%= render "shared/card", sitter: favorite.sitter %>
+      <%= render "shared/lightcard", sitter: favorite.sitter %>
     <% end %>
   <% end %>
 </div>
