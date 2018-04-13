@@ -32,7 +32,16 @@
             <% else %>
             <%= Geocoder::Calculations.distance_between(current_user, sitter.user).to_d.truncate(2).to_f  %>
             <% end %> Km do seu endereço </li>
-            <li><i class="far fa-heart"></i> <%= sitter.user.name.capitalize %> faz parte dos seus baby-sitters favoritas</li>
+            <li>
+            <% if user_signed_in? %>
+              <% if Favorite.where(sitter_id: sitter.id, user_id: current_user).count > 0 %>
+                <i class="fas fa-heart on"></i><%= sitter.user.name.capitalize %> faz parte dos seus baby-sitters favoritas
+              <% else %>
+                <i class="far fa-heart off"></i><%= sitter.user.name.capitalize %> ainda não faz parte dos seus baby-sitters favoritas - <%= simple_form_for @favorite do |f| %> <%= f.hidden_field :sitter_id, value: sitter.id %> <%= f.submit "Adicionar", class: "text-button a" %>
+                <% end %>
+              <% end %>
+            <% end %>
+            </li>
             <li><i class="far fa-thumbs-up"></i> 3 amigos seus ja reservaram <%= sitter.user.name.capitalize %></li>
             <li><i class="far fa-calendar-alt"></i>
               <% if user_signed_in? %>
@@ -52,7 +61,11 @@
         </div>
 
         <div class="card-button">
-          <%= link_to "Contratar", bookings_path(available: @result_availables.select{|av| av.sitter_id == sitter.id }[0].id, sitter_id: sitter.id), method: :post, class: "btn btn-light-green btn-lg"%>
+          <% if params[:start_time].present? && params[:end_time].present? && params[:user_address].present? %>
+            <%= link_to "Contratar", bookings_path(available: @result_availables.select{|av| av.sitter_id == sitter.id }[0].id, sitter_id: sitter.id), method: :post, class: "btn btn-light-green btn-lg"%>
+          <% else %>
+            <%= link_to "Buscar disponibilidade", root_path, class: "btn btn-light-green btn-lg"%>
+          <% end %>
         </div>
 
 

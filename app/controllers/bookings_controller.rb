@@ -7,6 +7,8 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @reviewssitter = Reviewssitter.new
+    @reviewsparent = Reviewsparent.new
   end
 
   def change_status_to_canceled

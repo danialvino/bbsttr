@@ -16,11 +16,12 @@ class FavoritesController < ApplicationController
   def create
     @favorite = Favorite.new(user_params)
     @favorite.user = current_user
-    if @favorite.save
-      redirect_to sitters_path
-    else
-      render :new
-    end
+    @favorite.save
+    # TO DO : ADD CONFIRMATION MSG AND REFRESH
+    # redirect_to: sitter_path
+    # else
+      # render :new
+    # end
   end
 
   # def edit
