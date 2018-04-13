@@ -15,6 +15,7 @@ class ReviewssittersController < ApplicationController
 
   def create
     @reviewssitter = Reviewssitter.new(user_params)
+    @reviewssitter.save
     #A ALTERAR ^^
     # @sitter = current_user.sitter
     #   @available.sitter = @sitter
@@ -40,6 +41,6 @@ class ReviewssittersController < ApplicationController
   private
 
   def user_params
-    params.require(:reviewsitter).permit(:booking_id)
+    params.require(:reviewssitter).permit(:booking_id)
   end
 end
