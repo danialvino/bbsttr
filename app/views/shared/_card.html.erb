@@ -38,8 +38,6 @@
                 <i class="fas fa-heart on"></i><%= sitter.user.name.capitalize %> faz parte dos seus baby-sitters favoritas
               <% else %>
                 <i class="far fa-heart off"></i><%= sitter.user.name.capitalize %> ainda não faz parte dos seus baby-sitters favoritas
-                - <%= simple_form_for @favorite do |f| %> <%= f.hidden_field :sitter_id, value: sitter.id %> <%= f.submit "Adicionar", class: "text-button a" %>
-                <% end %>
               <% end %>
             </li>
             <li><i class="far fa-thumbs-up"></i> 3 amigos seus ja reservaram <%= sitter.user.name.capitalize %></li>
