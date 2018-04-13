@@ -18,7 +18,7 @@
             <h5>Confirme sua senha<%= f.input :password_confirmation, label: false, required: true %></h5>
             <h5>Endereço<%= f.input :address, label: false, required: true %></h5>
             <h5>Celular<%= f.input :phone, label: false, required: true %></h5>
-            <h5>Data de nascimento<%= f.input :birthday, label: false, required: true %></h5>
+            <h5>Data de nascimento<%= f.text_field :birthday, label: false, required: true, as: :string, class: "flatpickr-user", placeholder: "dia/mês/ano" %></h5>
             <h5>Sexo<%= f.input :gender, label: false, collection: ['Masculino', 'Feminino'], required: true  %></h5>
             <div class="form-actions">
               <%= f.submit value: "Cadastrar", class: "btn btn-pink" %>

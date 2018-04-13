@@ -105,17 +105,17 @@ Sitter.create!({
 puts "ok!"
 puts "Creating some children (hehe)"
 Child.create!({
-  gender: "Masculino",
+  gender: "Menino",
   age: 5,
   user_id: 1,
   })
 Child.create!({
-  gender: "Feminino",
+  gender: "Menina",
   age: 10,
   user_id: 2,
   })
 Child.create!({
-  gender: "Masculino",
+  gender: "Menino",
   age: 6,
   user_id: 3,
   })

@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 style="color: #61C0BF;">Não se preocupe. Sua babá está agendada!</h3>
+  <h3 style="color: #61C0BF; text-align: center;">Não se preocupe. Sua babá está agendada!</h3>
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <div class="booking-description">
@@ -7,8 +7,8 @@
         <p>Babá: <%= @booking.sitter.user.name %></p>
         <p>Contato: <%= @booking.sitter.user.phone %></p>
         <p>Faturamento:</p>
-        <p>R$<%= @booking.sitter.price %>/hora, você contratou por <%= (@booking.end_time.hour - @booking.start_time.hour) %>horas</p>
-        <p> Total: <%= ( @booking.sitter.price * (@booking.end_time.hour - @booking.start_time.hour) ) %> </p>
+        <p>R$<%= @booking.sitter.price %>/hora, você contratou por <%= (((@booking.end_time - @booking.start_time)/ 3600).round) %> horas</p>
+        <p> Total: R$<%= ( @booking.sitter.price * ((@booking.end_time - @booking.start_time)/ 3600) ) %> </p>
 
         <%= link_to "Avaliar a baby-sitter", new_booking_reviewssitter_path(@booking) %>
 
@@ -19,11 +19,13 @@
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-name="<%= current_user.name %>"
           data-email="<%= current_user.email %>"
-          data-description="R$<%= ( @booking.sitter.price * (@booking.end_time.hour - @booking.start_time.hour) )%>"
-          data-amount="<%= (@booking.sitter.price * (@booking.end_time.hour - @booking.start_time.hour)) * 100 %>"
+          data-description="R$<%= ( @booking.sitter.price * (((@booking.end_time - @booking.start_time)/ 3600)) )%>"
+          data-amount="<%= (@booking.sitter.price * (((@booking.end_time - @booking.start_time)/ 3600)) * 100) %>"
           data-currency="<%= @booking.sitter.price.currency %>"
           data-label="Contratar"></script>
       </div>
     </div>
   </div>
+  <br>
+<div class="text-center"><%= link_to "Reservar outra data", root_path, class: "btn btn-pink btn-xs", style: "transform: scale(0.8);" %></div>
 </div>

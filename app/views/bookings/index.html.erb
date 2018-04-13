@@ -1,16 +1,29 @@
-<h1>Lista de bookings</h1>
 
 <div class="container">
+<h1 style="text-align: center;">Lista de bookings</h1>
 <% @bookings.each do |booking| %>
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <div class="booking-description">
-        <p>Data e Horário de Chegada: <strong><%= @booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>, até <strong><%= @booking.end_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>.</p>
-        <p>Babá: <%= @booking.sitter.user.name %></p>
-        <p>Contato: <%= @booking.sitter.user.phone %></p>
+        <% if current_user.sitter? %>
+        <p>Data e Horário de Chegada: <strong><%= booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>, até <strong><%= booking.end_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>.</p>
+        <p>Contratador: <%= booking.user.name %></p>
+        <p>Filhos: <% booking.user.children.each do |child| %>
+          <%= child.gender %> de <%= child.age %> anos.
+          <% end %>
+        </p>
+        <p>Contato: <%= booking.user.phone %></p>
         <p>Faturamento:</p>
-        <p>R$<%= @booking.sitter.price %>/hora, você contratou por <%= (@booking.end_time.hour - @booking.start_time.hour) %>horas</p>
-        <p> Total: <%= ( @booking.sitter.price * (@booking.end_time.hour - @booking.start_time.hour) ) %> </p>
+        <p>R$<%= booking.sitter.price %>/hora, você foi contratado por <%= (((booking.end_time - booking.start_time)/ 3600).round) %> horas
+        <p> Total: R$<%= ( booking.sitter.price * ((booking.end_time - booking.start_time)/ 3600) ) %> </p>
+        <% else %>
+        <p>Data e Horário de Chegada: <strong><%= booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>, até <strong><%= booking.end_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>.</p>
+        <p>Babá: <%= booking.sitter.user.name %></p>
+        <p>Contato: <%= booking.sitter.user.phone %></p>
+        <p>Faturamento:</p>
+        <p>R$<%= booking.sitter.price %>/hora, você contratou por <%= (((booking.end_time - booking.start_time)/ 3600).round) %> horas
+        <p> Total: R$<%= ( booking.sitter.price * ((booking.end_time - booking.start_time)/ 3600) ) %> </p>
+        <% end %>
       </div>
     </div>
   </div>
