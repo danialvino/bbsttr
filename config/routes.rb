@@ -29,6 +29,6 @@ Rails.application.routes.draw do
   resources :reviewsparents, only: [:index, :new, :create]
   # reviewssitters routes
   resources :reviewssitters, only: [:index, :new, :create]
-
-
+  # favorites routes
+  resources :favorites, only: [:index, :new, :create, :destroy]
 end
