@@ -55,10 +55,11 @@
 <br>
 <% end %>
 
-    <div class="card-button">
+    <div class="button">
+      <%= link_to "Voltar", :back, class: 'btn btn-pink btn-md' %>
       <%= form_tag orders_path do %>
       <%= hidden_field_tag 'sitter_id', @sitter.id %>
-      <%= submit_tag 'Contratar', class: 'btn btn-light-green btn-lg' %>
+      <%= submit_tag 'Contratar', class: 'btn btn-light-green btn-md' %>
       <% end %>
     </div>
   </div>
