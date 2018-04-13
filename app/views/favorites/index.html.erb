@@ -1,0 +1,11 @@
+<div class="container">
+    <h1>Você tem <%= pluralize(@favorites.count, 'baby-sitter favorita', 'baby-sitters favoritas') %> </h1>
+  <% if @favorites.count == 0 %>
+    Você ainda não tem nenhuma baby-sitter favorita.
+  <% else %>
+    <% @favorites.each do |favorite| %>
+      <%= render "shared/card", sitter: favorite.sitter %>
+    <% end %>
+  <% end %>
+</div>
+
