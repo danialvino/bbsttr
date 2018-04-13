@@ -2,8 +2,8 @@
   <div class="banner-content">
       <h1>Encontre uma baba de confiança em poucos cliques.</h1>
       <p>Procure agora as melhores baby-sitters disponiveis.</p>
-      <div class="home-seach"><%= form_tag sitters_path, method: :get do %>
-          <%= text_field_tag :user_address%>
+      <div class="home-search"><%= form_tag sitters_path, method: :get do %>
+          <%= text_field_tag :user_address, "", class: 'bord-form' %>
           <span style="color: white;">das</span>
           <%= text_field_tag :start_time,
             params[:start_time],
