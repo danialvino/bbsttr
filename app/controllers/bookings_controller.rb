@@ -2,7 +2,11 @@ class BookingsController < ApplicationController
 
   # Listing the bookings of a given user
   def index
-    @bookings = Booking.where(user: current_user)
+    if current_user.sitter?
+      @bookings = Booking.where(sitter: current_user.sitter)
+    else
+      @bookings = Booking.where(user: current_user)
+    end
   end
 
   def show

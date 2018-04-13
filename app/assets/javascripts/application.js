@@ -17,3 +17,13 @@ function loadflatpickr() {
   }
 }
 loadflatpickr()
+function loadflatpickruser() {
+  if ($('.flatpickr-user').length > 0) {
+    flatpickr(".flatpickr-input", {
+      dateFormat: 'd-m-Y',
+      noCalendar: false,
+      parseDate: true,
+    });
+  }
+}
+loadflatpickruser()

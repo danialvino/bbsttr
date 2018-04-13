@@ -9,7 +9,7 @@ puts "create Users"
 User.create!({
   email: "pai@teste.com",
   password: "huehue",
-  phone: 8199830,
+  phone: "8199830",
   birthday: Date.today,
   name: "Painho",
   gender: "Masculino",
@@ -18,7 +18,7 @@ User.create!({
 User.create!({
   email: "pai2@teste.com",
   password: "huehue",
-  phone: 123456,
+  phone: "123456",
   birthday: Date.today,
   name: "Papai",
   gender: "Masculino",
@@ -27,7 +27,7 @@ User.create!({
 User.create!({
   email: "pai3@teste.com",
   password: "huehue",
-  phone: 9999999,
+  phone: "9999999",
   birthday: Date.today,
   name: "Joao",
   gender: "Masculino",
@@ -36,7 +36,7 @@ User.create!({
 User.create!({
   email: "sitter@teste.com",
   password: "huehue",
-  phone: 8199832,
+  phone: "8199832",
   birthday: Date.today,
   name: "Mainha",
   gender: "Feminino",
@@ -45,7 +45,7 @@ User.create!({
 User.create!({
   email: "sitter2@teste.com",
   password: "huehue",
-  phone: 010101,
+  phone: "010101",
   birthday: Date.today,
   name: "Luiza",
   gender: "Feminino",
@@ -54,7 +54,7 @@ User.create!({
 User.create!({
   email: "sitter3@teste.com",
   password: "huehue",
-  phone: 010101,
+  phone: "010101",
   birthday: Date.today,
   name: "Paula",
   gender: "Feminino",
@@ -70,21 +70,21 @@ Sitter.create!({
   user_id: 4
   })
   BankInfo.create!({
-    agency: 02461,
-    account: 40362,
+    agency: "02461",
+    account: "40362",
     bank: "Banco do Brasil",
     sitter_id: 1,
     cpf: "050.290.934-00".to_i
     })
 Sitter.create!({
-  price_cents: 4900,
+  price_cents: "4900",
   about: "Oi, esse é meu :about",
   skills: ["Brincar"],
   user_id: 5
   })
   BankInfo.create!({
-    agency: 02461,
-    account: 40362,
+    agency: "02461",
+    account: "40362",
     bank: "Santander",
     sitter_id: 2,
     cpf: "050.290.924-00".to_i
@@ -96,8 +96,8 @@ Sitter.create!({
   user_id: 6
   })
   BankInfo.create!({
-    agency: 02461,
-    account: 40362,
+    agency: "02461",
+    account: "40362",
     bank: "Itau",
     sitter_id: 3,
     cpf: "050.290.954-00".to_i
@@ -105,17 +105,17 @@ Sitter.create!({
 puts "ok!"
 puts "Creating some children (hehe)"
 Child.create!({
-  gender: "Masculino",
+  gender: "Menino",
   age: 5,
   user_id: 1,
   })
 Child.create!({
-  gender: "Feminino",
+  gender: "Menina",
   age: 10,
   user_id: 2,
   })
 Child.create!({
-  gender: "Masculino",
+  gender: "Menino",
   age: 6,
   user_id: 3,
   })
