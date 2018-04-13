@@ -9,9 +9,6 @@
         <p>Faturamento:</p>
         <p>R$<%= @booking.sitter.price %>/hora, você contratou por <%= (@booking.end_time.hour - @booking.start_time.hour) %>horas</p>
         <p> Total: <%= ( @booking.sitter.price * (@booking.end_time.hour - @booking.start_time.hour) ) %> </p>
-
-        <%= link_to "Avaliar a baby-sitter", new_booking_reviewssitter_path(@booking) %>
-
         <br>
 
 
