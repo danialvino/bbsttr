@@ -16,6 +16,7 @@ class SittersController < ApplicationController
       @result = near?(Sitter.all)
       @sitters = available?(@result)
       @result_availables = available_hours?(@sitters)
+      @favorite = Favorite.new
      else
       redirect_to root_path, alert: "Para quando você precisa a babá?"
     end
