@@ -120,3 +120,21 @@ Child.create!({
   user_id: 3,
   })
 puts "ok!"
+puts "creating avaibilities"
+Available.create!({
+  start_time: DateTime.now,
+  end_time: (DateTime.now + (5/24.0)),
+  sitter_id: 1,
+  })
+Available.create!({
+  start_time: DateTime.now,
+  end_time: (DateTime.now + (5/24.0)),
+  sitter_id: 2,
+  })
+Available.create!({
+  start_time: DateTime.now,
+  end_time: (DateTime.now + (5/24.0)),
+  sitter_id: 3,
+  })
+
+puts "ok!"
