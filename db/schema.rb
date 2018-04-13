@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412204830) do
+ActiveRecord::Schema.define(version: 20180413133120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,11 +56,13 @@ ActiveRecord::Schema.define(version: 20180412204830) do
     t.index ["user_id"], name: "index_children_on_user_id"
   end
 
-  create_table "childs", force: :cascade do |t|
-    t.string "gender"
-    t.integer "age"
+  create_table "favorites", force: :cascade do |t|
     t.bigint "user_id"
-    t.index ["user_id"], name: "index_childs_on_user_id"
+    t.bigint "sitter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sitter_id"], name: "index_favorites_on_sitter_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -143,7 +145,8 @@ ActiveRecord::Schema.define(version: 20180412204830) do
   add_foreign_key "bookings", "sitters"
   add_foreign_key "bookings", "users"
   add_foreign_key "children", "users"
-  add_foreign_key "childs", "users"
+  add_foreign_key "favorites", "sitters"
+  add_foreign_key "favorites", "users"
   add_foreign_key "orders", "bookings"
   add_foreign_key "orders", "users"
   add_foreign_key "reviewsparents", "bookings"

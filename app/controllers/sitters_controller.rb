@@ -9,6 +9,7 @@ class SittersController < ApplicationController
       @result = near?(Sitter.all)
       @sitters = available?(@result)
       @result_availables = available_hours?(@sitters)
+      @favorite = Favorite.new
      elsif params[:start_time].present? && params[:end_time].present?
       cookies["start_time"] = params[:start_time]
       cookies["end_time"] = params[:end_time]
