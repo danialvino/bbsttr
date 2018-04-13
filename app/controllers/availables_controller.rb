@@ -17,12 +17,20 @@ class AvailablesController < ApplicationController
   def create
     @available = Available.new(user_params)
     @sitter = current_user.sitter
-      @available.sitter = @sitter
-      if @available.save
-        redirect_to availables_path
+    @available.sitter = @sitter
+    if @available.valid?
+      if no_repetition(@available)
+        if @available.save
+          redirect_to availables_path
+        else
+          render :index
+        end
       else
-        render :new
+        redirect_to availables_path, alert: "Você não pode ter duas disponibilidades no mesmo horário"
       end
+    else
+      render :index
+    end
   end
 
   def edit
@@ -41,5 +49,17 @@ class AvailablesController < ApplicationController
 
   def user_params
     params.require(:available).permit(:start_time, :end_time, :sitter_id)
+  end
+
+  def no_repetition(newavailable)
+    datescreated = Available.where(sitter_id: current_user.sitter.id)
+    datescreated.each do |date|
+      daterange = (date.start_time..date.end_time)
+      if daterange.cover?(newavailable.start_time.to_datetime) || daterange.cover?(newavailable.end_time.to_datetime)
+        return false
+      else
+        return true
+      end
+    end
   end
 end
