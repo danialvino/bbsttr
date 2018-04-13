@@ -10,6 +10,11 @@
         <p>R$<%= @booking.sitter.price %>/hora, você contratou por <%= (@booking.end_time.hour - @booking.start_time.hour) %>horas</p>
         <p> Total: <%= ( @booking.sitter.price * (@booking.end_time.hour - @booking.start_time.hour) ) %> </p>
 
+        <%= link_to "Avaliar a baby-sitter", new_booking_reviewssitter_path(@booking) %>
+
+        <br>
+
+
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-name="<%= current_user.name %>"

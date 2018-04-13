@@ -23,6 +23,7 @@ class SittersController < ApplicationController
 
   def show
     @sitter = Sitter.find(params[:id])
+    @favorite = Favorite.new
   end
 
   def new
