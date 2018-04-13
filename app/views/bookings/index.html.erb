@@ -1,6 +1,19 @@
 <h1>Lista de bookings</h1>
 
+<div class="container">
 <% @bookings.each do |booking| %>
-<%= booking %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="booking-description">
+        <p>Data e Horário de Chegada: <strong><%= @booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>, até <strong><%= @booking.end_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>.</p>
+        <p>Babá: <%= @booking.sitter.user.name %></p>
+        <p>Contato: <%= @booking.sitter.user.phone %></p>
+        <p>Faturamento:</p>
+        <p>R$<%= @booking.sitter.price %>/hora, você contratou por <%= (@booking.end_time.hour - @booking.start_time.hour) %>horas</p>
+        <p> Total: <%= ( @booking.sitter.price * (@booking.end_time.hour - @booking.start_time.hour) ) %> </p>
+      </div>
+    </div>
+  </div>
 <% end %>
+</div>
 
