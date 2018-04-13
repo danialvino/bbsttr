@@ -2,7 +2,7 @@ class AvailablesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @availables = Available.all
+    @availables = Available.where(sitter_id: current_user.sitter.id)
     @available = Available.new
   end
 

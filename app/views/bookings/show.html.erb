@@ -15,7 +15,7 @@
           data-name="<%= current_user.name %>"
           data-email="<%= current_user.email %>"
           data-description="R$<%= ( @booking.sitter.price * (@booking.end_time.hour - @booking.start_time.hour) )%>"
-          data-amount="<%= @booking.sitter.price * (@booking.end_time.hour - @booking.start_time.hour) %>"
+          data-amount="<%= (@booking.sitter.price * (@booking.end_time.hour - @booking.start_time.hour)) * 100 %>"
           data-currency="<%= @booking.sitter.price.currency %>"
           data-label="Contratar"></script>
       </div>
