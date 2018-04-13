@@ -116,7 +116,7 @@ class SittersController < ApplicationController
     return @sitters_near
   end
 
-def available_show_hours?(sitters)
+def available_show_hours?(sitter)
       @available_hours = []
        availabledates = sitter.availables
        availabledates.each do |h|
