@@ -53,6 +53,12 @@ class AvailablesController < ApplicationController
 
   def no_repetition(newavailable)
     datescreated = Available.where(sitter_id: current_user.sitter.id)
+    if newavailable.start_time == newavailable.end_time
+      return false
+    end
+    if newavailable.start_time > newavailable.end_time
+      return false
+    end
     datescreated.each do |date|
       daterange = (date.start_time..date.end_time)
       if daterange.cover?(newavailable.start_time.to_datetime) || daterange.cover?(newavailable.end_time.to_datetime)

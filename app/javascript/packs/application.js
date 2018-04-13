@@ -29,7 +29,6 @@ loadDynamicBannerText();
 
 $('#calendar').fullCalendar({
     schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
-    timezone: 'local',
     editable: true,
     scrollTime: '06:00', // undo default 6am scrollTime
     contentHeight: 455,
