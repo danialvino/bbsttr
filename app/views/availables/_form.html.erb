@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Criar Horário de Trabalho</h1>
   <%= simple_form_for(@available) do |f| %>
-  <%= f.input :start_time, label: "Hora de ínicio", input_html: { class: "flatpickr-input" }, as: :string %>
-  <%= f.input :end_time, label: "Hora de fim", input_html: { class: "flatpickr-input" }, as: :string %>
+  <%= f.input :start_time, label: "Data e hora de ínicio", input_html: { class: "flatpickr-input" }, as: :string %>
+  <%= f.input :end_time, label: "Horas de Trabalho", input_html: { class: "bord-form" }, as: :integer %>
   <%= f.submit %>
   <% end %></div>

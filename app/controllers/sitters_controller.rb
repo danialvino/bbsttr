@@ -4,7 +4,7 @@ class SittersController < ApplicationController
   def index
     if params[:start_time].present? && params[:end_time].present? && params[:user_address].present?
       cookies["start_time"] = params[:start_time]
-      cookies["end_time"] = params[:end_time]
+      cookies["end_time"] = (params[:start_time].to_datetime + (params[:end_time].to_i/24.0))
       cookies["user_address"] = params[:user_address]
       @result = near?(Sitter.all)
       @sitters = available?(@result)
@@ -12,7 +12,7 @@ class SittersController < ApplicationController
       @favorite = Favorite.new
      elsif params[:start_time].present? && params[:end_time].present?
       cookies["start_time"] = params[:start_time]
-      cookies["end_time"] = params[:end_time]
+      cookies["end_time"] = (params[:start_time].to_datetime + (params[:end_time].to_i/24.0))
       @result = near?(Sitter.all)
       @sitters = available?(@result)
       @result_availables = available_hours?(@sitters)
@@ -76,7 +76,7 @@ class SittersController < ApplicationController
        availabledates = sitter.availables
        availabledates.each do |h|
         daterange = (h.start_time..h.end_time)
-        if daterange.cover?(params[:start_time].to_datetime) && daterange.cover?(params[:end_time].to_datetime)
+        if daterange.cover?(cookies[:start_time].to_datetime) && daterange.cover?(cookies[:end_time].to_datetime)
            @available_sitters << sitter
         end
       end
@@ -90,7 +90,7 @@ class SittersController < ApplicationController
        availabledates = sitter.availables
        availabledates.each do |h|
         daterange = (h.start_time..h.end_time)
-        if daterange.cover?(params[:start_time].to_datetime) && daterange.cover?(params[:end_time].to_datetime)
+        if daterange.cover?(cookies[:start_time].to_datetime) && daterange.cover?(cookies[:end_time].to_datetime)
            @available_hours << h
         end
       end
