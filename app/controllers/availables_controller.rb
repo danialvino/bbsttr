@@ -17,6 +17,7 @@ class AvailablesController < ApplicationController
   def create
     @available = Available.new(user_params)
     @sitter = current_user.sitter
+    @available.end_time = (params[:available][:start_time].to_datetime + (params[:available][:end_time].to_i/24.0))
     @available.sitter = @sitter
     if @available.valid?
       if no_repetition(@available)
@@ -61,11 +62,8 @@ class AvailablesController < ApplicationController
     end
     datescreated.each do |date|
       daterange = (date.start_time..date.end_time)
-      if daterange.cover?(newavailable.start_time.to_datetime) || daterange.cover?(newavailable.end_time.to_datetime)
-        return false
-      else
-        return true
-      end
+      cover = daterange.cover?(newavailable.start_time.to_datetime) || daterange.cover?(newavailable.end_time.to_datetime)
+        return false if cover == true
     end
   end
 end
