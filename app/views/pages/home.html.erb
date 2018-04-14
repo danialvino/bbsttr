@@ -4,14 +4,17 @@
       <h5>Procure agora as melhores baby-sitters disponiveis.</h5>
       <div class="home-search"><%= form_tag sitters_path, method: :get do %>
           <%= text_field_tag :user_address, "", class: 'bord-form' %>
-          <span style="color: white;">das</span>
+          <span style="color: white;">no dia</span>
           <%= text_field_tag :start_time,
             params[:start_time],
             class: "flatpickr-input", required: true%>
-            <span style="color: white;">até</span>
-          <%= text_field_tag :end_time,
+            <span style="color: white;">por</span>
+          <%= number_field_tag :end_time,
             params[:end_time],
-            class: "flatpickr-input", required: true %>
+            class: 'bord-form',
+            # class: "flatpickr-input",
+             required: true %>
+            <span style="color: white;">horas</span>
           <%= submit_tag "Procurar", class: "btn btn-xs btn-light-blue" %>
         <% end %></div>
   </div>
