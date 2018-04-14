@@ -27,7 +27,7 @@ class AvailablesController < ApplicationController
           render :index
         end
       else
-        redirect_to availables_path, alert: "Você não pode ter duas disponibilidades no mesmo horário"
+        redirect_to availables_path, alert: "Você não pode ter duas disponibilidades no mesmo horário ou no passado."
       end
     else
       render :index
