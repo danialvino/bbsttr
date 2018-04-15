@@ -9,7 +9,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '2d62406954d95e6d3f6bdfffa1aa1dd79ec23cfe907f64597ce9e207295224e2ca2d102b8f9c0450206157af5b94d8375345352964795443eae2bfe7aedce603'
-  
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -258,6 +258,11 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
+    config.omniauth :facebook, ENV["FB_ID"], ENV["FB_SECRET"],
+      scope: 'email',
+      info_fields: 'email, first_name, last_name',
+      image_size: 'square',  # 50x50, guaranteed ratio
+      secure_image_url: true
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
