@@ -1,27 +1,40 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+<body class="centered page-loaded">
+  <div class="section">
+    <div class="subsection">
+      <div class="logobby">
+        <a class="logo" href="/" class="logo"></a>
+        <img width="35" height="35" src="http://oi67.tinypic.com/2ugm9mu.jpg" alt="logo icon">
+      </div>
+      <div id="main-region">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
+        <!-- <div class="form-inputs"> -->
+          <div id="box">
+        <h5>Email<%= f.input :email, required: false, autofocus: true, label: false %></h5>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+        <h5>Senha <%= f.input :password, autocomplete: "off", label: false ,hint: "Deixe em branco se não quer mudar-la", required: false %></h5>
+        <h5><%= f.input :password_confirmation, required: false %></h5>
+        <h5>Nome<%= f.input :name, label: false %></h5>
+        <h5>Data de nascimento<%= f.text_field :birthday, label: false, required: true, as: :string, class: "bord-form", placeholder: "dia/mês/ano" %></h5>
+        <h5>Sexo<%= f.input :gender, label: false, collection: ['Masculino', 'Feminino'], required: true  %></h5>
+        <h5>Celular<%= f.input :phone, label: false  %></h5>
+         <h5>Endereço<%= f.input :address, label: false, required: true %></h5>
+            <h5><%= f.input :remember_me, label: "Lembrar", label_html: { class: 'teste' }, as: :boolean if devise_mapping.rememberable? %></h5>
+        <h5><%= f.input :current_password, hint: "Digite sua senha para confirmar as mudanças.", required: true %></h5>
+            <div class="form-actions">
+              <%= f.submit value: "Entrar", class: "btn btn-pink" %>
+            </div>
+          </div>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :name %>
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
 
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+          <% end %>
+          <%= link_to "Voltar", :back %>
+          <p><%= link_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Você tem certeza?" }, method: :delete %></p>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

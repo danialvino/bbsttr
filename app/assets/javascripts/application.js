@@ -13,7 +13,6 @@ function loadflatpickr() {
       enableTime: true,
       minuteIncrement: 30,
       time_24hr: true,
-      parseDate: true,
     });
   }
 }
@@ -24,7 +23,6 @@ function loadflatpickruser() {
       minDate: new Date().fp_incr(0),
       dateFormat: 'd-m-Y',
       noCalendar: false,
-      parseDate: true,
     });
   }
 }
