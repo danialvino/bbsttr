@@ -18,7 +18,7 @@ class ReviewssittersController < ApplicationController
     if @reviewssitter.save
       redirect_to bookings_path
     else
-      render :new
+      redirect_to  bookings_path, alert: "Você ja avaliou essa prestação"
     end
   end
 
