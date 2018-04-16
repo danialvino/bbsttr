@@ -12,11 +12,14 @@
       <!-- if user is a Baby-sitter -->
       <% if current_user.sitter? %>
         <%= link_to 'Meu Painel'.html_safe, availables_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to 'Minhas avaliações'.html_safe, reviewssitters_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
 
       <% else %>
       <!-- if user is a Parent -->
         <%= link_to 'Meus agendamentos'.html_safe, bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to 'Meus favoritos'.html_safe, favorites_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to 'Minhas avaliações'.html_safe, reviewsparents_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
 
       <!-- Avatar with dropdown menu -->
@@ -66,10 +69,13 @@
           <% end %>
         </li>
         <li><%= link_to 'Meu Painel'.html_safe, availables_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+        <li><%= link_to 'Avaliações'.html_safe, reviewssitters_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
       <% else %>
       <!-- if user is a Parent -->
         <li><%= link_to 'Agendamentos'.html_safe, bookings_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
         <li><%= link_to 'Favoritos'.html_safe, favorites_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+        <li><%= link_to 'Avaliações'.html_safe, reviewsparents_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+
 
       <% end %>
             <li>
