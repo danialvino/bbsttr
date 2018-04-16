@@ -12,6 +12,7 @@ gem 'money-rails'
 gem 'flatpickr_rails'
 gem 'stripe'
 gem 'omniauth-facebook'
+gem 'social-share-button'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
