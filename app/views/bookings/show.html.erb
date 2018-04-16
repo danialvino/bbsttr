@@ -9,10 +9,7 @@
         <p>Faturamento:</p>
         <p>R$<%= @booking.sitter.price %>/hora, você contratou por <%= (((@booking.end_time - @booking.start_time)/ 3600).round) %> horas</p>
         <p> Total: R$<%= ( @booking.sitter.price * ((@booking.end_time - @booking.start_time)/ 3600) ) %> </p>
-
-        <%= link_to "Avaliar a baby-sitter", new_booking_reviewssitter_path(@booking) %>
         <br>
-
 
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
