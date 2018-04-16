@@ -10,6 +10,11 @@ class SittersController < ApplicationController
       @sitters = available?(@result)
       @result_availables = available_hours?(@sitters)
       @favorite = Favorite.new
+      unless current_user.uid.nil?
+        url = open("https://graph.facebook.com/v2.12/#{current_user.uid}?fields=friends&access_token=#{current_user.token}").read
+        friends = JSON.parse(url)
+        @friend_list = friends['friends']['data']
+      end
      elsif params[:start_time].present? && params[:end_time].present?
       cookies["start_time"] = params[:start_time]
       cookies["end_time"] = (params[:start_time].to_datetime + (params[:end_time].to_i/24.0))
@@ -23,8 +28,11 @@ class SittersController < ApplicationController
   end
 
   def show
+    url = open("https://graph.facebook.com/v2.12/#{current_user.uid}?fields=friends&access_token=#{current_user.token}").read
+        friends = JSON.parse(url)
     @sitter = Sitter.find(params[:id])
     @favorite = Favorite.new
+    @friend_list = friends['friends']['data']
   end
 
   def new

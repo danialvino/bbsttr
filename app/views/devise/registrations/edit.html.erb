@@ -9,7 +9,6 @@
       <div id="main-region">
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.error_notification %>
-        <!-- <div class="form-inputs"> -->
           <div id="box">
         <h5>Email<%= f.input :email, required: false, autofocus: true, label: false %></h5>
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -23,7 +22,6 @@
         <h5>Celular<%= f.input :phone, label: false  %></h5>
          <h5>Endereço<%= f.input :address, label: false, required: true %></h5>
             <h5><%= f.input :remember_me, label: "Lembrar", label_html: { class: 'teste' }, as: :boolean if devise_mapping.rememberable? %></h5>
-        <h5><%= f.input :current_password, hint: "Digite sua senha para confirmar as mudanças.", required: true %></h5>
             <div class="form-actions">
               <%= f.submit value: "Entrar", class: "btn btn-pink" %>
             </div>
