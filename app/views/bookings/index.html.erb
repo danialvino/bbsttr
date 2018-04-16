@@ -31,15 +31,15 @@
         <p>Faturamento:</p>
         <p>R$<%= booking.sitter.price %>/hora, você contratou por <%= (((booking.end_time - booking.start_time)/ 3600).round) %> horas
         <p> Total: R$<%= ( booking.sitter.price * ((booking.end_time - booking.start_time)/ 3600) ) %> </p>
-        
+
           <% if Reviewssitter.where(booking: booking).count == 0 %>
             <i class="fas fa-exclamation"></i> <%= link_to "Clique para avaliar a baby-sitter", new_booking_reviewssitter_path(booking) %>
           <% else %>
             <i class="fas fa-check-square"></i> Avaliação foi feita, obrigado !
           <% end %>
-          <i class="fas fa-caret-down"></i> <%= link_to "Ver mais", booking_path(booking) %>
       </div>
     </div>
   </div>
+  <% end %>
 <% end %>
 </div>
