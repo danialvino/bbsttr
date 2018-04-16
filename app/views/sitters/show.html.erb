@@ -76,7 +76,8 @@
       <%= link_to "Voltar", :back, class: 'btn btn-pink btn-md' %>
      </div>
 
-    <%= social_share_button_tag('Share to Facebook', :url => sitter_path(@sitter.id), desc: @sitter.user.name) %>
+    <%= social_share_button_tag('Share to Facebook', :url => sitter_url(@sitter.id), desc: @sitter.user.name) %>
+
 
   </div>
 </div>
