@@ -1,16 +1,31 @@
 <div class="container">
-  <h1>As avaliaçoes que você recebeu como baby-sitter</h1>
   <% if @reviewssitters.count == 0 %>
-    Você ainda não foi avaliada
+    <h1>Você ainda não foi avaliada</h1>
   <% else %>
+    <h1>Você recebeu <%= pluralize(@reviewssitters.count, 'avaliação', 'avaliações') %> </h1>
+
+     <div class="synthesis">
+      <h2>Nota geral</h2>
+
+      <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= Reviewssitter.average(:rating).round(2)*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span>
+      <p><%= Reviewssitter.average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.count, 'avalição', 'avaliações') %>)</p>
+    </div>
+
+    <h2>Detalhe</h2>
+
+
     <% @reviewssitters.each do |review| %>
-    Data do baby-sitting :
+    Data do baby-sitting : <%= review.booking.start_time %>
+    <br>
+    Endereço : <%= review.user.address %>
+    <br>Pai que fez a avaliaçao : <%= review.user.name %>
     <br>
     Avaliaçao : <%= review.description %>
     <br>
-    Nota recebida: <%= review.rating %>
+    Nota recebida:
+      <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span>
     <br>
-    Pai que fez a avaliaçao : <%= review.user.name %>
+    ------ <br>
     <% end %>
   <% end %>
 </div>

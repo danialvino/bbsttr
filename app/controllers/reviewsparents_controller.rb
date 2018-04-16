@@ -1,13 +1,11 @@
 class ReviewsparentsController < ApplicationController
   skip_before_action :authenticate_user!
+  before_action :set_booking, only: [:new, :create]
+
 
   def index
     @reviewsparents = Reviewsparent.where(user: current_user)
   end
-
-  # def show
-  #   @reviewsparent = Reviewsparent.find(params[:id])
-  # end
 
   def new
     @reviewsparent = Reviewsparent.new
@@ -15,31 +13,24 @@ class ReviewsparentsController < ApplicationController
 
   def create
     @reviewsparent = Reviewsparent.new(user_params)
-    #A ALTERAR ^^
-    # @sitter = current_user.sitter
-    #   @available.sitter = @sitter
-    #   if @available.save
-    #     redirect_to availables_path
-    #   else
-    #     render :new
-    #   end
+    @reviewsparent.booking = @booking
+    @reviewsparent.sitter_id = @booking.sitter_id
+    @reviewsparent.user_id = @booking.user_id
+    if @reviewsparent.save
+      redirect_to bookings_path
+    else
+      render :new
+    end
   end
-
-  # def edit
-  #   @reviewsparent = Reviewsparent.find(params[:id])
-  # end
-
-  # def update
-  #   @reviewparent = Reviewparent.find(params[:id])
-  #   @reviewparent.update(user_params)
-  # end
-
-  # def destroy
-  # end
 
   private
 
   def user_params
-    params.require(:reviewparent).permit(:booking_id)
+    params.require(:reviewsparent).permit(:description, :rating, :content)
   end
+
+  def set_booking
+    @booking = Booking.find(params[:booking_id])
+  end
+
 end
