@@ -3,7 +3,7 @@
       <h1>Encontre uma baba de confiança em poucos cliques.</h1>
       <h5>Procure agora as melhores baby-sitters disponiveis.</h5>
       <div class="home-search"><%= form_tag sitters_path, method: :get do %>
-          <%= text_field_tag :user_address, "", class: 'bord-form' %>
+          <%= text_field_tag :user_address, (current_user.nil? ? "" : current_user.address), placeholder: (current_user.nil? ? "Digite o seu endereço" : current_user.address), class: 'bord-form' %>
           <span style="color: white;">no dia</span>
           <%= text_field_tag :start_time,
             params[:start_time],
