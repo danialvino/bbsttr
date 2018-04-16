@@ -51,7 +51,7 @@
                 <% if @bookings_history == 0 %>
                   Você nunca reservou <%= sitter.user.name.capitalize %>
                 <% else %>
-                  Você ja reservou <%= sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %>
+                  Você ja reservou <%= sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %> <%= Booking.last("user_id = #{current_user.id} AND sitter_id = #{sitter.id}") %>
                 <% end %>
               <% else %>
                 Você nunca reservou <%= sitter.user.name.capitalize %>
