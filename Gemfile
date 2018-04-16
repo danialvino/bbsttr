@@ -13,6 +13,8 @@ gem 'flatpickr_rails'
 gem 'stripe'
 gem 'omniauth-facebook'
 gem 'social-share-button'
+gem 'timepiece'
+gem 'bootstrap-toggle-rails'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
