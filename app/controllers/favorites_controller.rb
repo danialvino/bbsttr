@@ -5,10 +5,6 @@ class FavoritesController < ApplicationController
     @favorites = Favorite.where(user: current_user)
   end
 
-  # def show
-  #   @reviewsparent = Reviewsparent.find(params[:id])
-  # end
-
   def new
     @favorite = Favorite.new
   end
@@ -16,25 +12,12 @@ class FavoritesController < ApplicationController
   def create
     @favorite = Favorite.new(user_params)
     @favorite.user = current_user
-    @favorite.save
-    # TO DO : ADD CONFIRMATION MSG AND REFRESH
-    # redirect_to: sitter_path
-    # else
-      # render :new
-    # end
+    if @favorite.save
+      redirect_to root_path
+    else
+      redirect_to root_path, alert: "Deu erro"
+    end
   end
-
-  # def edit
-  #   @reviewsparent = Reviewsparent.find(params[:id])
-  # end
-
-  # def update
-  #   @reviewparent = Reviewparent.find(params[:id])
-  #   @reviewparent.update(user_params)
-  # end
-
-  # def destroy
-  # end
 
   private
 

@@ -4,15 +4,16 @@ class BookingsController < ApplicationController
   def index
     if current_user.sitter?
       @bookings = Booking.where(sitter: current_user.sitter)
+      @reviewsparent = Reviewsparent.new
     else
       @bookings = Booking.where(user: current_user)
+      @reviewssitter = Reviewssitter.new
     end
   end
 
   def show
     @booking = Booking.find(params[:id])
-    @reviewssitter = Reviewssitter.new
-    @reviewsparent = Reviewsparent.new
+
   end
 
   def change_status_to_canceled
