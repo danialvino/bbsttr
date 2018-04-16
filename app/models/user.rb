@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email)
@@ -29,9 +30,10 @@ class User < ApplicationRecord
     if user
       user.update(user_params)
     else
-      user = User.new(user_params)
-      user.password = Devise.friendly_token[0,20]  # Fake password for validation
-      user.save
+      # user = User.new(user_params)
+      # user.password = Devise.friendly_token[0,20]  # Fake password for validation
+      # user.save
+      redirect_to new_user_registration_path
     end
 
     return user
