@@ -33,7 +33,6 @@ class User < ApplicationRecord
       user = User.new(user_params)
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
       user.save
-      redirect_to new_user_registration_url
     end
 
     return user
