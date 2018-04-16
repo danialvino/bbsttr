@@ -15,12 +15,12 @@
     </div>
 
     <div class="card-rating">
-      <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-      <p>
         <% if Reviewssitter.where(sitter_id: sitter.id).count == 0 %>
-        Ainda não foi avaliada.
+          <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: 0%, height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span>
+          <p>Ainda não foi avaliada.</p>
         <% else %>
-        <%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: sitter.id).count, 'avalição', 'avaliações') %>)
+          <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2)*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span>
+            <p><%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: sitter.id).count, 'avalição', 'avaliações') %>)</p>
         <% end %>
       </div>
 
@@ -38,20 +38,21 @@
                 <% if Favorite.where(sitter_id: sitter.id, user_id: current_user).count > 0 %>
                 <i class="fas fa-heart on"></i><%= sitter.user.name.capitalize %> faz parte dos seus baby-sitters favoritas
               <% else %>
-                <i class="far fa-heart off"></i><%= sitter.user.name.capitalize %> ainda não faz parte dos seus baby-sitters favoritas - <%= simple_form_for @favorite do |f| %> <%= f.hidden_field :sitter_id, value: sitter.id %> <%= f.submit "Adicionar", class: "text-button a" %>
-        <% end %>
+                <i class="far fa-heart off"></i><%= sitter.user.name.capitalize %> ainda não faz parte dos seus baby-sitters favoritas.
       <% end %>
     <% end %>
 
 </li>
             <li><i class="far fa-thumbs-up"></i> 3 amigos seus ja reservaram <%= sitter.user.name.capitalize %></li>
-            <li><i class="far fa-calendar-alt"></i>
+            <li>
               <% if user_signed_in? %>
                 <% @bookings_history = Booking.count("user_id = #{current_user.id} AND sitter_id = #{sitter.id}") %>
                 <% if @bookings_history == 0 %>
+                <i class="far fa-calendar-alt off"></i>
                   Você nunca reservou <%= sitter.user.name.capitalize %>
                 <% else %>
-                  Você ja reservou <%= sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %> <%= Booking.last("user_id = #{current_user.id} AND sitter_id = #{sitter.id}") %>
+                <i class="fas fa-calendar-alt on"></i>
+                  Você ja reservou <%= sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %>
                 <% end %>
               <% else %>
                 Você nunca reservou <%= sitter.user.name.capitalize %>
