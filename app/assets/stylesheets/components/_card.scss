@@ -77,6 +77,15 @@
   opacity: 1;
 }
 
+.fa-calendar-alt.on {
+  color: green;
+  opacity: 1;
+}
+
+.fa-calendar-alt.off {
+  opacity: 1;
+}
+
 .card-rating p {
   font-size: 14px;
   opacity: 0.7;
@@ -85,17 +94,16 @@
 }
 
 .card-details {
-    vertical-align: top;
+  vertical-align: top;
   text-align: left;
   font-size: 16px;
-    width: 100%
-
+  width: 100%;
 }
 
 .card-button  {
-    vertical-align: top;
+  vertical-align: top;
   text-align: left;
-    width: 100%
+  width: 100%
 
 }
 
