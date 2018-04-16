@@ -22,9 +22,8 @@
             <i class="fas fa-check-square"></i> Avaliação foi feita, obrigado !
           <% end %>
 
-
-
         <% else %>
+
         <p>Data e Horário de Chegada: <strong><%= booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>, até <strong><%= booking.end_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>.</p>
         <p>Babá: <%= link_to booking.sitter.user.name, sitter_path(booking.sitter.id) %></p>
         <p>Contato: <%= booking.sitter.user.phone %></p>
@@ -37,9 +36,11 @@
           <% else %>
             <i class="fas fa-check-square"></i> Avaliação foi feita, obrigado !
           <% end %>
+        <% end %>
       </div>
     </div>
   </div>
-  <% end %>
+
+
 <% end %>
 </div>
