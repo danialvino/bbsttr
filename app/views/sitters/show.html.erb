@@ -1,17 +1,55 @@
 <div class="container">
 
-  <h2>Olá, sou a <%= @sitter.user.name.capitalize %></i></h2>
-
-  <div class="user_image">
+  <div class="profile-header">
+    <h1><%= @sitter.user.name.capitalize %></i></h1>
+    <div class="user_image">
     <img class="card-user" src="https://media.istockphoto.com/photos/happy-young-woman-smiling-portrait-picture-id485734753?k=6&m=485734753&s=612x612&w=0&h=481qIkH2Jpr4uJAsUohYZo8gl3AlA-58vnVwlXjzxtM=">
   </div>
 
-  <div class="card-price">
-    <h2> <%= humanized_money_with_symbol(@sitter.price)%>  </h2>
-    <p>por hora <i class="fas fa-info-circle"></i></p>
+
+  <div class="profile-about">
+    <h2> Meus dados </h2>
+    <%= @sitter.about %>
+    <%= @sitter.skills %>
   </div>
 
-  <div class="card-rating">
+  <div class="profile-history">
+    <h2> Minha atividade no site </h2>
+      <ul>
+        <li><i class="fas fa-map-marker-alt"></i> <%= @sitter.user.name.capitalize %> mora a
+          <% if params[:user_address].present? %>
+            <%= Geocoder::Calculations.distance_between(params[:user_address], @sitter.user).to_d.truncate(2).to_f  %>
+            <% else %>
+            <%= Geocoder::Calculations.distance_between(current_user, @sitter.user).to_d.truncate(2).to_f  %>
+          <% end %> Km do seu endereço </li>
+          <li>
+          <% if user_signed_in? %>
+            <% if Favorite.where(sitter_id: @sitter.id, user_id: current_user).count > 0 %>
+              <i class="fas fa-heart on"></i><%= @sitter.user.name.capitalize %> faz parte dos seus baby-sitters favoritas
+            <% else %>
+              <i class="far fa-heart off"></i><%= @sitter.user.name.capitalize %> ainda não faz parte dos seus baby-sitters favoritas - <%= simple_form_for @favorite do |f| %> <%= f.hidden_field :sitter_id, value: @sitter.id %> <%= f.submit "Adicionar", class: "text-button a" %>
+              <% end %>
+            <% end %>
+          <% end %>
+          </li>
+          <li><i class="far fa-thumbs-up"></i> 3 amigos seus ja reservaram <%= @sitter.user.name.capitalize %></li>
+          <li><i class="far fa-calendar-alt"></i>
+            <% if user_signed_in? %>
+            <% @bookings_history = Booking.count("user_id = #{current_user.id} AND sitter_id = #{@sitter.id}") %>
+            <% if @bookings_history == 0 %>
+            Você nunca reservou <%= @sitter.user.name.capitalize %>
+            <% else %>
+            Você ja reservou <%= @sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %>
+            <% end %>
+            <% else %>
+            Você nunca reservou <%= @sitter.user.name.capitalize %>
+            <% end %>
+            </li>
+          </ul>
+  </div>
+
+  <div class="profile-about">
+    <h2> As avaliações que eu recebi </h2>
     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
    <p>
       <% if Reviewssitter.where(sitter_id: @sitter.id).count == 0 %>
@@ -19,64 +57,27 @@
       <% else %>
         <%= Reviewssitter.where(sitter_id: @sitter.id).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: @sitter.id).count, 'avalição', 'avaliações') %>)
       <% end %>
-    </div>
 
-
-<div class="card-details">
-<ul>
-  <li><i class="fas fa-map-marker-alt"></i> <%= @sitter.user.name.capitalize %> mora a
-    <% if params[:user_address].present? %>
-    <%= Geocoder::Calculations.distance_between(params[:user_address], @sitter.user).to_d.truncate(2).to_f  %>
-    <% else %>
-    <%= Geocoder::Calculations.distance_between(current_user, @sitter.user).to_d.truncate(2).to_f  %>
-    <% end %> Km do seu endereço </li>
-    <li>
-    <% if user_signed_in? %>
-      <% if Favorite.where(sitter_id: @sitter.id, user_id: current_user).count > 0 %>
-        <i class="fas fa-heart on"></i><%= @sitter.user.name.capitalize %> faz parte dos seus baby-sitters favoritas
-      <% else %>
-        <i class="far fa-heart off"></i><%= @sitter.user.name.capitalize %> ainda não faz parte dos seus baby-sitters favoritas - <%= simple_form_for @favorite do |f| %> <%= f.hidden_field :sitter_id, value: @sitter.id %> <%= f.submit "Adicionar", class: "text-button a" %>
-        <% end %>
-      <% end %>
+    <% if Reviewssitter.where(sitter_id: @sitter.id).count == 0 %>
+     Ainda nunca foi avaliada
+     <% else %>
+     <% Reviewssitter.where(sitter_id: @sitter.id).each do |review| %>
+     <br><%= review.created_at %>
+     <br><%= review.rating %> / 5
+     <br><%= review.description %>
+    ----
+     <br>
     <% end %>
-    </li>
-    <li><i class="far fa-thumbs-up"></i> 3 amigos seus ja reservaram <%= @sitter.user.name.capitalize %></li>
-    <li><i class="far fa-calendar-alt"></i>
-      <% if user_signed_in? %>
-      <% @bookings_history = Booking.count("user_id = #{current_user.id} AND sitter_id = #{@sitter.id}") %>
-      <% if @bookings_history == 0 %>
-      Você nunca reservou <%= @sitter.user.name.capitalize %>
-      <% else %>
-      Você ja reservou <%= @sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %>
-      <% end %>
-      <% else %>
-      Você nunca reservou <%= @sitter.user.name.capitalize %>
-      <% end %>
-
-      </li>
-
-    </ul>
+    <% end %>
   </div>
 
-
-<h2> Historico das avaliações</h2>
- <% if Reviewssitter.where(sitter_id: @sitter.id).count == 0 %>
- Ainda nunca foi avaliada
- <% else %>
- <% Reviewssitter.where(sitter_id: @sitter.id).each do |review| %>
- <br><%= review.created_at %>
- <br><%= review.rating %> / 5
- <br><%= review.description %>
-----
- <br>
-<% end %>
-<% end %>
+  <div class="profile-available">
+    <h2> Minha agenda </h2>
+    <p> <%= humanized_money_with_symbol(@sitter.price)%>  por hora</p>
+  </div>
 
     <div class="button">
       <%= link_to "Voltar", :back, class: 'btn btn-pink btn-md' %>
+    </div>
 
-        </div>
-
-
-  </div>
 </div>
