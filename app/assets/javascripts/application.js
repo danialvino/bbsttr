@@ -4,6 +4,7 @@
 //= require fullcalendar
 //= require flatpickr
 //= require flatpickr/l10n/pt
+//= require social-share-button
 //= require_tree .
 function loadflatpickr() {
   if ($('.flatpickr-input').length > 0) {
@@ -27,3 +28,4 @@ function loadflatpickruser() {
   }
 }
 loadflatpickruser()
+
