@@ -26,7 +26,7 @@
 
         <% else %>
         <p>Data e Horário de Chegada: <strong><%= booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>, até <strong><%= booking.end_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>.</p>
-        <p>Babá: <%= booking.sitter.user.name %></p>
+        <p>Babá: <%= link_to booking.sitter.user.name, sitter_path(booking.sitter.id) %></p>
         <p>Contato: <%= booking.sitter.user.phone %></p>
         <p>Faturamento:</p>
         <p>R$<%= booking.sitter.price %>/hora, você contratou por <%= (((booking.end_time - booking.start_time)/ 3600).round) %> horas

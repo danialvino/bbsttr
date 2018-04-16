@@ -18,7 +18,7 @@
     Data do baby-sitting : <%= review.booking.start_time %>
     <br>
     Endereço : <%= review.user.address %>
-    <br>Sitter que fez a avaliaçao : <%= review.sitter.user.name %>
+    <br>Sitter que fez a avaliaçao : <%= link_to review.sitter.user.name, sitter_path(review.sitter.id) %>
     <br>
     Avaliaçao : <%= review.description %>
     <br>
@@ -34,7 +34,7 @@
     Data do baby-sitting : <%= review.booking.start_time %>
     <br>
     Endereço : <%= review.user.address %>
-    <br>Sitter avaliada : <%= review.sitter.user.name %>
+    <br>Sitter avaliada : <%= link_to review.sitter.user.name, sitter_path(review.sitter.id) %>
     <br>
     Avaliaçao : <%= review.description %>
     <br>
