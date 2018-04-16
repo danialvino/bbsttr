@@ -78,23 +78,8 @@
 
     <div class="button">
       <%= link_to "Voltar", :back, class: 'btn btn-pink btn-md' %>
-
-<<<<<<< HEAD
-    <%= social_share_button_tag('Share to Facebook', url: sitter_path(@sitter.id), desc: @sitter.user.name) %>
-    <div id="fb-root"></div>
-=======
     </div>
 
     <%= social_share_button_tag('Share to Facebook', :url => sitter_url(@sitter.id), desc: @sitter.user.name) %>
-
->>>>>>> 7998eb4d8c5ee4695466330a0806b8587d02147f
-
-  </div>
 </div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.12&appId=456705611428926';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+
