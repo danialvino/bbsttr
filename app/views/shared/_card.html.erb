@@ -15,12 +15,12 @@
     </div>
 
     <div class="card-rating">
-      <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-      <p>
         <% if Reviewssitter.where(sitter_id: sitter.id).count == 0 %>
-        Ainda não foi avaliada.
+          <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: 0%, height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span>
+          <p>Ainda não foi avaliada.</p>
         <% else %>
-        <%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: sitter.id).count, 'avalição', 'avaliações') %>)
+          <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2)*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span>
+            <p><%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: sitter.id).count, 'avalição', 'avaliações') %>)</p>
         <% end %>
       </div>
 
@@ -51,7 +51,7 @@
                 <% if @bookings_history == 0 %>
                   Você nunca reservou <%= sitter.user.name.capitalize %>
                 <% else %>
-                  Você ja reservou <%= sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %> <%= Booking.last("user_id = #{current_user.id} AND sitter_id = #{sitter.id}") %>
+                  Você ja reservou <%= sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %>
                 <% end %>
               <% else %>
                 Você nunca reservou <%= sitter.user.name.capitalize %>
