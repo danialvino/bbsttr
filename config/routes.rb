@@ -41,4 +41,9 @@ Rails.application.routes.draw do
   resources :reviewssitters, only: [:index, :new, :create]
   # favorites routes
   resources :favorites, only: [:index, :new, :create, :destroy]
+  # sidekiq routes
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end

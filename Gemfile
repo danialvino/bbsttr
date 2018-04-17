@@ -30,6 +30,8 @@ gem 'momentjs-rails'
 gem 'jquery-rails'
 gem 'bootstrap-daterangepicker-rails'
 gem 'geocoder'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

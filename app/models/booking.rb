@@ -4,7 +4,7 @@ class Booking < ApplicationRecord
   after_create :send_booked_email
 
    def send_booked_email
-    UserMailer.booked(self).deliver_now
+    UserMailer.booked(self).deliver_later
   end
 
 end
