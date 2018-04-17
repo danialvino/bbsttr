@@ -1,46 +1,85 @@
 <div class="container">
-  <% if @reviewssitters.count == 0 %>
-    <h1>Você ainda não foi avaliada</h1>
-  <% else %>
-    <h1>Você recebeu <%= pluralize(@reviewssitters.count, 'avaliação', 'avaliações') %> </h1>
 
-     <div class="synthesis">
-      <h2>Nota geral recebida</h2>
+  <h1>Minhas avaliaçoẽs</h1>
 
-      <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= Reviewssitter.average(:rating).round(2)*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span>
-      <p><%= Reviewssitter.average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.count, 'avalição', 'avaliações') %>)</p>
+       <div class="row">
+
+  <div class="col-sm-6">
+   <div class="card-booking main">
+      <div class="card-body">
+        <h3>Nota geral recebida</h3>
+        <% if Reviewssitter.where(sitter_id: current_user.sitter).count == 0 %>
+        <p>Você ainda não foi avaliado</p>
+        <% else %>
+        <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= Reviewssitter.where(sitter_id: current_user.sitter).average(:rating).round(2)*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span>
+        <p><%= Reviewssitter.where(sitter_id: current_user.sitter).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: current_user.sitter).count, 'avaliação', 'avaliações') %>)</p>
+      <% end %>
     </div>
+    </div>
+  </div>
 
-    <h2>Detalhe das avaliações recebidas</h2>
+  <div class="col-sm-6">
+    <div class="card-booking main">
+      <div class="card-body">
+        <h3>Nota geral dada</h3>
+        <% if Reviewsparent.where(sitter_id: current_user.sitter).count == 0 %>
+        <p>Você ainda não avaliou ninguém</p>
+        <% else %>
+        <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= Reviewsparent.where(sitter_id: current_user.sitter).average(:rating).round(2)*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span>
+        <p><%= Reviewsparent.where(sitter_id: current_user.sitter).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewsparent.where(sitter_id: current_user.sitter).count, 'avalição', 'avaliações') %>)</p>
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>
+<hr/>
 
-
-    <% @reviewssitters.each do |review| %>
-    Data do baby-sitting : <%= review.booking.start_time %>
-    <br>
-    Endereço : <%= review.user.address %>
-    <br>Pai que fez a avaliaçao : <%= review.user.name %>
-    <br>
-    Avaliaçao : <%= review.description %>
-    <br>
-    Nota recebida:
-      <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span>
-    <br>
-    ------ <br>
+<h1>Avaliações recebidas</h1>
+  <% if @reviewssitters.count == 0 %>
+    <p>Você ainda não foi avaliada</p>
+  <% else %>
+    <p>Você recebeu <%= pluralize(@reviewssitters.count, 'avaliação', 'avaliações') %> </p>
+      <div class="row">
+        <% @reviewssitters.each do |review| %>
+            <div class="col-sm-6">
+              <div class="card-booking">
+                <div class="card-body">
+                  <p class="title">Baby-sitting : <%= review.booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></p>
+                  <p>Endereço : <%= review.user.address %></p>
+                  <p>Pai que fez a avaliaçao : <%= link_to review.user.name %></p>
+                  <p>Avaliaçao : <%= review.description %></p>
+                  <p>Nota recebida: <%= review.rating %> / 5<br>
+                    <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+      </div>
     <% end %>
-  <% end %>
+<hr/>
 
-  <h2>Você escreveu <%= Reviewsparent.where(sitter_id: @current_user.sitter).count %> avaliações </h2> :
-  <% Reviewsparent.where(sitter_id: @current_user.sitter).each do |review| %>
-    Data do baby-sitting : <%= review.booking.start_time %>
-    <br>
-    Endereço : <%= review.user.address %>
-    <br>Pai avaliado : <%= review.user.name %>
-    <br>
-    Avaliaçao : <%= review.description %>
-    <br>
-    Nota : (<%= review.rating %> / 5)
-      <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span> <p></p>
-    <br>
-    ------ <br>
-    <% end %>
+<h1>Avaliações dadas</h1>
+  <% if Reviewsparent.where(sitter_id: @current_user.sitter).count == 0 %>
+    <p>Você ainda não avaliou ninguém</p>
+  <% else %>
+  <p>Você escreveu <%= Reviewsparent.where(sitter_id: @current_user.sitter).count %> avaliações </p>
+
+        <div class="row">
+        <% Reviewsparent.where(sitter_id: @current_user.sitter).each do |review| %>
+            <div class="col-sm-6">
+              <div class="card-booking">
+                <div class="card-body">
+                  <p class="title">Baby-sitting : <%= review.booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></p>
+                  <p>Endereço : <%= review.user.address %></p>
+                  <p>Pai avaliada : <%= review.user.name %></p>
+                  <p>Avaliaçao : <%= review.description %></p>
+                  <p>Nota dada : <%= review.rating %> / 5<br>
+                    <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+      </div>
+
+    <% end%>
 </div>
