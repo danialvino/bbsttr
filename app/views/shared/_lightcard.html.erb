@@ -5,7 +5,7 @@
 
     <div class="left-2">
       <%  if sitter.user.facebook_picture_url.nil? %>
-          <%  avatar_url = sitter.user.photo.url.nil? ? "http://placehold.it/200x200" : cl_image_path( current_user.photo.url(:profile) )%>
+          <%  avatar_url = sitter.user.photo.url.nil? ? "http://placehold.it/200x200" : cl_image_path( sitter.user.photo.url(:profile) )%>
         <% else %>
           <% avatar_url = sitter.user.facebook_picture_url %>
         <% end %>
@@ -25,7 +25,7 @@
         <% else %>
           <i class="far fa-heart off" alt="Não faz parte dos seus favoritos"></i>
           <p>
-          <%= simple_form_for @favorite do |f| %>
+          <%= simple_form_for @favorite, remote: true do |f| %>
           <%= f.hidden_field :sitter_id, value: sitter.id %>
           <%= f.submit "(+)", class: "text-button" %>
           <% end %>
