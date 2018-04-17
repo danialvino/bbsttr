@@ -4,13 +4,13 @@
       <div class="main-content">
         <h1><%= @sitter.user.name.capitalize %></h1>
         <%  if @sitter.user.facebook_picture_url.nil? %>
-        <%  avatar_url = @sitter.user.photo.url.nil? ? "http://placehold.it/200x200" : cl_image_path( current_user.photo.url(:profile) )%>
+        <%  avatar_url = @sitter.user.photo.url.nil? ? "http://placehold.it/200x200" : cl_image_path( @sitter.user.photo.url(:profile) )%>
         <% else %>
         <% avatar_url = @sitter.user.facebook_picture_url %>
         <% end %>
           <img src="<%= avatar_url %>" alt="" width="150" class="img-circle">
 
-        <p>Cadastrada em <%= @sitter.user.created_at.strftime("%m/%Y") %></p>
+        <p>Cadastro feito em <%= @sitter.user.created_at.strftime("%m/%Y") %></p>
         <p>
         <% if Reviewssitter.where(sitter_id: @sitter.id).count > 0 %>
           <%= Reviewssitter.where(sitter_id: @sitter.id).average(:rating).round(2) %></strong> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: @sitter.id).count, 'notas', 'avaliações') %>)
