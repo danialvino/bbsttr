@@ -1,33 +1,45 @@
-<div class="container text-center">
-  <div id="instruction-home" class="row">
+<div class="section text-center">
+  <div class="container">
     <h2>Como funciona</h2>
-  </div>
 
-  <div class="step1 col-xs-12 col-lg-4 col-md-4">
+    <div class="infos-sections">
+      <div class="search-section text-center">
+        <div class="search-img">
+          <%= image_tag "search.svg", class: "img"%>
+        </div>
+        <div class="search-text">
+          <h3>Procure sua babá</h3>
+          <p>Informe a sua localização e a data que deseja e encontre a sua babá de confiança. </p>
+        </div>
+      </div>
+        <hr>
+      <div class="search-section text-center">
+        <div class="search-img">
+          <%= image_tag "star.svg", class: "img"%>
+        </div>
+        <div class="search-text">
+          <h3>Encontre as melhores babás disponíveis</h3>
+          <p>Babás que já foram recomendadas por seus amigos e que se encontram disponíveis pra você.</p>
+        </div>
+      </div>
+        <hr>
+      <div class="search-section text-center">
+        <div class="search-img">
+          <%= image_tag "card.svg", class: "img"%>
+        </div>
+        <div class="search-text">
+          <h3>Pague através do app</h3>
+          <p>Tenha a comodidade e segurança de realizar o pagamento através do babáconfia.</p>
+        </div>
+      </div>
+        <hr>
+      <div class="call-to-action text-center">
+        <div class="search-text">
+          <h2>Cadastre-se e faça parte</h2>
+          <%= link_to "Cadastrar", new_user_registration_path, class: "btn btn-lg btn-light-blue" %>
+        </div>
+      </div>
 
-    <div class="photo-content">
-      <div class="photo">
-      <%= image_tag "search.svg", class: "img"%>
     </div>
-    </div>
-
-    <h4>Procure sua babá</h4>
-    <p>Informe a sua localização e a data que deseja e encontre a sua babá de confiança. </p>
-  </div>
-
-  <div class="step2 col-xs-12 col-lg-4 col-md-4">
-    <div class="photo">
-      <%= image_tag "star.svg", class: "img"%>
-    </div>
-    <h4>Encontre as melhores babás disponíveis</h4>
-    <p>Babás que já foram recomendadas por seus amigos e que se encontram disponíveis pra você.</p>
-  </div>
-
-  <div class="step2 col-xs-12 col-lg-4 col-md-4">
-    <div class="photo">
-      <%= image_tag "card.svg", class: "img"%>
-    </div>
-    <h4>Pague através do app</h4>
-    <p>Tenha a comodidade e segurança de realizar o pagamento através do babáconfia.</p>
   </div>
 </div>
