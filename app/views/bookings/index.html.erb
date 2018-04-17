@@ -1,57 +1,70 @@
 <div class="container">
-<h1 style="text-align: center;">Lista de bookings</h1>
-<% @bookings.each do |booking| %>
-  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
-      <div class="booking-description">
+
+<h1>Meus bookings</h1>
+
+
+
+<div class="row">
+
+
+  <% @bookings.reverse.each do |booking| %>
+
+  <div class="col-sm-12">
+
+      <div class="card-booking">
+
+      <div class="card-body">
+
         <% if current_user.sitter? %>
-        <p>Data e Horário de Chegada: <strong><%= booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>, até <strong><%= booking.end_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>.</p>
-        <p>Contratador: <%= booking.user.name %></p>
-        <p>Filhos: <% booking.user.children.each do |child| %>
-          <%= child.gender %> de <%= child.age %> anos.
-          <% end %>
-        </p>
-        <p>Contato: <%= booking.user.phone %></p>
-        <p>Faturamento:</p>
-        <p>R$<%= booking.sitter.price %>/hora, você foi contratado por <%= (((booking.end_time - booking.start_time)/ 3600).round) %> horas
-        <p> Total: R$<%= ( booking.sitter.price * ((booking.end_time - booking.start_time)/ 3600) ) %> </p>
+          <h2><%= booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></h2>
+          <p>Finalizado : <%= booking.end_time.strftime("%e %A, %B de %Y às %H:%I") %></p>
+          <p>Contratador: <%= booking.user.name %></p>
+          <p>Filhos: <% booking.user.children.each do |child| %>
+            <%= child.gender %> de <%= child.age %> anos.
+            <% end %>
+          </p>
+          <p>Contato: <%= booking.user.phone %></p>
+          <p>Faturamento:</p>
+          <p>R$<%= booking.sitter.price %>/hora, você foi contratado por <%= (((booking.end_time - booking.start_time)/ 3600).round) %> horas
+          <p><strong> Total: R$<%= ( booking.sitter.price * ((booking.end_time - booking.start_time)/ 3600) ) %> </strong></p>
 
-          <% if Reviewsparent.where(booking: booking).count == 0 %>
-            <i class="fas fa-exclamation"></i> <%= link_to "Clique para avaliar os pais", new_booking_reviewsparent_path(booking) %>
-          <% else %>
-            <i class="fas fa-check-square"></i> Avaliação foi feita, obrigado !
-          <% end %>
-
-        <span id="btn-wrapper-<%= booking.id %>">
-          <% unless booking.check_out %>
-            <% if booking.check_in %>
-              <%= link_to "Check out", checkout_path(sitter_id: current_user.id, booking_id: booking.id), remote: true, class: "btn btn-pink", id: booking.id %>
-
+            <% if Reviewsparent.where(booking: booking).count == 0 %>
+              <i class="fas fa-exclamation"></i> <%= link_to "Clique para avaliar os pais", new_booking_reviewsparent_path(booking) %>
             <% else %>
-              <%= link_to "Check in", checkin_path(sitter_id: current_user.id, booking_id: booking.id), remote: true, class: "btn btn-pink", id: booking.id %>
-             <% end %>
-          <% end %>
-        </span>
+              <i class="fas fa-check-square"></i> Avaliação foi feita, obrigado !
+            <% end %>
+
+          <span id="btn-wrapper-<%= booking.id %>">
+            <% unless booking.check_out %>
+              <% if booking.check_in %>
+                <%= link_to "Check out", checkout_path(sitter_id: current_user.id, booking_id: booking.id), remote: true, class: "btn btn-pink", id: booking.id %>
+
+              <% else %>
+                <%= link_to "Check in", checkin_path(sitter_id: current_user.id, booking_id: booking.id), remote: true, class: "btn btn-pink", id: booking.id %>
+               <% end %>
+            <% end %>
+          </span>
 
         <% else %>
 
-        <p>Data e Horário de Chegada: <strong><%= booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>, até <strong><%= booking.end_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>.</p>
-        <p>Babá: <%= link_to booking.sitter.user.name, sitter_path(booking.sitter.id) %></p>
-        <p>Contato: <%= booking.sitter.user.phone %></p>
-        <p>Faturamento:</p>
-        <p>R$<%= booking.sitter.price %>/hora, você contratou por <%= (((booking.end_time - booking.start_time)/ 3600).round) %> horas
-        <p> Total: R$<%= ( booking.sitter.price * ((booking.end_time - booking.start_time)/ 3600) ) %> </p>
+          <h2><%= booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></h2>
+          <p>Finalizado : <%= booking.end_time.strftime("%e %A, %B de %Y às %H:%I") %></p>
+          <p>Babá: <%= link_to booking.sitter.user.name, sitter_path(booking.sitter.id) %></p>
+          <p>Contato: <%= booking.sitter.user.phone %></p>
+          <p>Faturamento:</p>
+          <p>R$<%= booking.sitter.price %>/hora, você contratou por <%= (((booking.end_time - booking.start_time)/ 3600).round) %> horas
+          <p><strong> Total: R$<%= ( booking.sitter.price * ((booking.end_time - booking.start_time)/ 3600) ) %> </strong></p>
 
-          <% if Reviewssitter.where(booking: booking).count == 0 %>
-            <i class="fas fa-exclamation"></i> <%= link_to "Clique para avaliar a baby-sitter", new_booking_reviewssitter_path(booking) %>
-          <% else %>
-            <i class="fas fa-check-square"></i> Avaliação foi feita, obrigado !
-          <% end %>
+            <% if Reviewssitter.where(booking: booking).count == 0 %>
+              <i class="fas fa-exclamation"></i> <%= link_to "Clique para avaliar a baby-sitter", new_booking_reviewssitter_path(booking) %>
+            <% else %>
+              <i class="fas fa-check-square"></i> Avaliação foi feita, obrigado !
+            <% end %>
         <% end %>
-      </div>
     </div>
   </div>
+</div>
+ <% end %>
 
-
-<% end %>
+</div>
 </div>
