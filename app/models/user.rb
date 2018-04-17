@@ -7,6 +7,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:facebook]
   has_one :sitter, dependent: :destroy
   has_one :bank_info, through: :sitter, dependent: :destroy
+  mount_uploader :photo, PhotoUploader
 
   has_many :bookings
   has_many :children

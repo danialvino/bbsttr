@@ -16,13 +16,6 @@ class SittersController < ApplicationController
         friends = JSON.parse(url)
         @friend_list = friends['friends']['data']
       end
-     elsif params[:start_time].present? && params[:end_time].present?
-      cookies["start_time"] = params[:start_time]
-      cookies["end_time"] = (params[:start_time].to_datetime + (params[:end_time].to_i/24.0))
-      @result = near?(Sitter.all)
-      @sitters = available?(@result)
-      @result_availables = available_hours?(@sitters)
-      @favorite = Favorite.new
      else
       redirect_to root_path, alert: "Para quando você precisa a babá?"
     end
