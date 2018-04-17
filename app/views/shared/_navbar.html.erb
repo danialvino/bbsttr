@@ -28,7 +28,7 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-         <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+         <% avatar_url = current_user.facebook_picture_url || current_user.photo.url.nil? ? "http://placehold.it/30x30" : cl_image_path( current_user.photo, height: 30, width: 30, crop: :fill )%>
           <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
