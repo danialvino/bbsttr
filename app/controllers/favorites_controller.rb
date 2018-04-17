@@ -13,9 +13,9 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.new(user_params)
     @favorite.user = current_user
     if @favorite.save
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
     else
-      redirect_to root_path, alert: "Deu erro"
+      redirect_back(fallback_location: root_path, alert: "Deu erro")
     end
   end
 
