@@ -1,16 +1,87 @@
 // Specific CSS for your home-page
-.banner {
-  color: white;
-  height: 100vh;
-  background-size: cover;
-  background-position: center center;
-  opacity: 1;
-  visibility: inherit;
-  background-repeat: no-repeat;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+
+#head-home {
+  background-image: linear-gradient(45deg, #f76574 0%, #FF8E9B 100%);
+  padding-bottom: 90px;
 }
+
+.home {
+  padding-top: 72px;
+}
+
+.header-container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    & h1 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: white;
+    }
+    & h5 {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+      color: #011F3F;
+    }
+}
+
+.container {
+  padding-left: 24px;
+  padding-right: 24px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+.section {
+    padding-top: 112px;
+    padding-bottom: 112px;
+}
+
+.infos-sections {
+    flex-direction: column;
+    align-items: center;
+    width: 720px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.search-section {
+    display: flex;
+    margin-bottom: 8px;
+    padding-left: 64px;
+    padding-right: 64px;
+    justify-content: space-around;
+    max-width: 976px;
+    align-itens: center;
+}
+
+.call-to-action {
+    margin-top: 70px;
+    display: flex;
+    margin-bottom: 8px;
+    padding-left: 64px;
+    padding-right: 64px;
+    justify-content: space-around;
+    max-width: 976px;
+    align-itens: center;
+}
+
+.search-img {
+    width: 144px;
+    height: 144px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-text {
+    padding-left: 40px;
+    max-width: 496px;
+}
+
 
 #instruction-home {
   display: flex;
@@ -19,23 +90,15 @@
   margin-top: 30px;
 }
 
-.banner-content {
-  text-align: right;
-  color: white;
-  vertical-align: top;
-  padding-top: 20px;
-    h5{
-      color: #f4b0b7;
-    }
-}
+// .img {
+//   height: 50px;
+// }
 
-.img {
-  height: 50px;
-}
-
-.home-search{
+.home-search {
   color: black;
+  padding-top: 40px;
 }
+
 #wrapper-comofunciona {
   margin-right: auto; /* 1 */
   margin-left:  auto; /* 1 */
