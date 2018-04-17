@@ -22,6 +22,17 @@
             <i class="fas fa-check-square"></i> Avaliação foi feita, obrigado !
           <% end %>
 
+        <span id="btn-wrapper-<%= booking.id %>">
+          <% unless booking.check_out %>
+            <% if booking.check_in %>
+              <%= link_to "Check out", checkout_path(sitter_id: current_user.id, booking_id: booking.id), remote: true, class: "btn btn-pink", id: booking.id %>
+
+            <% else %>
+              <%= link_to "Check in", checkin_path(sitter_id: current_user.id, booking_id: booking.id), remote: true, class: "btn btn-pink", id: booking.id %>
+             <% end %>
+          <% end %>
+        </span>
+
         <% else %>
 
         <p>Data e Horário de Chegada: <strong><%= booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>, até <strong><%= booking.end_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>.</p>

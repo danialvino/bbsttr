@@ -36,12 +36,38 @@ class BookingsController < ApplicationController
       redirect_to booking_path(@booking)
     end
   end
+
+  def start_work
+    @booking = Booking.find(params[:booking_id])
+    @booking.check_in = Time.now
+    if @booking.save!
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
+  def finished_work
+    @booking = Booking.find(params[:booking_id])
+    @booking.check_out = Time.now
+    if @booking.save!
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
+  def total_worked(worked)
+    @hours_worked = Worked.new(@booking.check_out - @booking.check_in).to_datetime
+  end
+
   # botão com params
   private
 
   def user_params
-    params(:booking).permit(:start_time, :end_time, :user_id, :sitter_id)
+    params(:booking).permit(:start_time, :end_time, :user_id, :sitter_id, :check_in, :check_out, :booking_id)
   end
+
 
   def change_available(available)
     if available.start_time == @booking.start_time && available.end_time == @booking.end_time
