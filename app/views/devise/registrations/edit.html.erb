@@ -20,8 +20,10 @@
         <h5>Data de nascimento<%= f.text_field :birthday, label: false, required: true, as: :string, class: "bord-form", placeholder: "dia/mês/ano" %></h5>
         <h5>Sexo<%= f.input :gender, label: false, collection: ['Masculino', 'Feminino'], required: true  %></h5>
         <h5>Celular<%= f.input :phone, label: false  %></h5>
-         <h5>Endereço<%= f.input :address, label: false, required: true %></h5>
-            <h5><%= f.input :remember_me, label: "Lembrar", label_html: { class: 'teste' }, as: :boolean if devise_mapping.rememberable? %></h5>
+        <h5>Endereço<%= f.input :address, label: false, required: true %></h5>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
+        <h5><%= f.input :remember_me, label: "Lembrar", label_html: { class: 'teste' }, as: :boolean if devise_mapping.rememberable? %></h5>
             <div class="form-actions">
               <%= f.submit value: "Entrar", class: "btn btn-pink" %>
             </div>

@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 ruby '2.4.3'
 require 'open-uri'
-gem 'cancancan', '~> 2.0'
 
+gem 'cancancan', '~> 2.0'
+gem 'cloudinary'
+gem 'carrierwave', '~> 1.2'
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
