@@ -93,3 +93,4 @@ load_and_authorize_resource
   end
 end
 # btn de contratar:
+      # <%= link_to "Contratar", bookings_path(available: @result_availables.select{|av| av.sitter_id == @sitter.id }[0].id, sitter_id: @sitter.id), method: :post, class: "btn btn-light-green btn-lg"%>
