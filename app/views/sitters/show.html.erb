@@ -28,8 +28,6 @@
         <%= f.submit "(+)", class: "text-button" %>
         <% end %>
       <% end %>
-
-
         <% if user_signed_in? %>
           <p><i class="fas fa-map-marker-alt"></i> <%= Geocoder::Calculations.distance_between(current_user, @sitter.user).to_d.truncate(2).to_f  %> Km do seu endereço</p>
       <% else %>
@@ -98,3 +96,6 @@
     </div>
   </div>
 </div>
+<div class="text-center"><%= link_to "Voltar", :back, class: "btn btn-pink btn-lg", style: "width: 100px; margin-bottom: 10px;"%></div>
+</div>
+

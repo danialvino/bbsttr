@@ -17,7 +17,7 @@ class SittersController < ApplicationController
         @friend_list = friends['friends']['data']
       end
      else
-      redirect_to root_path, alert: "Para quando você precisa a babá?"
+      redirect_to root_path, alert: "Para onde você precisa a babá?"
     end
   end
 
@@ -29,6 +29,7 @@ class SittersController < ApplicationController
     end
     @sitter = Sitter.find(params[:id])
     @favorite = Favorite.new
+    @result_availables = available_hours?([@sitter, ])
   end
 
   def new
