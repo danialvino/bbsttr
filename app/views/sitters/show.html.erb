@@ -1,100 +1,102 @@
 <div class="container">
+  <div class="profile text-center">
+    <div class="main">
+      <div class="main-content">
+        <img src="https://media.istockphoto.com/photos/happy-young-woman-smiling-portrait-picture-id485734753?k=6&m=485734753&s=612x612&w=0&h=481qIkH2Jpr4uJAsUohYZo8gl3AlA-58vnVwlXjzxtM=" alt="" width="150" class="img-circle">
+        <h2><%= @sitter.user.name.capitalize %></h2>
+        <p>Cadastrada em <%= @sitter.user.created_at.strftime("%m/%Y") %></p>
+        <a href="#" class="btn btn-light-green">Buscar disponibilidade</a>
+        <%= social_share_button_tag('Compartilhar no Facebook', :url => sitter_url(@sitter.id), desc: @sitter.user.name) %>
+      </div>
+    </div>
 
-  <div class="profile-header">
-    <h1><%= @sitter.user.name.capitalize %></i></h1>
-    <div class="user_image">
-    <img class="card-user" src="https://media.istockphoto.com/photos/happy-young-woman-smiling-portrait-picture-id485734753?k=6&m=485734753&s=612x612&w=0&h=481qIkH2Jpr4uJAsUohYZo8gl3AlA-58vnVwlXjzxtM=">
+  <div class="stat">
+    <div class="stat-content">
+      <h3><%= Booking.where(sitter_id: @sitter.id).count %></h3>
+      <p>baby-sitting feitos (sendo <%= @bookings_history = Booking.where(sitter_id: @sitter.id, user_id: current_user).count %> com você)</p>
+    </div>
   </div>
-
-
-  <div class="profile-about">
-    <h2> Meus dados </h2>
-    <%= @sitter.about %>
-    <br>
-    <%= @sitter.skills.join(", ") %>
-  </div>
-
-  <div class="profile-history">
-    <h2> Minha atividade no site </h2>
-      <ul>
-        <li><i class="fas fa-map-marker-alt"></i> <%= @sitter.user.name.capitalize %> mora a
-          <% if params[:user_address].present? %>
-            <%= Geocoder::Calculations.distance_between(params[:user_address], @sitter.user).to_d.truncate(2).to_f  %>
-            <% else %>
-            <%= Geocoder::Calculations.distance_between(current_user, @sitter.user).to_d.truncate(2).to_f  %>
-          <% end %> Km do seu endereço </li>
-          <li>
-          <% if user_signed_in? %>
-            <% if Favorite.where(sitter_id: @sitter.id, user_id: current_user).count > 0 %>
-              <i class="fas fa-heart on"></i><%= @sitter.user.name.capitalize %> faz parte dos seus baby-sitters favoritas
-            <% else %>
-              <i class="far fa-heart off"></i><%= @sitter.user.name.capitalize %> ainda não faz parte dos seus baby-sitters favoritas - <%= simple_form_for @favorite do |f| %> <%= f.hidden_field :sitter_id, value: @sitter.id %> <%= f.submit "Adicionar", class: "text-button a" %>
-              <% end %>
-            <% end %>
-          <% end %>
-          </li>
-              <% unless current_user.uid.nil? %>
-            <% friends_that_booked = [] %>
-            <% bookings = @sitter.bookings  %>
-            <% bookings.each do |booking| %>
-            <%@friend_list.each do |friend| %>
-              <% if friend["id"] == booking.user.uid  %>
-              <% friends_that_booked << friend %>
-              <% end %>
-            <% end %>
-            <% end %>
-            <li><i class="far fa-thumbs-up"></i><%= friends_that_booked[0]['name'] %> <%= simple_pluralize(friends_that_booked.count,"já reservou "," e mais #{friends_that_booked.count - 1} amigos seus ja reservaram ") %><%= @sitter.user.name.capitalize %></li>
-            <li>
-              <% else %>
-            <li><i class="far fa-thumbs-up"></i>Entre com o facebook para ver qual dos seus amigos já reservaram <%= @sitter.user.name.capitalize %></li>
-            <% end %>
-          <li><i class="far fa-calendar-alt"></i>
-            <% if user_signed_in? %>
-            <% @bookings_history = Booking.count("user_id = #{current_user.id} AND sitter_id = #{@sitter.id}") %>
-            <% if @bookings_history == 0 %>
-            Você nunca reservou <%= @sitter.user.name.capitalize %>
-            <% else %>
-            Você ja reservou <%= @sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %>
-            <% end %>
-            <% else %>
-            Você nunca reservou <%= @sitter.user.name.capitalize %>
-            <% end %>
-            </li>
-          </ul>
-  </div>
-
-  <div class="profile-about">
-    <h2> As avaliações que eu recebi </h2>
-    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-   <p>
+  <div class="stat">
+    <div class="stat-content">
       <% if Reviewssitter.where(sitter_id: @sitter.id).count == 0 %>
-        Ainda não foi avaliada.
+        <h3> - </h3>
+        <p> Ainda não foi avaliada </p>
       <% else %>
-        <%= Reviewssitter.where(sitter_id: @sitter.id).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: @sitter.id).count, 'avalição', 'avaliações') %>)
+        <h3><%= Reviewssitter.where(sitter_id: @sitter.id).average(:rating).round(2) %> / 5</h3>
+        <p>(média de <%= pluralize(Reviewssitter.where(sitter_id: @sitter.id).count, 'avalição', 'avaliações') %>)</p>
       <% end %>
+    </div>
+  </div>
+  <div class="stat">
+    <div class="stat-content">
+      <h3><%= humanized_money_with_symbol(@sitter.price)%></h3>
+      <p>por hora</p>
+    </div>
+  </div>
 
+  <div class="stat2">
+    <div class="stat-content">
+      <h3>Daniel</h3>
+      <p>e 3 outros amigos ja contrataram</p>
+    </div>
+  </div>
+  <div class="stat2">
+    <div class="stat-content">
+     <% if Favorite.where(sitter_id: @sitter.id, user_id: current_user).count > 0 %>
+       <i class="fas fa-heart on"></i>
+       <p>faz parte dos seus baby-sitters favoritas</p>
+       <% else %>
+       <i class="far fa-heart off"></i>
+        <p>
+       ainda não faz parte dos seus baby-sitters favoritas</p>
+       <%= simple_form_for @favorite do |f| %>
+        <%= f.hidden_field :sitter_id, value: @sitter.id %>
+        <%= f.submit "Adicionar", class: "text-button a" %>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+  <div class="stat2">
+    <div class="stat-content">
+      <% if user_signed_in? %>
+      <h3><%= Geocoder::Calculations.distance_between(current_user, @sitter.user).to_d.truncate(2).to_f  %></h3>
+      <p>Km do seu endereço</p>
+      <% else %>
+      <h3>-</h3>
+      <p>do seu endereço</p>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="description">
+    <div class="description-content">
+      <h3>Mais sobre mim</h3>
+      <p class="text-justify">
+        <%= @sitter.about %>
+        <br><br>
+        Meus gostos : <%= @sitter.skills.join(", ") %>
+      </p>
+    </div>
+  </div>
+<div class="reviews">
+    <div class="reviews-content">
+   <h2> Todas as avaliações que eu recebi </h2>
     <% if Reviewssitter.where(sitter_id: @sitter.id).count == 0 %>
      Ainda nunca foi avaliada
      <% else %>
      <% Reviewssitter.where(sitter_id: @sitter.id).each do |review| %>
-     <br><%= review.created_at %>
-     <br><%= review.rating %> / 5
-     <br><%= review.description %>
-    ----
-     <br>
+     <p>
+      Data do baby-sitting : <%= review.created_at.strftime("%v") %><br>
+      Nota recebida : <strong><%= review.rating %></strong> / 5<br>
+      Comentarios : <%= review.description %></p>
+      <br>
     <% end %>
     <% end %>
-  </div>
-
-  <div class="profile-available">
-    <h2> Minha agenda </h2>
-    <p> <%= humanized_money_with_symbol(@sitter.price)%>  por hora</p>
-  </div>
-
-    <div class="button">
-      <%= link_to "Voltar", :back, class: 'btn btn-pink btn-md' %>
     </div>
-
-    <%= social_share_button_tag('Share to Facebook', :url => sitter_url(@sitter.id), desc: @sitter.user.name) %>
+  </div>
 </div>
+
+
+
 

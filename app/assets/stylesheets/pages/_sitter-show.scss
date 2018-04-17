@@ -1,8 +1,92 @@
-.button  {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    .btn {
-      margin-left: 10px;
-    }
+.profile {
+  display: grid;
+  grid-template-columns: 300px 1fr 1fr 1fr;
+  grid-template-rows: 15% 15% 35% 35%;
+  // height: calc(100vh - 50px);
+  padding: 30px;
+}
+.profile .main {
+  grid-row: 1 / span 4;
+  grid-column: 1 / span 1;
+}
+
+.profile .description {
+  grid-row: 3 / span 1;
+  grid-column: 2 / span 3;
+}
+
+.profile .reviews {
+  grid-row: 4 / span 1;
+  grid-column: 2 / span 3;
+}
+
+.main, .description, .stat, .stat2, .reviews {
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  padding: 50px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+@media (max-width: 940px) {
+  .profile {
+    display: block;
+  }
+}
+
+/* Fonts and colors */
+.profile h2 {
+  font-size: 22px;
+}
+.profile h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+.profile p {
+  color: rgba(0,0,0,0.6);
+}
+
+.stat h3 {
+  color: $green;
+  font-size: 28px;
+}
+
+.stat p {
+  color: rgba(0,0,0,0.25);
+  font-size: 19px;
+}
+
+.stat2 h3 {
+  color: $green;
+  font-size: 28px;
+}
+
+.stat2 p {
+  color: rgba(0,0,0,0.25);
+  font-size: 19px;
+}
+
+
+.description h3 {
+  color: rgba(0,0,0,0.9);
+  font-size: 21px;
+  font-weight: normal;
+}
+.description p {
+  color: rgba(0,0,0,0.5);
+  font-weight: lighter;
+}
+
+.btn-light-green {
+  margin-bottom: 10px;
+}
+
+.reviews-content {
+  text-align: left;
+}
+
+.reviews-content p {
+  color: rgba(0,0,0,0.5);
+  font-weight: lighter;
 }
