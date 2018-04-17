@@ -1,11 +1,13 @@
-<div class="container">
+<div id="body-min-height">
+  <div class="container">
     <h1>Você tem <%= pluralize(@favorites.count, 'baby-sitter favorita', 'baby-sitters favoritas') %> </h1>
-  <% if @favorites.count == 0 %>
+    <% if @favorites.count == 0 %>
     Você ainda não tem nenhuma baby-sitter favorita.
-  <% else %>
+    <% else %>
     <% @favorites.each do |favorite| %>
       <%= render "shared/lightcard", sitter: favorite.sitter %>
     <% end %>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
