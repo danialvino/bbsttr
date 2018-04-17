@@ -1,67 +1,84 @@
 <div class="card">
-  <div class="card-left">
-    <div class="user_image">
+
+    <div class="left-1">
+      <h2><%= sitter.user.name.capitalize %></i><% if Reviewssitter.where(sitter_id: sitter.id).count > 0 %><span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2)*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span></span><% else %><% end %></h2>
+    </div>
+
+    <div class="left-2">
       <img class="card-user" src="https://media.istockphoto.com/photos/happy-young-woman-smiling-portrait-picture-id485734753?k=6&m=485734753&s=612x612&w=0&h=481qIkH2Jpr4uJAsUohYZo8gl3AlA-58vnVwlXjzxtM=">
     </div>
-    <div class="card-price">
-      <h2> <%= humanized_money_with_symbol(sitter.price) %>  </h2>
-      <p>por hora <i class="fas fa-info-circle"></i></p>
-    </div>
-  </div>
 
-  <div class="card-right">
-    <div class="card-username">
-      <h2><%= sitter.user.name.capitalize %></i></h2>
+    <div class="left-3">
+      <h2><%= humanized_money_with_symbol(sitter.price) %></h2>
+      <p>por hora</p>
     </div>
 
-    <div class="card-rating">
-      <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-      <p>
-        <% if Reviewssitter.where(sitter_id: sitter.id).count == 0 %>
-        Ainda não foi avaliada.
+    <div class="center-1">
+
+
+        <% if Favorite.where(sitter_id: sitter.id, user_id: current_user).count > 0 %>
+          <i class="fas fa-heart on" alt="Faz parte dos seus favoritos"></i>
         <% else %>
-        <%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: sitter.id).count, 'avalição', 'avaliações') %>)
+          <i class="far fa-heart off" alt="Não faz parte dos seus favoritos"></i>
+          <p>
+          <%= simple_form_for @favorite do |f| %>
+          <%= f.hidden_field :sitter_id, value: sitter.id %>
+          <%= f.submit "(+)", class: "text-button" %>
+          <% end %>
         <% end %>
-      </div>
+    </div>
 
-      <div class="card-details">
-        <ul>
-          <li><i class="fas fa-map-marker-alt"></i> <%= sitter.user.name.capitalize %> mora a
-            <% if params[:user_address].present? %>
-            <%= Geocoder::Calculations.distance_between(params[:user_address], sitter.user).to_d.truncate(2).to_f  %>
-            <% else %>
-            <%= Geocoder::Calculations.distance_between(current_user, sitter.user).to_d.truncate(2).to_f  %>
-            <% end %> Km do seu endereço </li>
+    <div class="center-2">
+    <ul>
+      <li><% if Reviewssitter.where(sitter_id: sitter.id).count == 0 %>
+      <p><i class="fas fa-star"></i> Ainda não foi avaliada.</p>
+      <% else %><p><i class="fas fa-star"></i><%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: sitter.id).count, 'avalição', 'avaliações') %>)</p>
+      </li><% end %>
 
-<li>
-              <% if user_signed_in? %>
-                <% if Favorite.where(sitter_id: sitter.id, user_id: current_user).count > 0 %>
-                <i class="fas fa-heart on"></i><%= sitter.user.name.capitalize %> faz parte dos seus baby-sitters favoritas
-              <% else %>
-                <i class="far fa-heart off"></i><%= sitter.user.name.capitalize %> ainda não faz parte dos seus baby-sitters favoritas - <%= simple_form_for @favorite do |f| %> <%= f.hidden_field :sitter_id, value: sitter.id %> <%= f.submit "Adicionar", class: "text-button a" %>
+      <li>
+        <% if params[:user_address].present? %>
+           <p><i class="fas fa-map-marker-alt"> </i> <%= Geocoder::Calculations.distance_between(params[:user_address], sitter.user).to_d.truncate(2).to_f %> Km do seu endereço</p>
+        <% else %>
+           <p><i class="fas fa-map-marker-alt"> </i> <%= Geocoder::Calculations.distance_between(current_user, sitter.user).to_d.truncate(2).to_f %>  Km do seu endereço</p>
+        <% end %>
+      </li>
+
+      <li><p>
+       <% unless current_user.uid.nil? %>
+        <% friends_that_booked = [] %>
+        <% bookings = sitter.bookings  %>
+        <% bookings.each do |booking| %>
+        <%@friend_list.each do |friend| %>
+        <% if friend["id"] == booking.user.uid  %>
+        <% friends_that_booked << friend %>
         <% end %>
       <% end %>
-    <% end %>
+      <% end %>
+      <i class="far fa-thumbs-up"> </i><%= friends_that_booked[0]['name'] %> <%= simple_pluralize(friends_that_booked.count,"já reservou "," e mais #{friends_that_booked.count - 1} amigos seus ja reservaram ") %><%= sitter.user.name.capitalize %></li>
+        <% else %>
+        <i class="far fa-thumbs-up"> </i>Entre com o facebook para ver qual dos seus amigos já reservaram <%= sitter.user.name.capitalize %></p></li>
+            <% end %>
 
-</li>
-            <li><i class="far fa-thumbs-up"></i> 3 amigos seus ja reservaram <%= sitter.user.name.capitalize %></li>
-            <li><i class="far fa-calendar-alt"></i>
+            <li><p>
               <% if user_signed_in? %>
                 <% @bookings_history = Booking.count("user_id = #{current_user.id} AND sitter_id = #{sitter.id}") %>
                 <% if @bookings_history == 0 %>
+                <i class="far fa-calendar-alt off"> </i>
                   Você nunca reservou <%= sitter.user.name.capitalize %>
                 <% else %>
+                <i class="fas fa-calendar-alt on"> </i>
                   Você ja reservou <%= sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %>
                 <% end %>
               <% else %>
                 Você nunca reservou <%= sitter.user.name.capitalize %>
               <% end %>
-
-            </li>
-            <li><i class="far fa-user-circle"></i> <%=link_to "Acessar o perfil detalhado de #{sitter.user.name.capitalize}", sitter_path(sitter, user_address: params[:user_address]) %> </li>
+            </p></li>
           </ul>
-        </div>
-
-      </div>
-
     </div>
+
+    <div class="center-3">
+        <%= link_to "Ver perfil", sitter_path(sitter), class: "btn btn-pink btn-lg"%>
+    </div>
+
+</div>
+
