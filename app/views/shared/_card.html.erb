@@ -31,16 +31,16 @@
     <div class="center-2">
     <ul>
       <li><% if Reviewssitter.where(sitter_id: sitter.id).count == 0 %>
-      <i class="fas fa-star"></i><p> Ainda não foi avaliada.</p>
+      <p><i class="fas fa-star"></i> Ainda não foi avaliada.</p>
       <% else %><p><i class="fas fa-star"></i><%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: sitter.id).count, 'avalição', 'avaliações') %>)</p>
       </li>
+        <% end %>
 
       <li>
         <% if params[:user_address].present? %>
            <p><i class="fas fa-map-marker-alt"> </i> <%= Geocoder::Calculations.distance_between(params[:user_address], sitter.user).to_d.truncate(2).to_f %> Km do seu endereço</p>
         <% else %>
            <p><i class="fas fa-map-marker-alt"> </i> <%= Geocoder::Calculations.distance_between(current_user, sitter.user).to_d.truncate(2).to_f %>  Km do seu endereço</p>
-        <% end %>
         <% end %>
       </li>
 
