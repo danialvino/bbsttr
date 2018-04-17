@@ -35,6 +35,10 @@ Rails.application.routes.draw do
   end
   # update booking status to "canceled"
   patch '/bookings/:id/change-status-to-canceled', to: "bookings#change_status_to_canceled", as: "change_booking_status_to_canceled"
+  # update check in
+  get '/bookinkgs/checkin', to: 'bookings#start_work', as: 'checkin'
+  # update check out
+  get '/bookinkgs/checkout', to: 'bookings#finished_work', as: 'checkout'
   # reviewsparents routes
   resources :reviewsparents, only: [:index, :new, :create]
   # reviewssitters routes
