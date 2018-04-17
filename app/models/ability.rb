@@ -7,6 +7,7 @@ class Ability
       user ||= User.new # guest user (not logged in)
       if user.sitter?
         can :manage, Sitter, user_id: user.id
+        can :read, Sitter
         can :manage, Available
         can :read, Booking, sitter_id: user.sitter.id
         can :update, Booking, sitter_id: user.sitter.id

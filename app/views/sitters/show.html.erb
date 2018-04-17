@@ -3,8 +3,12 @@
     <div class="main">
       <div class="main-content">
         <h1><%= @sitter.user.name.capitalize %></h1>
-
-                <img src="https://media.istockphoto.com/photos/happy-young-woman-smiling-portrait-picture-id485734753?k=6&m=485734753&s=612x612&w=0&h=481qIkH2Jpr4uJAsUohYZo8gl3AlA-58vnVwlXjzxtM=" alt="" width="150" class="img-circle">
+        <%  if @sitter.user.facebook_picture_url.nil? %>
+        <%  avatar_url = @sitter.user.photo.url.nil? ? "http://placehold.it/200x200" : cl_image_path( current_user.photo.url(:profile) )%>
+        <% else %>
+        <% avatar_url = @sitter.user.facebook_picture_url %>
+        <% end %>
+          <img src="<%= avatar_url %>" alt="" width="150" class="img-circle">
 
         <p>Cadastrada em <%= @sitter.user.created_at.strftime("%m/%Y") %></p>
         <p>
