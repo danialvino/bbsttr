@@ -10,6 +10,7 @@ class ReviewssittersController < ApplicationController
     @reviewssitter = Reviewssitter.new
   end
 
+
   def create
     @reviewssitter = Reviewssitter.new(user_params)
     @reviewssitter.booking = @booking
