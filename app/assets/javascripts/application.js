@@ -7,7 +7,9 @@
 //= require social-share-button
 //= require timepiece
 //= require bootstrap-toggle
+//= require toastr
 //= require_tree .
+
 function loadflatpickr() {
   if ($('.flatpickr-input').length > 0) {
     flatpickr(".flatpickr-input", {
