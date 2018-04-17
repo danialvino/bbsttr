@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-
+load_and_authorize_resource
   # Listing the bookings of a given user
   def index
     if current_user.sitter?

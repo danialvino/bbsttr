@@ -29,8 +29,8 @@
     <% end %>
   <% end %>
 
-  <h2>Você escreveu <%= Reviewsparent.where(sitter_id: @current_user).count %> avaliações </h2> :
-  <% Reviewsparent.where(sitter_id: @current_user).each do |review| %>
+  <h2>Você escreveu <%= Reviewsparent.where(sitter_id: @current_user.sitter).count %> avaliações </h2> :
+  <% Reviewsparent.where(sitter_id: @current_user.sitter).each do |review| %>
     Data do baby-sitting : <%= review.booking.start_time %>
     <br>
     Endereço : <%= review.user.address %>

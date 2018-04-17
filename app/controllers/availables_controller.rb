@@ -1,4 +1,5 @@
 class AvailablesController < ApplicationController
+load_and_authorize_resource param_method: :user_params
   def index
     @availables = Available.where(sitter_id: current_user.sitter.id)
     @available = Available.new

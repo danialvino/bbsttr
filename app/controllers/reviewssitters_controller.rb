@@ -1,7 +1,7 @@
 class ReviewssittersController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :set_booking, only: [:new, :create]
-
+  load_and_authorize_resource param_method: :user_params
   def index
     @reviewssitters = Reviewssitter.where(sitter_id: current_user.sitter.id)
   end
