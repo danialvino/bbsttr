@@ -151,7 +151,55 @@
   padding: 6px !important;
   }
 
-.bord-form {
-  border-radius: 5px !important;
-  padding: 6px !important;
+
+#user_address {
+  border: none;
+  border-bottom: 4px solid $pink;
+  padding: 10px 10px 10px 35px !important;
+  // background-color: white;
+  background-size: 20px;
+  background-image: url('map-marker-icon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+}
+
+#user_address:focus {
+  border-bottom: 4px solid $green;
+}
+
+#start_time {
+  border: none;
+  border-bottom: 4px solid $pink;
+  padding: 10px 10px 10px 35px !important;
+  // background-color: white;
+  background-size: 20px;
+  background-image: url('Calendar-1.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+}
+
+#start_time:focus {
+  border-bottom: 4px solid $green;
+}
+
+#end_time {
+  border: none;
+  border-bottom: 4px solid $pink;
+  padding: 10px 10px 10px 35px !important;
+  // background-color: white;
+  background-size: 20px;
+  background-image: url('time.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+}
+
+#end_time:focus {
+  border-bottom: 4px solid $green;
+}
+
+.procurar {
+  margin-top: 10px;
 }
