@@ -1,33 +1,39 @@
 .profile {
   display: grid;
-  grid-template-columns: 300px 1fr 1fr 1fr;
-  grid-template-rows: 15% 15% 35% 35%;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 10% 45% 45%;
   // height: calc(100vh - 50px);
-  padding: 30px;
+  padding: 10px;
 }
 .profile .main {
-  grid-row: 1 / span 4;
-  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 4;
 }
 
 .profile .description {
-  grid-row: 3 / span 1;
+  grid-row: 2 / span 3;
   grid-column: 2 / span 3;
 }
 
-.profile .reviews {
-  grid-row: 4 / span 1;
-  grid-column: 2 / span 3;
-}
+// .profile .reviews {
+//   grid-row: 3 / span 3;
+//   grid-column: 2 / span 3;
+// }
+
+// .profile .stat {
+//   grid-column: 1 / span 1;
+//   grid-row: 2 / span 3;
+// }
 
 .main, .description, .stat, .stat2, .reviews {
   background: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  padding: 50px;
+  padding: 10px;
   margin: 10px;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  position: relative;
 }
 @media (max-width: 940px) {
   .profile {
@@ -38,6 +44,8 @@
 /* Fonts and colors */
 .profile h2 {
   font-size: 22px;
+  color: $pink;
+  font-weight: bolder;
 }
 .profile h3 {
   font-size: 22px;
@@ -67,6 +75,10 @@
   font-size: 19px;
 }
 
+.main-content h1 {
+  color: $pink;
+}
+
 
 .description h3 {
   color: rgba(0,0,0,0.9);
@@ -78,7 +90,7 @@
   font-weight: lighter;
 }
 
-.btn-light-green {
+.btn-light-green-mgn {
   margin-bottom: 10px;
 }
 
@@ -89,4 +101,39 @@
 .reviews-content p {
   color: rgba(0,0,0,0.5);
   font-weight: lighter;
+}
+
+.fa-heart.on {
+  color: red;
+  opacity: 1;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px
+}
+
+.fa-heart.off {
+  opacity: 1;
+  font-size: 30px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px
+}
+
+.text-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  opacity: 0;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
 }
