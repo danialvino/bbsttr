@@ -1,8 +1,10 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1482235225574-c37692835cf3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bba87d557cd648d8172d392fe12883e0&auto=format&fit=crop&w=1651&q=80')">
-  <div class="banner-content">
-      <h1>Encontre uma baba de confiança em poucos cliques.</h1>
-      <h5>Procure agora as melhores baby-sitters disponiveis.</h5>
-      <div class="home-search"><%= form_tag sitters_path, method: :get do %>
+<div id="head-home" class="home">
+  <div class="container header-container">
+        <h1>Encontre uma babá de confiança em poucos cliques.</h1>
+        <h5>Procure agora as <strong>melhores</strong> baby-sitters disponíveis.</h5>
+
+        <div class="home-search">
+         <%= form_tag sitters_path, method: :get do %>
           <%= text_field_tag :user_address, (current_user.nil? ? "" : current_user.address), placeholder: (current_user.nil? ? "Digite o seu endereço" : current_user.address), class: 'bord-form' %>
           <span style="color: white;">no dia</span>
           <%= text_field_tag :start_time,
@@ -15,7 +17,9 @@
              required: true %>
             <span style="color: white;">horas</span>
           <%= submit_tag "Procurar", class: "btn btn-xs btn-light-blue" %>
-        <% end %></div>
+         <% end %>
+        </div>
+
   </div>
 </div>
 <%= render "pages/content" %>
