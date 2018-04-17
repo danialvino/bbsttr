@@ -8,9 +8,13 @@
    <div class="card-booking main">
       <div class="card-body">
         <h3>Nota geral recebida</h3>
-        <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= Reviewsparent.average(:rating).round(2)*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span>
-        <p><%= Reviewsparent.average(:rating).round(2) %> / 5 (<%= pluralize(Reviewsparent.count, 'avalição', 'avaliações') %>)</p>
-      </div>
+        <% if Reviewsparent.where(user_id: current_user).count == 0 %>
+        <p>Você ainda não foi avaliado</p>
+        <% else %>
+        <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= Reviewsparent.where(user_id: current_user).average(:rating).round(2)*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span>
+        <p><%= Reviewsparent.where(user_id: current_user).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewsparent.count, 'avaliação', 'avaliações') %>)</p>
+      <% end %>
+    </div>
     </div>
   </div>
 
@@ -18,9 +22,13 @@
     <div class="card-booking main">
       <div class="card-body">
         <h3>Nota geral dada</h3>
+        <% if Reviewssitter.where(user_id: current_user).count == 0 %>
+        <p>Você ainda não avaliou ninguém</p>
+        <% else %>
         <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= Reviewssitter.where(user_id: current_user).average(:rating).round(2)*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span>
         <p><%= Reviewssitter.where(user_id: current_user).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.where(user_id: current_user).count, 'avalição', 'avaliações') %>)</p>
-      </div>
+      <% end %>
+    </div>
     </div>
   </div>
 </div>
@@ -47,12 +55,12 @@
             </div>
           <% end %>
       </div>
-
+    <% end %>
 <hr/>
 
 <h1>Avaliações dadas</h1>
   <% if Reviewssitter.where(user_id: @current_user).count == 0 %>
-    <p>Você ainda não foi avaliou ninguém</p>
+    <p>Você ainda não avaliou ninguém</p>
   <% else %>
   <p>Você escreveu <%= Reviewssitter.where(user_id: @current_user).count %> avaliações </p>
 
@@ -73,6 +81,5 @@
           <% end %>
       </div>
 
-    <% end %>
     <% end%>
 </div>
