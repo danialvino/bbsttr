@@ -1,9 +1,5 @@
 // Specific CSS for your home-page
 
-
-
-
-
 .effect5 {
  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
@@ -26,16 +22,10 @@
     line-height: 1;
     color: white;
     }
-    // & h5 {
-    // font-size: 20px;
-    // font-weight: 400;
-    // line-height: 1.5;
-    // color: #011F3F;
-    // }
 }
 
 .left {
-  text-align: start;
+  vertical-align: start;
  & h5 {
     font-size: 26px;
     font-weight: 400;
@@ -44,18 +34,32 @@
     margin-bottom: 20px;
     }
     & .btn-outline-primary {
-border: 2px solid;
-    border-radius: 10px;
+    border: 2px solid $pink;
+    border-radius: 9px;
     padding: 15px;
-    margin-right: 10px;    }
-    & h1 {
-      margin-bottom: 30px;
+    margin-right: 10px;
+    background: white;
     }
+    & h1 {
+    margin-bottom: 30px;
+    display: inline-block;
+    vertical-align: start;
+    }
+  & .wrapper {
+    padding-top: 10px;
+    }
+  }
+
+
+.btn-outline-primary:hover {
+  background-color: $pink;
+  box-shadow: 5px 5px 2.5px 0px rgba(255, 182, 185, 0.4);
+  color: #fff;
+  transform: translateY(-3px) translateX(3px);
 }
 
-
-
 .home-search {
+  margin-top: 10px;
   text-align: center;
   color: black;
   background: rgba(255,255,255,0.2);
@@ -246,7 +250,7 @@ border: 2px solid;
   background-position: 10px 10px;
   background-repeat: no-repeat;
   border-radius: 4px;
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 #start_time:focus {
