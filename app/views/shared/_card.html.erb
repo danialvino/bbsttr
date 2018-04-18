@@ -68,7 +68,7 @@
                 <%=  sitter.user.name.capitalize %> é a favorita de <%= pluralize(Favorite.where(sitter_id: sitter.id).count, 'pai', 'pais') %>.</p></li>
               <% end %>
                 <li><p>
-
+      <% if user_signed_in? %>
        <% unless current_user.uid.nil? %>
           <% friends_that_booked = [] %>
           <% bookings = sitter.bookings  %>
@@ -85,7 +85,11 @@
         <% end %>
         <% else %>
         <i class="far fa-thumbs-up"> </i>Entre com o Facebook para ver qual dos seus amigos já reservaram <%= sitter.user.name.capitalize %></p></li>
-            <% end %>
+        <% end %>
+        <% else %>
+        <i class="far fa-thumbs-up"> </i>Entre com o Facebook para ver qual dos seus amigos já reservaram <%= sitter.user.name.capitalize %></p></li>
+        <% end %>
+
 
 
           </ul>

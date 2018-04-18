@@ -11,11 +11,13 @@ class SittersController < ApplicationController
       @sitters = available?(@result)
       @result_availables = available_hours?(@sitters)
       @favorite = Favorite.new
+      if user_signed_in?
       unless current_user.uid.nil?
         url = open("https://graph.facebook.com/v2.12/#{current_user.uid}?fields=friends&access_token=#{current_user.token}").read
         friends = JSON.parse(url)
         @friend_list = friends['friends']['data']
       end
+    end
      else
       redirect_to root_path, alert: "Para onde você precisa a babá?"
     end
