@@ -83,7 +83,7 @@
   -ms-animation: pulse 3s infinite cubic-bezier(0.66, 0, 0, 1);
   animation: pulse 3s infinite cubic-bezier(0.66, 0, 0, 1);
 }
-.btn-light-blue:hover
+& .btn-light-blue:hover
 {
   -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
 }
@@ -139,9 +139,9 @@
     }
 }
 
+.section-home-bottom {
 
-
-.btn-light-blue {
+& .btn-light-blue {
   position: relative;
   border: none;
   font-weight: 400;
@@ -157,7 +157,7 @@
   animation: pulse 3s infinite cubic-bezier(0.66, 0, 0, 1);
 
 
-.btn-light-blue:hover
+& .btn-light-blue:hover
 {
   -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
 }
@@ -167,6 +167,7 @@
 @-ms-keyframes pulse {to {box-shadow: 0 0 0 15px rgba(232, 76, 61, 0);}}
 @keyframes pulse {to {box-shadow: 0 0 0 15px rgba(232, 76, 61, 0);}}
  }
+}
 
 .infos-sections {
     flex-direction: column;
