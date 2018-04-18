@@ -1,11 +1,11 @@
 <div class="container">
   <div class="text-available text-center">
-  <h1>Criar Horário de Trabalho</h1>
+  <h1>Criar horário de trabalho</h1>
   </div>
   <div class="create-available">
    <%= simple_form_for(@available) do |f| %>
-   <%= f.input :start_time, label: "Data e hora de ínicio", input_html: { class: "flatpickr-input" }, as: :string %>
-   <%= f.input :end_time, label: "Horas de Trabalho", input_html: { class: "bord-form" }, as: :integer %>
+   <h5>Data e hora de início<%= f.input :start_time, label: false, input_html: { class: "flatpickr-input" }, as: :string %></h5>
+   <h5>Horas de trabalho<%= f.input :end_time, label: false, input_html: { class: "bord-form" }, as: :integer %></h5>
    <%= f.submit "Criar disponibilidade", class: "btn btn-light-blue" %>
    <% end %>
   </div>
