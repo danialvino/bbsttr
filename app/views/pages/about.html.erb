@@ -1,98 +1,136 @@
-<div class="card">
-    <div class="left-1">
-      <h2><%= sitter.user.name.capitalize %></i><% if Reviewssitter.where(sitter_id: sitter.id).count > 0 %><span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2)*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span></span><% else %><% end %></h2>
-    </div>
+<div class="container" style="margin-top: 30px">
+  <div class="card">
+      <div class="left-1">
+        <h2>Daniel Topper</i><span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: 80px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span></span></h2>
+      </div>
 
-    <div class="left-2">
-      <%  if sitter.user.facebook_picture_url.nil? %>
-          <%  avatar_url = sitter.user.photo.url.nil? ? "http://placehold.it/200x200" : cl_image_path( sitter.user.photo.url(:profile) )%>
-        <% else %>
-          <% avatar_url = sitter.user.facebook_picture_url %>
-        <% end %>
-      <img class="card-user" src="<%= avatar_url %>">
-    </div>
+      <div class="left-2">
+            <%  avatar_url = "https://avatars0.githubusercontent.com/u/36278909?v=4" %>
+        <img class="card-user" src="<%= avatar_url %>">
+      </div>
 
-    <div class="left-3">
-      <h2><%= humanized_money_with_symbol(sitter.price) %></h2>
-      <p>por hora</p>
-    </div>
+      <div class="left-3">
+        <h2><%= humanized_money_with_symbol(32) %></h2>
+        <p>por hora</p>
+      </div>
 
-    <div class="center-1">
-        <% if Favorite.where(sitter_id: sitter.id, user_id: current_user).count > 0 %>
-          <i class="fas fa-heart on" alt="Faz parte dos seus favoritos"></i>
-        <% else %>
-          <i class="far fa-heart off" alt="Não faz parte dos seus favoritos"></i>
-          <p>
-          <%= simple_form_for @favorite do |f| %>
-          <%= f.hidden_field :sitter_id, value: sitter.id %>
-          <%= f.submit "(+)", class: "text-button" %>
-          <% end %>
-        <% end %>
-    </div>
+      <div class="center-1">
+            <i class="fas fa-heart on" alt="Faz parte dos seus favoritos"></i>
+      </div>
 
-    <div class="center-2">
-    <ul>
-      <li><% if Reviewssitter.where(sitter_id: sitter.id).count == 0 %>
-      <p><i class="fas fa-star"></i> Ainda não foi avaliada.</p>
-      <% else %><p><i class="fas fa-star"></i><%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: sitter.id).count, 'avalição', 'avaliações') %>)</p>
-      </li>
-        <% end %>
+      <div class="center-2">
+      <ul>
+        <li><p><i class="fas fa-star"></i>623 avaliações</p>
+        </li>
+        <li>
+             <p><i class="fas fa-map-marker-alt"> </i> 10 Km do seu endereço</p>
+        </li>
+              <li><p>
+                  <i class="fas fa-calendar-alt on"> </i>
+                    Você ja reservou Daniel Topper.
+              </p></li>
 
-      <li>
-        <% if params[:user_address].present? %>
-           <p><i class="fas fa-map-marker-alt"> </i> <%= Geocoder::Calculations.distance_between(params[:user_address], sitter.user).to_d.truncate(2).to_f %> Km do seu endereço</p>
-        <% else %>
-           <p><i class="fas fa-map-marker-alt"> </i> <%= Geocoder::Calculations.distance_between(current_user, sitter.user).to_d.truncate(2).to_f %>  Km do seu endereço</p>
-        <% end %>
-      </li>
+              <li><p><i class="fab fa-gratipay"></i>
+                  Coloque sua mensagem!.</p></li>
+                  <li><p>
+          <i class="far fa-thumbs-up"> </i>Deu o pitch desse projeto! </li>
+      </div>
 
-            <li><p>
-              <% if user_signed_in? %>
-                <% @bookings_history = Booking.where(sitter_id: sitter.id, user_id:current_user).count %>
-                <% if @bookings_history == 0 %>
-                <i class="far fa-calendar-alt off"> </i>
-                  Você nunca reservou <%= sitter.user.name.capitalize %>
-                <% else %>
-                <i class="fas fa-calendar-alt on"> </i>
-                  Você ja reservou <%= sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %>
-                <% end %>
-              <% else %>
-                Você nunca reservou <%= sitter.user.name.capitalize %>
-              <% end %>
-            </p></li>
+      <div class="center-3">
+    <ul class="list-inline">
+      <li><%= link_to "<i class='fab fa-github'></i>".html_safe, "https://github.com/dantopper", style: "font-size: 70px;" %></li>
+      <li><%= link_to "<i class='fab fa-linkedin'></i>".html_safe, "https://www.linkedin.com/in/danieltopper/", style: "font-size: 70px;" %></li>
+    </ul>
+      </div>
 
-            <li><p><i class="fab fa-gratipay"></i>
-              <% if Favorite.where(sitter_id: sitter.id).count == 0 %>
-                <%=  sitter.user.name.capitalize %> não é a favorita de nenhum pai por enquanto.</p></li>
-              <% else %>
-                <%=  sitter.user.name.capitalize %> é a favorita de <%= pluralize(Favorite.where(sitter_id: sitter.id).count, 'pai', 'pais') %>.</p></li>
-              <% end %>
-                <li><p>
+  </div>
+  <div class="card">
+      <div class="left-1">
+        <h2>Danielle Alvino</i><span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: 114px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span></span></h2>
+      </div>
 
-       <% unless current_user.uid.nil? %>
-          <% friends_that_booked = [] %>
-          <% bookings = sitter.bookings  %>
-          <% bookings.each do |booking| %>
-          <%@friend_list.each do |friend| %>
-            <% if friend["id"] == booking.user.uid  %>
-            <% friends_that_booked << friend %>
-            <% end %>
-          <% end %>
-        <% end %>
-        <% if friends_that_booked == [] %>
-          <i class="far fa-thumbs-up"> </i>Você não conhece ninguem que contratou <%= sitter.user.name.capitalize %></li>    <% else %>
-        <i class="far fa-thumbs-up"> </i><%= friends_that_booked[0]['name'] %> <%= simple_pluralize(friends_that_booked.count,"já reservou "," e mais #{friends_that_booked.count - 1} amigos seus ja reservaram ") %><%= sitter.user.name.capitalize %></li>
-        <% end %>
-        <% else %>
-        <i class="far fa-thumbs-up"> </i>Entre com o Facebook para ver qual dos seus amigos já reservaram <%= sitter.user.name.capitalize %></p></li>
-            <% end %>
+      <div class="left-2">
+            <%  avatar_url = "https://avatars2.githubusercontent.com/u/35389068?v=4" %>
+        <img class="card-user" src="<%= avatar_url %>">
+      </div>
 
+      <div class="left-3">
+        <h2><%= humanized_money_with_symbol(27) %></h2>
+        <p>por hora</p>
+      </div>
 
-          </ul>
-    </div>
+      <div class="center-1">
+            <i class="fas fa-heart on" alt="Faz parte dos seus favoritos"></i>
+      </div>
 
-    <div class="center-3">
-        <%= link_to "Ver perfil", sitter_path(sitter), class: "btn btn-pink btn-lg"%> <%= link_to "Contratar", bookings_path(available: @result_availables.select{|av| av.sitter_id == sitter.id }[0].id, sitter_id: sitter.id), method: :post, class: "btn btn-light-green btn-lg"%>
-    </div>
+      <div class="center-2">
+      <ul>
+        <li><p><i class="fas fa-star"></i>737 avaliações</p>
+        </li>
+        <li>
+             <p><i class="fas fa-map-marker-alt"> </i> 2000,1 Km do seu endereço</p>
+        </li>
+              <li><p>
+                  <i class="fas fa-calendar-alt on"> </i>
+                    Você ja quer contratar Danielle Alvino!
+              </p></li>
 
+              <li><p><i class="fab fa-gratipay"></i>
+                  Coloque sua mensagem!</p></li>
+                  <li><p>
+          <i class="far fa-thumbs-up"> </i>Coloca outra mensagem aqui!</li>
+      </div>
+
+      <div class="center-3">
+    <ul class="list-inline">
+      <li><%= link_to "<i class='fab fa-github'></i>".html_safe, "https://github.com/danialvino", style: "font-size: 70px;" %></li>
+      <li><%= link_to "<i class='fab fa-linkedin'></i>".html_safe, "https://www.linkedin.com/in/danielle-alvino-39b76968/", style: "font-size: 70px;" %></li>
+    </ul>
+      </div>
+
+  </div>
+  <div class="card">
+      <div class="left-1">
+        <h2>Daniel Carvalho</i><span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: 91px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span></span></h2>
+      </div>
+
+      <div class="left-2">
+            <%  avatar_url = "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/gd7mzl3jdztxgrgw5cqu.jpg" %>
+        <img class="card-user" src="<%= avatar_url %>">
+      </div>
+
+      <div class="left-3">
+        <h2><%= humanized_money_with_symbol(24) %></h2>
+        <p>por hora</p>
+      </div>
+
+      <div class="center-1">
+            <i class="fas fa-heart on" alt="Faz parte dos seus favoritos"></i>
+      </div>
+
+      <div class="center-2">
+      <ul>
+        <li><p><i class="fas fa-star"></i>500 avaliações</p>
+        </li>
+        <li>
+             <p><i class="fas fa-map-marker-alt"> </i> 69 Km do seu endereço</p>
+        </li>
+              <li><p>
+                  <i class="fas fa-calendar-alt on"> </i>
+                    Você ja "reservou" Daniel Carvalho algumas vezes
+              </p></li>
+
+              <li><p><i class="fab fa-gratipay"></i>Daniel é o favorito de algumas mães.</p></li>
+                  <li><p>
+          <i class="far fa-thumbs-up"> </i>Alguma amiga já "contratou" Daniel Carvalho </li>
+      </div>
+
+      <div class="center-3">
+    <ul class="list-inline">
+      <li><%= link_to "<i class='fab fa-github'></i>".html_safe, "https://github.com/danielbpc2", style: "font-size: 70px;" %></li>
+      <li><%= link_to "<i class='fab fa-linkedin'></i>".html_safe, "https://linkedin.com/in/danielbpc/", style: "font-size: 70px;" %></li>
+    </ul>
+
+  </div>
+</div>
 </div>
