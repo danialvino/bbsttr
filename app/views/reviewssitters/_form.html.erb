@@ -1,6 +1,6 @@
 <div class="container">
   <h1> Deixe aqui sua avaliaçao</h1>
-  Baby-sitting feito no dia : <%= @booking.start_time %>
+  Baby-sitting feito no dia : <%= @booking.start_time.strftime"%e %A, %B de %Y às %H:%I" %>
   <br>
   Nome do pai : <%= @booking.user.name %>
   <br>
