@@ -1,25 +1,24 @@
 <div id="head-home" class="home">
   <div class="container header-container">
+    <div class="row">
+      <div class="col-md-8 left">
         <h1>Encontre uma babá de confiança em poucos cliques.</h1>
-        <h5>Procure agora as <strong>melhores</strong> baby-sitters disponíveis.</h5>
-
-        <div class="home-search">
-         <%= form_tag sitters_path, method: :get do %>
-          <%= text_field_tag :user_address, (current_user.nil? ? "" : current_user.address), placeholder: (current_user.nil? ? "Digite o seu endereço" : current_user.address), class: 'bord-form' %>
-          <span style="color: white;">no dia</span>
-          <%= text_field_tag :start_time,
-            params[:start_time], placeholder: (Time.now.change({ hour: 20, min: 30, sec: 0 })).strftime("%F %H:%M"),
-            class: "flatpickr-input", required: true%>
-            <span style="color: white;">por</span>
-          <%= number_field_tag :end_time,
-            params[:end_time], placeholder:2, class: 'bord-form',
-            # class: "flatpickr-input",
-             required: true %>
-            <span style="color: white;">horas</span>
-          <%= submit_tag "Procurar", class: "btn btn-xs btn-light-blue procurar" %>
-         <% end %>
-        </div>
-
+        <h5>Procure agora as melhores baby-sitters disponíveis.</h5>
+    </div>
+    <div class="col-md-4 home-search effect5">
+     <%= form_tag sitters_path, method: :get do %>
+     <ul><li><%= text_field_tag :user_address, (current_user.nil? ? "" : current_user.address), placeholder: (current_user.nil? ? "Digite o seu endereço" : current_user.address), class: 'bord-form' %></li>
+     <li><%= text_field_tag :start_time,
+        params[:start_time], placeholder: (Time.now.change({ hour: 20, min: 30, sec: 0 })).strftime("%F %H:%M"),
+        class: "flatpickr-input", required: true%></li>
+     <li><%= number_field_tag :end_time,
+        params[:end_time], placeholder:2, class: 'bord-form',
+        # class: "flatpickr-input",
+         required: true %></li>
+      <%= submit_tag "Procurar", class: "btn btn-xs btn-light-blue procurar" %>
+     <% end %>
+    </div>
+    </div>
   </div>
 </div>
 <%= render "pages/content" %>
