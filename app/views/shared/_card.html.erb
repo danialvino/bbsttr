@@ -48,7 +48,28 @@
         <% end %>
       </li>
 
-      <li><p>
+            <li><p>
+              <% if user_signed_in? %>
+                <% @bookings_history = Booking.count("user_id = #{current_user.id} AND sitter_id = #{sitter.id}") %>
+                <% if @bookings_history == 0 %>
+                <i class="far fa-calendar-alt off"> </i>
+                  Você nunca reservou <%= sitter.user.name.capitalize %>
+                <% else %>
+                <i class="fas fa-calendar-alt on"> </i>
+                  Você ja reservou <%= sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %>
+                <% end %>
+              <% else %>
+                Você nunca reservou <%= sitter.user.name.capitalize %>
+              <% end %>
+            </p></li>
+
+            <li><p><i class="fab fa-gratipay"></i>
+              <% if Favorite.where(sitter_id: sitter.id).count == 0 %>
+                <%=  sitter.user.name.capitalize %> não é a favorita de nenhum pai por enquanto.</p></li>
+              <% else %>
+                <%=  sitter.user.name.capitalize %> é a favorita de <%= pluralize(Favorite.where(sitter_id: sitter.id).count, 'pai', 'pais') %>.</p></li>
+              <% end %>
+                <li><p>
        <% unless current_user.uid.nil? %>
           <% friends_that_booked = [] %>
           <% bookings = sitter.bookings  %>
@@ -67,20 +88,7 @@
         <i class="far fa-thumbs-up"> </i>Entre com o Facebook para ver qual dos seus amigos já reservaram <%= sitter.user.name.capitalize %></p></li>
             <% end %>
 
-            <li><p>
-              <% if user_signed_in? %>
-                <% @bookings_history = Booking.count("user_id = #{current_user.id} AND sitter_id = #{sitter.id}") %>
-                <% if @bookings_history == 0 %>
-                <i class="far fa-calendar-alt off"> </i>
-                  Você nunca reservou <%= sitter.user.name.capitalize %>
-                <% else %>
-                <i class="fas fa-calendar-alt on"> </i>
-                  Você ja reservou <%= sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %>
-                <% end %>
-              <% else %>
-                Você nunca reservou <%= sitter.user.name.capitalize %>
-              <% end %>
-            </p></li>
+
           </ul>
     </div>
 
