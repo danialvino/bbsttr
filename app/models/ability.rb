@@ -11,6 +11,8 @@ class Ability
         can :manage, Available
         can :read, Booking, sitter_id: user.sitter.id
         can :update, Booking, sitter_id: user.sitter.id
+        can :start_work, Booking, sitter_id: user.sitter.id
+        can :finished_work, Booking, sitter_id: user.sitter.id
         can :manage, Reviewsparent, sitter_id: user.sitter.id
         can :read, Reviewssitter
         can :read, Favorite

@@ -39,7 +39,6 @@
             <% unless booking.check_out %>
               <% if booking.check_in %>
                 <%= link_to "Check out", checkout_path(sitter_id: current_user.sitter.id, booking_id: booking.id), remote: true, class: "btn btn-pink", id: booking.id %>
-
               <% else %>
                 <%= link_to "Check in", checkin_path(sitter_id: current_user.sitter.id, booking_id: booking.id), remote: true, class: "btn btn-pink", id: booking.id %>
                <% end %>
