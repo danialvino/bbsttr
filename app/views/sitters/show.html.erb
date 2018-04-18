@@ -10,7 +10,7 @@
         <% end %>
           <img src="<%= avatar_url %>" alt="" width="150" class="img-circle">
 
-        <p><i class="fas fa-handshake"></i>  Cadastro feito em <%= @sitter.user.created_at.strftime("%m/%Y") %></p>
+        <p><i class="fas fa-handshake"></i>  Estou no babáconfia desde <%= @sitter.user.created_at.strftime("%m/%Y") %></p>
         <p>
         <% if Reviewssitter.where(sitter_id: @sitter.id).count > 0 %>
           <i class="fas fa-star"></i> <%= Reviewssitter.where(sitter_id: @sitter.id).average(:rating).round(2) %></strong> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: @sitter.id).count, 'notas', 'avaliações') %>)
@@ -103,7 +103,7 @@
         <br><br>
 <hr/>
 
-        Gostou do meu perfil ? Compartilhe no Facebook : <%= social_share_button_tag("Share to Facebook", :url => sitter_url(@sitter.id), desc: @sitter.user.name) %>
+        Gostou do meu perfil? Compartilhe no Facebook <%= social_share_button_tag("Share to Facebook", :url => sitter_url(@sitter.id), desc: @sitter.user.name) %>
       </p>
     </div>
   </div>
