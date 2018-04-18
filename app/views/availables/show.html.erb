@@ -3,8 +3,8 @@
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <div class="booking-description text-center">
-        <p>Data e Horário de inicio: <strong><%= @available.start_time.strftime("%e %A, %B de %Y às %H:%I")%>h</strong>.</p>
-        <p>Hora de fim de disponibilidade: <strong><%= @available.end_time.strftime("%H:%I")%>h.</strong></p>
+        <p>Data e Horário de inicio: <strong><%= localize(@available.start_time, format: "%A, %e de %B de %Y às %H:%I")%>horas.</strong></p>
+        <p>Hora de fim de disponibilidade: <strong><%= @available.end_time.strftime("%H:%I")%>horas.</strong></p>
         <br>
         <%= link_to "Apagar disponibilidade", available_path(@available), method: :delete, data: {confirm: 'Você tem certeza que quer apagar essa disponibilidade?'}, class: "btn btn-red-dark" %>
       </div>

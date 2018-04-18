@@ -17,8 +17,8 @@
       <div class="card-body">
 
         <% if current_user.sitter? %>
-          <h2><%= localize(booking.start_time, format: "%e %A, %B de %Y às %H:%I") %></h2>
-          <p>Finalizado : <%= localize(booking.end_time, format: "%e %A, %B de %Y às %H:%I") %></p>
+          <h2><%= localize(booking.start_time, format: "%A, %e de %B de %Y às %H:%I") %></h2>
+          <p>Finalizado : <%= localize(booking.end_time, format: "%A, %e de %B de %Y às %H:%I") %></p>
           <p>Contratador: <%= booking.user.name %></p>
           <p>Filhos: <% booking.user.children.each do |child| %>
             <%= child.gender %> de <%= child.age %> anos.
@@ -48,8 +48,8 @@
 
         <% else %>
 
-          <h2><%= booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></h2>
-          <p>Finalizado : <%= booking.end_time.strftime("%e %A, %B de %Y às %H:%I") %></p>
+          <h2><%= localize(booking.start_time, format:"%A, %e de %B de %Y às %H:%I") %></h2>
+          <p>Finalizado : <%= localize(booking.end_time, format:"%A, %e de %B de %Y às %H:%I") %></p>
           <p>Babá: <%= link_to booking.sitter.user.name, sitter_path(booking.sitter.id) %></p>
           <p>Contato: <%= booking.sitter.user.phone %></p>
           <p>Faturamento: R$<%= booking.sitter.price %>/hora</p>

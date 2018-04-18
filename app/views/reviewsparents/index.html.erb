@@ -45,7 +45,7 @@
             <div class="col-sm-6">
               <div class="card-booking">
                 <div class="card-body">
-                  <p class="title">Baby-sitting : <%= review.booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></p>
+                  <p class="title">Baby-sitting : <%= localize(review.booking.start_time, format: "%A, %e de %B de %Y às %H:%I") %></p>
                   <p>Endereço : <%= review.user.address %></p>
                   <p>Sitter que fez a avaliaçao : <%= link_to review.sitter.user.name, sitter_path(review.sitter.id) %></p>
                   <p>Avaliaçao : <%= review.description %></p>
@@ -70,7 +70,7 @@
             <div class="col-sm-6">
               <div class="card-booking">
                 <div class="card-body">
-                  <p class="title">Baby-sitting : <%= review.booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></p>
+                  <p class="title">Baby-sitting : <%= localize(review.booking.start_time, format: "%A, %e de %B de %Y às %H:%I") %></p>
                   <p>Endereço : <%= review.user.address %></p>
                   <p>Sitter avaliada : <%= link_to review.sitter.user.name, sitter_path(review.sitter.id) %></p>
                   <p>Avaliaçao : <%= review.description %></p>
