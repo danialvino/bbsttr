@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <div class="booking-description">
-        <p>Data e Horário de Chegada: <strong><%= @booking.start_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>, até <strong><%= @booking.end_time.strftime("%e %A, %B de %Y às %H:%I") %></strong>.</p>
+        <p>Data e Horário de Chegada: <strong><%= localize(@booking.start_time, format: "%e %A, %B de %Y às %H:%I") %></strong>, até <strong><%= localize(@booking.end_time, format: "%e %A, %B de %Y às %H:%I") %></strong>.</p>
         <p>Babá: <%= @booking.sitter.user.name %></p>
         <p>Contato: <%= @booking.sitter.user.phone %></p>
         <p>Faturamento:</p>
