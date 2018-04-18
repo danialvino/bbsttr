@@ -1,0 +1,60 @@
+.create-available {
+  background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.view-available {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+#available_start_time {
+  background-color: white;
+  border: none;
+  border-bottom: 4px solid $pink;
+  padding: 10px 10px 10px 35px !important;
+  // background-color: white;
+  background-size: 20px;
+  background-image: url('Calendar-1.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+#available_start_time:focus {
+    border-bottom: 4px solid $green;
+}
+
+#available_end_time {
+    border: none;
+  border-bottom: 4px solid $pink;
+  padding: 10px 10px 10px 35px !important;
+  // background-color: white;
+  background-size: 20px;
+  background-image: url('time.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+
+#available_end_time:focus {
+  border-bottom: 4px solid $green;
+}
