@@ -13,7 +13,6 @@ load_and_authorize_resource
 
   def show
     @booking = Booking.find(params[:id])
-
   end
 
   def change_status_to_canceled
@@ -41,6 +40,7 @@ load_and_authorize_resource
     @booking = Booking.find(params[:booking_id])
     @booking.check_in = Time.now
     if @booking.save!
+      UserMailer.checkin(@booking).deliver_later
       respond_to do |format|
         format.js
       end
@@ -51,6 +51,7 @@ load_and_authorize_resource
     @booking = Booking.find(params[:booking_id])
     @booking.check_out = Time.now
     if @booking.save!
+      UserMailer.checkout(@booking).deliver_later
       respond_to do |format|
         format.js
       end
