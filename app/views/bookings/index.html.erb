@@ -25,8 +25,8 @@
             <% end %>
           </p>
           <p>Contato: <%= booking.user.phone %></p>
-          <p>Faturamento:</p>
-          <p>R$<%= booking.sitter.price %>/hora, você foi contratado por <%= (((booking.end_time - booking.start_time)/ 3600).round) %> horas
+          <p>Faturamento: R$<%= booking.sitter.price %>/hora</p>
+          <p>Duração : <%= Time.at(booking.end_time - booking.start_time).utc.strftime "%H horas, %M minutos e %S segundos" %></p>
           <p><strong> Total: R$<%= ( booking.sitter.price * ((booking.end_time - booking.start_time)/ 3600) ) %> </strong></p>
 
             <% if Reviewsparent.where(booking: booking).count == 0 %>
@@ -52,8 +52,8 @@
           <p>Finalizado : <%= booking.end_time.strftime("%e %A, %B de %Y às %H:%I") %></p>
           <p>Babá: <%= link_to booking.sitter.user.name, sitter_path(booking.sitter.id) %></p>
           <p>Contato: <%= booking.sitter.user.phone %></p>
-          <p>Faturamento:</p>
-          <p>R$<%= booking.sitter.price %>/hora, você contratou por <%= (((booking.end_time - booking.start_time)/ 3600).round) %> horas
+          <p>Faturamento: R$<%= booking.sitter.price %>/hora</p>
+          <p>Duração : <%= Time.at(booking.end_time - booking.start_time).utc.strftime "%H horas, %M minutos e %S segundos" %></p>
           <p><strong> Total: R$<%= ( booking.sitter.price * ((booking.end_time - booking.start_time)/ 3600) ) %> </strong></p>
 
             <% if Reviewssitter.where(booking: booking).count == 0 %>
