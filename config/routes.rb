@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # pages
   root to: 'pages#home'
   get '/privacy', to: 'pages#privacy_policy'
+  get "/about", to: 'pages#about', as: "about"
   # sitter routes
   resources :sitters
   # available dates routes
