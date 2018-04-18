@@ -11,6 +11,7 @@ loadDynamicBannerText();
 $('#calendar').fullCalendar({
     schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
     editable: false,
+    locale: "pt-BR",
     scrollTime: '06:00', // undo default 6am scrollTime
     contentHeight: 455,
     firstDay: 0,

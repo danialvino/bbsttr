@@ -19,7 +19,7 @@ gem 'omniauth-facebook'
 gem 'social-share-button'
 gem 'timepiece'
 gem 'bootstrap-toggle-rails'
-
+gem 'rails-i18n', '~> 5.1'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 5.0.9'
