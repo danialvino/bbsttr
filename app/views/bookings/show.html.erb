@@ -11,7 +11,7 @@
         <p>R$<%= @booking.sitter.price %>/hora, você contratou por <%= (((@booking.end_time - @booking.start_time)/ 3600).round) %> horas</p>
         <p> Total: R$<%= ( @booking.sitter.price * ((@booking.end_time - @booking.start_time)/ 3600) ) %> </p>
         <br>
-
+        <% unless current_user.sitter? %>
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-name="<%= current_user.name %>"
@@ -20,6 +20,7 @@
           data-amount="<%= (@booking.sitter.price * (((@booking.end_time - @booking.start_time)/ 3600)) * 100) %>"
           data-currency="<%= @booking.sitter.price.currency %>"
           data-label="Contratar"></script>
+        <% end %>
       </div>
     </div>
   </div>

@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   # childs routes
   resources :children, only:  [:index, :edit, :update, :show, :destroy, :new, :create]
   # available dates routes
-  resources :availables, only: [:index, :edit, :update, :show]
+  resources :availables, only: [:index, :edit, :update, :show, :destroy]
   get :availables, to: 'availables#myavailables', as: 'my_availables'
   # bank sitter routes
   resources :bankinfos, only: [:show, :edit, :update, :new, :create]
