@@ -1,14 +1,13 @@
 <div class="container">
   <h1> Deixe aqui sua avaliaçao</h1>
-  Baby-sitting feito no dia : <%= @booking.start_time.strftime"%e %A, %B de %Y às %H:%I" %>
-  <br>
-  Nome do pai : <%= @booking.user.name %>
-  <br>
-  Endereço : <%= @booking.user.address %>
-  <br><br>
+  <p>Baby-sitting feito no dia : <%= localize(@booking.start_time, format: "%A, %e de %B de %Y às %H:%I") %></p>
+  <p>Nome do pai : <%= @booking.user.name %></p>
+  <p>Endereço : <%= @booking.user.address %></p>
+  <hr/>
+
   <%= simple_form_for [@booking, @reviewssitter] do |f| %>
-    <%= f.input :description,label: "Descrição", hint: "O seu comentario sobre o serviço", error: "Não pode estar em branco!"%>
-    <%= f.input :rating, label: "Sua avaliação do serviço", hint: "Note até 5!"%>
-    <%= f.submit %>
+    <%= f.input :description,label: "Descrição", placeholder: "O seu comentario sobre o serviço", error: "Não pode estar em branco!"%>
+    <%= f.input :rating, label: "Sua avaliação do serviço", placeholder: "Note até 5!", collection:[1,2,3,4,5] %>
+    <%= f.submit "Enviar", class: "btn btn-pink" %>
   <% end %>
 </div>
