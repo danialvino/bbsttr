@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  # errors routes
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/422", :to => "errors#Unprocessable", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
+
   # user routes
   devise_for :users,
       controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }

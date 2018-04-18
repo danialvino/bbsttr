@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     if user_signed_in?
-      redirect_back(fallback_location: root_path, alert: "(Error 403): Your account is not able to do this action.")
+      redirect_back(fallback_location: root_path, alert: "(Error 403): Sua conta não tem permissão de fazer esta ação.")
     else
       redirect_to new_user_registration_path
     end
