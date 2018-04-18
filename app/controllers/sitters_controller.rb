@@ -24,10 +24,12 @@ class SittersController < ApplicationController
   end
 
   def show
-    unless current_user.uid.nil?
-      url  = open("https://graph.facebook.com/v2.12/#{current_user.uid}?fields=friends&access_token=#{current_user.token}").read
-      friends = JSON.parse(url)
-      @friend_list = friends['friends']['data']
+    if user_signed_in?
+      unless current_user.uid.nil?
+        url  = open("https://graph.facebook.com/v2.12/#{current_user.uid}?fields=friends&access_token=#{current_user.token}").read
+        friends = JSON.parse(url)
+        @friend_list = friends['friends']['data']
+      end
     end
     @sitter = Sitter.find(params[:id])
     @favorite = Favorite.new
