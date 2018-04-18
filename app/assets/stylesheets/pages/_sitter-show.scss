@@ -8,11 +8,15 @@
 .profile .main {
   grid-row: 1 / span 1;
   grid-column: 1 / span 4;
-    background-color: white;
+  background-color: white;
+}
+
+.img-circle {
+  margin-bottom: 10px;
 }
 
 .profile .description {
-  grid-row: 2 / span 3;
+  grid-row: 2 / span 4;
   grid-column: 2 / span 3;
 }
 
