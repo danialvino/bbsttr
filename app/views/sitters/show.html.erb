@@ -10,12 +10,12 @@
         <% end %>
           <img src="<%= avatar_url %>" alt="" width="150" class="img-circle">
 
-        <p>Cadastro feito em <%= @sitter.user.created_at.strftime("%m/%Y") %></p>
+        <p><i class="fas fa-handshake"></i>  Cadastro feito em <%= @sitter.user.created_at.strftime("%m/%Y") %></p>
         <p>
         <% if Reviewssitter.where(sitter_id: @sitter.id).count > 0 %>
-          <%= Reviewssitter.where(sitter_id: @sitter.id).average(:rating).round(2) %></strong> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: @sitter.id).count, 'notas', 'avaliações') %>)
+          <i class="fas fa-star"></i> <%= Reviewssitter.where(sitter_id: @sitter.id).average(:rating).round(2) %></strong> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: @sitter.id).count, 'notas', 'avaliações') %>)
         <% else %>
-          Ainda não foi avaliada. </p>
+          <i class="fas fa-star"></i> Ainda não foi avaliada. </p>
         <% end %>
 
       <% if Favorite.where(sitter_id: @sitter.id, user_id: current_user).count > 0 %>
@@ -53,10 +53,22 @@
  <div class="stat">
     <div class="stat-content">
       <h3>Daniel</h3>
-      <p>e <strong>3</strong> outros amigos ja contrataram</p>
+      <p>e <strong>3</strong> outros amigos ja contrataram <%= @sitter.user.name.capitalize %></p>
     </div>
   </div>
 
+
+ <div class="stat">
+    <div class="stat-content">
+      <% if Favorite.where(sitter_id: @sitter.id).count == 0 %>
+      <h3>Nenhum</h3>
+      <p>tem <%= @sitter.user.name.capitalize %> como favorito.</p>
+      <% else %>
+      <h3><%= pluralize(Favorite.where(sitter_id: @sitter.id).count, 'pai', 'pais') %></h3>
+      <p>tem <%= @sitter.user.name.capitalize %> como favorito.</p>
+      <% end %>
+    </div>
+  </div>
 
   <div class="description">
     <div class="description-content">
