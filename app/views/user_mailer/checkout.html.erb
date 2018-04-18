@@ -1,0 +1,13 @@
+<div class="container">
+  <h3 style="color: #61C0BF; text-align: center;">Sua babá já encerrou o expediente de trabalho!</h3>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="booking-description">
+        <p>Data e Horário de Saida: <strong><%= @booking.check_out.strftime("%e %A, %B de %Y às %H:%I") %></strong>.</p>
+        <p>Babá: <%= @booking.sitter.user.name %></p>
+        <p>Contato: <%= @booking.sitter.user.phone %></p>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
