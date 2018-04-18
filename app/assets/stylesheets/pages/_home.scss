@@ -17,7 +17,7 @@
     position: relative;
     z-index: 10;
     & h1 {
-    font-size: 48px;
+    font-size: 46px;
     font-weight: 900;
     line-height: 1;
     color: white;
@@ -112,10 +112,61 @@
 
 
 .section-home {
-    padding-top: 112px;
-    padding-bottom: 112px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     background-color: white;
+        & h1 {
+    font-size: 46px;
+    font-weight: 900;
+    line-height: 1;
+    color: $pink;
+    padding-bottom:20px;
+    }
 }
+
+.section-home-bottom{
+    height:20vh;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+    align-items:start;
+        & h1 {
+    font-size: 46px;
+    font-weight: 900;
+    line-height: 1;
+    color: $pink;
+    padding-bottom:20px;
+    }
+}
+
+
+
+.btn-light-blue {
+  position: relative;
+  border: none;
+  font-weight: 900;
+  box-shadow: 0 0 0 0 #61C0BF;
+  border-radius: 4px;
+  // background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/173024/jonathanlarradet_copy.png);
+  background-size:cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  -webkit-animation: pulse 3s infinite cubic-bezier(0.66, 0, 0, 1);
+  -moz-animation: pulse 3s infinite cubic-bezier(0.66, 0, 0, 1);
+  -ms-animation: pulse 3s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation: pulse 3s infinite cubic-bezier(0.66, 0, 0, 1);
+
+
+.btn-light-blue:hover
+{
+  -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
+}
+
+@-webkit-keyframes pulse {to {box-shadow: 0 0 0 15px rgba(232, 76, 61, 0);}}
+@-moz-keyframes pulse {to {box-shadow: 0 0 0 15px rgba(232, 76, 61, 0);}}
+@-ms-keyframes pulse {to {box-shadow: 0 0 0 15px rgba(232, 76, 61, 0);}}
+@keyframes pulse {to {box-shadow: 0 0 0 15px rgba(232, 76, 61, 0);}}
+ }
 
 .infos-sections {
     flex-direction: column;
@@ -149,14 +200,18 @@
 .search-img {
     width: 144px;
     height: 144px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    display: block;
+    margin:auto;
+    padding:5px;}
+
 
 .search-text {
-    padding-left: 40px;
+    padding: 5px;
     max-width: 496px;
+    & .boxtitle {
+      height:90px;
+      vertical-align:center;
+    }
 }
 
 
@@ -276,4 +331,66 @@
 
 .procurar {
   margin-top: 10px;
+}
+
+
+
+.section-home-testemunhas {
+    padding-bottom: 10px;
+    background-color: $pink;
+        & h1 {
+    font-size: 46px;
+    font-weight: 900;
+    line-height: 1;
+    color: white;
+    padding-bottom:20px;
+    }
+}
+
+section {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.quote {
+    color: rgba(0,0,0,.1);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/*-------------------------------*/
+/*    Carousel Fade Transition   */
+/*-------------------------------*/
+
+#fade-quote-carousel.carousel {
+  padding-bottom: 60px;
+}
+#fade-quote-carousel.carousel .carousel-inner .item {
+  opacity: 0;
+  -webkit-transition-property: opacity;
+      -ms-transition-property: opacity;
+          transition-property: opacity;
+}
+#fade-quote-carousel.carousel .carousel-inner .active {
+  opacity: 1;
+  -webkit-transition-property: opacity;
+      -ms-transition-property: opacity;
+          transition-property: opacity;
+}
+#fade-quote-carousel.carousel .carousel-indicators {
+  bottom: 10px;
+}
+#fade-quote-carousel.carousel .carousel-indicators > li {
+  background-color: #e84a64;
+  border: none;
+}
+#fade-quote-carousel blockquote {
+    text-align: center;
+    border: none;
+}
+#fade-quote-carousel .profile-circle {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 100px;
 }

@@ -1,45 +1,118 @@
 <div class="section-home text-center">
   <div class="container">
-    <h2>Como funciona</h2>
+    <h1>A tecnologia BabáConfia facilita a sua vida</h1>
 
-    <div class="infos-sections">
-      <div class="search-section text-center">
-        <div class="search-img">
-          <%= image_tag "search.svg", class: "img"%>
-        </div>
-        <div class="search-text">
-          <h3>Procure sua babá</h3>
-          <p>Informe a sua localização e a data que deseja e encontre a sua babá de confiança. </p>
-        </div>
-      </div>
-        <hr>
-      <div class="search-section text-center">
-        <div class="search-img">
-          <%= image_tag "star.svg", class: "img"%>
-        </div>
-        <div class="search-text">
-          <h3>Encontre as melhores babás disponíveis</h3>
-          <p>Babás que já foram recomendadas por seus amigos e que se encontram disponíveis pra você.</p>
-        </div>
-      </div>
-        <hr>
-      <div class="search-section text-center">
-        <div class="search-img">
-          <%= image_tag "card.svg", class: "img"%>
-        </div>
-        <div class="search-text">
-          <h3>Pague através do app</h3>
-          <p>Tenha a comodidade e segurança de realizar o pagamento através do babáconfia.</p>
-        </div>
-      </div>
-        <hr>
-      <div class="call-to-action text-center">
-        <div class="search-text">
-          <h2>Cadastre-se e faça parte</h2>
-          <%= link_to "Cadastrar", new_user_registration_path, class: "btn btn-lg btn-light-blue" %>
-        </div>
-      </div>
-
+<div class="row">
+  <div class="col-md-4">
+    <div class="search-img">
+      <%= image_tag "search.svg", class: "img" %>
+    </div>
+    <div class="search-text">
+      <div class="boxtitle"><h3>Disponibilidade garantida</h3></div>
+      <p>Indique seu endereço, dia e horario. Nosso algoritmo identifique em instantes todas babás disponiveis e perto da sua casa. É só escolher !</p>
     </div>
   </div>
+
+  <div class="col-md-4">
+    <div class="search-img">
+      <%= image_tag "star.svg", class: "img" %>
+    </div>
+    <div class="search-text">
+      <div class="boxtitle"><h3>Simply the best !</h3></div>
+      <p>Visualize qual amigo seu já recomendou cada babá. Também, consulte notas e avaliações das babás antes de escolher. Resultado garantido !</p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="search-img">
+      <%= image_tag "card.svg", class: "img" %>
+    </div>
+    <div class="search-text">
+      <div class="boxtitle"><h3>Pague através do app</h3></div>
+      <p>Não preciso sacar dinheiro antes de voltar em cas. Cuidamos de tudo através de nossa funcionalidade de pagamento seguro.</p>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+</div>
+<div class="section-home-testemunhas">
+
+
+<section id="carousel">
+  <div class="container">
+        <h1>Eles confiam na gente</h1>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+                <div class="quote"><i class="fa fa-quote-left fa-4x"></i></div>
+        <div class="carousel slide" id="fade-quote-carousel" data-ride="carousel" data-interval="3000">
+          <!-- Carousel indicators -->
+                  <ol class="carousel-indicators">
+            <li data-target="#fade-quote-carousel" data-slide-to="0"></li>
+            <li data-target="#fade-quote-carousel" data-slide-to="1"></li>
+            <li data-target="#fade-quote-carousel" data-slide-to="2" class="active"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="3"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="4"></li>
+                    <li data-target="#fade-quote-carousel" data-slide-to="5"></li>
+          </ol>
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+            <div class="item">
+                        <div class="profile-circle" style="background-color: rgba(0,0,0,.2);"></div>
+              <blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+              </blockquote>
+            </div>
+            <div class="item">
+                        <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
+              <blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+              </blockquote>
+            </div>
+            <div class="active item">
+                        <div class="profile-circle" style="background-color: rgba(145,169,216,.2);"></div>
+              <blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+              </blockquote>
+            </div>
+                    <div class="item">
+                        <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
+                <blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+              </blockquote>
+            </div>
+                    <div class="item">
+                        <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
+                <blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+              </blockquote>
+            </div>
+                    <div class="item">
+                        <div class="profile-circle" style="background-color: rgba(77,5,51,.2);"></div>
+                <blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+
+<div class="section-home-bottom">
+
+  <div class="container">
+        <h1>Cadastre-se e faça parte !</h1>
+        <%= link_to "Cadastrar", new_user_registration_path, class: "btn btn-lg btn-light-blue" %>
+  </div>
+
 </div>
