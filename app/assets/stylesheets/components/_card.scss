@@ -119,6 +119,7 @@ h2 {
   color: #FECB00;
   opacity: 1;
   margin-right: 5px;
+  margin-left: -4px;
 }
 
 
@@ -128,13 +129,20 @@ h2 {
     margin-right: 5px;
 }
 
+.fa-gratipay{
+  color: $pink;
+  opacity: 1;
+  margin-right: 5px;
+}
+
+
 .fa-calendar-alt.off {
   opacity: 1;
     margin-right: 5px;
 }
 
 .fa-map-marker-alt {
-  color: $pink;
+  color: #DD4D42;
   opacity: 1;
   margin-right: 5px;
 }
