@@ -9,7 +9,7 @@
 //= require bootstrap-toggle
 //= require toastr
 //= require_tree .
-const Portuguese =
+var Portuguese =
 CustomLocale = {
   weekdays: {
     shorthand: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
