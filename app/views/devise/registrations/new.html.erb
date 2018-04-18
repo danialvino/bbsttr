@@ -12,8 +12,8 @@
         <%= f.error_notification %>
 
         <div id="box">
-          <h5>Nome<%= f.input :name, required: true, label: false, required: true %></h5>
-          <h5>Email<%= f.input :email, required: true, label: false, autofocus: true, required: true %></h5>
+          <h5>Nome<%= f.input :name, required: true, label: false, autofocus: true, required: true %></h5>
+          <h5>Email<%= f.input :email, required: true, label: false, required: true %></h5>
           <h5>Senha<%= f.input :password, required: true, label: false, hint: ("#{@minimum_password_length} Caracteres mínimo." if @minimum_password_length) %>
             <h5>Confirme sua senha<%= f.input :password_confirmation, label: false, required: true %></h5>
             <h5>Endereço<%= f.input :address, label: false, required: true %></h5>
