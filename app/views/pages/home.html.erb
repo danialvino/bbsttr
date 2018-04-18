@@ -1,11 +1,26 @@
 <div id="head-home" class="home">
   <div class="container header-container">
+
     <div class="row">
+
       <div class="col-md-8 left">
-        <h1>Encontre uma babá de confiança em poucos cliques.</h1>
-        <h5>Procure agora as melhores baby-sitters disponíveis.</h5>
-    </div>
-    <div class="col-md-4 home-search effect5">
+        <h1>Babá de confiança, já !</h1>
+        <h5>BabáConfia é uma solução revolucionaria para encontrar, contratar, e pagar baby-sitters de confiança perto de você.<br>
+        Cadastre-se ou experimente já !</h5>
+
+
+ <a class="btn btn-md btn-outline-primary">
+    Criar minha conta
+</a>
+
+ <a class="btn btn-md btn-outline-primary">
+    Quero ser baba !
+  </a>
+
+      </div>
+
+      <div class="col-md-4 home-search effect5">
+      <h1> Experimente </h1>
      <%= form_tag sitters_path, method: :get do %>
      <ul><li><%= text_field_tag :user_address, (current_user.nil? ? "" : current_user.address), placeholder: (current_user.nil? ? "Digite o seu endereço" : current_user.address), class: 'bord-form' %></li>
      <li><%= text_field_tag :start_time,
@@ -15,7 +30,7 @@
         params[:end_time], placeholder:"por 2 horas", class: 'bord-form',
         # class: "flatpickr-input",
          required: true %></li>
-      <%= submit_tag "Procurar", class: "btn btn-xs btn-light-blue procurar" %>
+      <%= submit_tag "Procurar", class: "btn btn-block btn-light-blue" %>
      <% end %>
     </div>
     </div>
