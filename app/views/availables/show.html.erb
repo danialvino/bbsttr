@@ -1,2 +1,16 @@
-<h1>Availables#show</h1>
-<p>Find me in app/views/availables/show.html.erb</p>
+<div id="body-min-height">
+  <div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="booking-description text-center">
+        <p>Data e Horário de inicio: <strong><%= @available.start_time.strftime("%e %A, %B de %Y às %H:%I")%>h</strong>.</p>
+        <p>Hora de fim de disponibilidade: <strong><%= @available.end_time.strftime("%H:%I")%>h.</strong></p>
+        <br>
+        <%= link_to "Apagar disponibilidade", available_path(@available), method: :delete, data: {confirm: 'Você tem certeza que quer apagar essa disponibilidade?'}, class: "btn btn-red-dark" %>
+      </div>
+    </div>
+  </div>
+  <br>
+<div class="text-center"><%= link_to "Voltar", availables_path, class: "btn btn-pink btn-xs", style: "transform: scale(0.8);" %></div>
+</div>
+</div>

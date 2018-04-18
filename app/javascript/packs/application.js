@@ -37,8 +37,21 @@ $('#calendar').fullCalendar({
       },
     },
     resources: [],
-    events: '/api/v1/availables'
+    events: '/api/v1/availables',
     // events: array_available,
+    eventClick: function(event) {
+    if (event.color == "red"){
+      {
+        window.open(`/bookings/${event.id}`, "_self");
+      }
+    }
+      else {
+      {
+        window.open(`/availables/${event.id}`, "_self");
+      }
+
+      }
+  }
   });
 
 

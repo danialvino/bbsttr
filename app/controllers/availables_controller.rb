@@ -43,6 +43,9 @@ load_and_authorize_resource param_method: :user_params
   end
 
   def destroy
+    @available = Available.find(params[:id])
+    @available.destroy
+    redirect_to availables_path
   end
 
   private
