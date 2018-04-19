@@ -12,16 +12,15 @@
         <%= f.error_notification %>
 
           <div id="box">
-<h2>Cadastro Express</h2>
-<br>            <%- if devise_mapping.omniauthable? %>
+<br>
+ <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
 <%= link_to omniauth_authorize_path(resource_name, provider), class: 'btn btn-social btn-facebook' do %><i class="fab fa-facebook-f"></i>Sign in with <%= OmniAuth::Utils.camelize(provider) %><% end %><br />
   <% end -%>
 <% end -%>
 <br><p>Nunca compartilharemos dados pessoais.</p>
 <br><hr>
-<br>
-<h2>Cadastro detalhado</h2>
+<h4>Ou</h4>
 <br>
           <h5>Nome<%= f.input :name, required: true, label: false, autofocus: true, required: true %></h5>
           <h5>Email<%= f.input :email, required: true, label: false, required: true %></h5>
