@@ -63,9 +63,9 @@
 
             <li><p><i class="fab fa-gratipay"></i>
               <% if Favorite.where(sitter_id: sitter.id).count == 0 %>
-                <%=  sitter.user.name.capitalize %> não é a favorita de nenhum pai por enquanto.</p></li>
+                <%=  sitter.user.name.capitalize %> não é favorito de ninguem por enquanto.</p></li>
               <% else %>
-                <%=  sitter.user.name.capitalize %> é a favorita de <%= pluralize(Favorite.where(sitter_id: sitter.id).count, 'pai', 'pais') %>.</p></li>
+                <%=  sitter.user.name.capitalize %> é favorito de <%= pluralize(Favorite.where(sitter_id: sitter.id).count, 'familia', 'familias') %>.</p></li>
               <% end %>
                 <li><p>
       <% if user_signed_in? %>

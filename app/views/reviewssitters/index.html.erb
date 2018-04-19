@@ -47,7 +47,7 @@
                 <div class="card-body">
                   <p class="title">Baby-sitting : <%= localize(review.booking.start_time, format: "%A, %e de %B de %Y às %H:%I") %></p>
                   <p>Endereço : <%= review.user.address %></p>
-                  <p>Pai que fez a avaliaçao : <%= link_to review.user.name %></p>
+                  <p>Familia que fez a avaliaçao : <%= link_to review.user.name %></p>
                   <p>Avaliaçao : <%= review.description %></p>
                   <p>Nota recebida: <%= review.rating %> / 5<br>
                     <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span></p>
@@ -72,7 +72,7 @@
                 <div class="card-body">
                   <p class="title">Baby-sitting : <%= localize(review.booking.start_time, format: "%A, %e de %B de %Y às %H:%I") %></p>
                   <p>Endereço : <%= review.user.address %></p>
-                  <p>Pai avaliada : <%= review.user.name %></p>
+                  <p>Familia avaliada : <%= review.user.name %></p>
                   <p>Avaliaçao : <%= review.description %></p>
                   <p>Nota dada : <%= review.rating %> / 5<br>
                     <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span></p>

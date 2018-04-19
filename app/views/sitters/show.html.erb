@@ -64,7 +64,7 @@
       <h3>Nenhum</h3>
       <p>tem <%= @sitter.user.name.capitalize %> como favorito.</p>
       <% else %>
-      <h3><%= pluralize(Favorite.where(sitter_id: @sitter.id).count, 'pai', 'pais') %></h3>
+      <h3><%= pluralize(Favorite.where(sitter_id: @sitter.id).count, 'familia', 'familias') %></h3>
       <p>tem <%= @sitter.user.name.capitalize %> como favorito.</p>
       <% end %>
     </div>
