@@ -1,12 +1,21 @@
-<div class="container">
-  <h1> Deixe aqui sua avaliaçao</h1>
-  <p>Baby-sitting feito no dia : <%= localize(@booking.start_time,format: "%A, %e de %B de %Y às %H:%I") %></p>
-  <p>Nome da Baby-sitter: <%= @booking.sitter.user.name %></p>
-  <p>Endereço : <%= @booking.user.address %></p>
-  <hr/>
-  <%= simple_form_for [@booking, @reviewsparent] do |f| %>
-    <%= f.input :description,label: "Descrição", placeholder: "O seu comentario sobre o serviço", error: "Não pode estar em branco!"%>
-    <%= f.input :rating, label: "Sua avaliação do serviço", placeholder: "Note até 5!", collection:[1,2,3,4,5] %>
-    <%= f.submit "Enviar", class: "btn btn-pink" %>
-  <% end %>
-</div>
+<br>
+  <div class="logobby text-center">
+        <a class="logo" href="/" class="logo"></a>
+        <img width="50" height="50" src="https://image.ibb.co/nbFcXS/baby_logo_sem_fundo.png" alt="logo icon">
+      </div>
+  <div id="main-region">
+    <div id="box">
+      <h1><strong>Deixe aqui sua avaliaçao</h1></strong>
+      <p>Contrato feito no dia: <%= localize(@booking.start_time,format: "%A, %e de %B de %Y às %H:%I") %></p>
+      <p>Nome da babá: <strong><%= @booking.sitter.user.name %></p></strong>
+      <p>Endereço: <%= @booking.user.address %></p>
+      <hr/>
+      <%= simple_form_for [@booking, @reviewsparent] do |f| %>
+        <%= f.input :description,label: "Descrição", placeholder: "O seu comentário sobre o serviço", error: "Não pode estar em branco!"%>
+        <%= f.input :rating, label: "Sua avaliação do serviço", placeholder: "Nota até 5!", collection:[1,2,3,4,5] %>
+        <%= f.submit "Enviar", class: "btn btn-pink" %>
+      <% end %>
+
+    </div>
+  </div>
+
