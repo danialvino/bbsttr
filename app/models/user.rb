@@ -9,12 +9,15 @@ class User < ApplicationRecord
   has_one :bank_info, through: :sitter, dependent: :destroy
   mount_uploader :photo, PhotoUploader
 
+  # relations
   has_many :bookings
   has_many :children
   has_many :orders
   has_many :reviewssitters
   has_many :reviewsparents
-
+  # validations!
+  validates :name, presence: true
+  validates :address, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
@@ -34,7 +37,7 @@ class User < ApplicationRecord
     else
       user = User.new(user_params)
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
-      user.save
+      user.save(validate: false)
     end
 
     return user
