@@ -8,12 +8,8 @@
         <h5>BabáConfia é uma solução revolucionária para encontrar, contratar e pagar baby-sitters de confiança que estão próximas da sua localização.</h5>
 
         <div class="wrapper">
-           <a class="btn btn-md btn-outline-primary">
-    Criar minha conta
-</a>
- <a class="btn btn-md btn-outline-primary">
-    Quero ser babá
-  </a>
+          <%= link_to "Criar minha conta", new_registration_path(User), class: "btn btn-md btn-outline-primary" %>
+          <%= link_to "Quero ser babá", new_sitter_path, class: "btn btn-md btn-outline-primary" %>
         </div>
 
       </div>
