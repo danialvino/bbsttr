@@ -37,7 +37,7 @@
 
 <h1>Avaliações recebidas</h1>
   <% if @reviewsparents.count == 0 %>
-    <p>Você ainda não foi avaliado</p>
+    <p>Você ainda não recebeu avaliações.</p>
   <% else %>
     <p>Você recebeu <%= pluralize(@reviewsparents.count, 'avaliação', 'avaliações') %> </p>
       <div class="row">
@@ -45,10 +45,10 @@
             <div class="col-sm-6">
               <div class="card-booking">
                 <div class="card-body">
-                  <p class="title">Baby-sitting : <%= localize(review.booking.start_time, format: "%A, %e de %B de %Y às %H:%I") %></p>
-                  <p>Endereço : <%= review.user.address %></p>
-                  <p>Sitter que fez a avaliaçao : <%= link_to review.sitter.user.name, sitter_path(review.sitter.id) %></p>
-                  <p>Avaliaçao : <%= review.description %></p>
+                  <p class="title">Baby-sitting: <%= localize(review.booking.start_time, format: "%A, %e de %B de %Y às %H:%I") %></p>
+                  <p>Endereço: <%= review.user.address %></p>
+                  <p>Babá que fez a avaliação: <%= link_to review.sitter.user.name, sitter_path(review.sitter.id) %></p>
+                  <p>Avaliação: <%= review.description %></p>
                   <p>Nota recebida: <%= review.rating %> / 5<br>
                     <span style="display: block; width: 65px; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 -13px;"></span> </span></p>
                 </div>
@@ -71,10 +71,10 @@
               <div class="card-booking">
                 <div class="card-body">
                   <p class="title">Baby-sitting : <%= localize(review.booking.start_time, format: "%A, %e de %B de %Y às %H:%I") %></p>
-                  <p>Endereço : <%= review.user.address %></p>
-                  <p>Sitter avaliado : <%= link_to review.sitter.user.name, sitter_path(review.sitter.id) %></p>
-                  <p>Avaliaçao : <%= review.description %></p>
-                  <p>Nota dada : <%= review.rating %> / 5<br>
+                  <p>Endereço: <%= review.user.address %></p>
+                  <p>Babá avaliado(a): <%= link_to review.sitter.user.name, sitter_path(review.sitter.id) %></p>
+                  <p>Avaliação: <%= review.description %></p>
+                  <p>Nota dada: <%= review.rating %> / 5<br>
                     <span style="display: block; width: 65px; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 -13px;"></span> </span></p>
                 </div>
               </div>
