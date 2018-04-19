@@ -1,10 +1,17 @@
-<div class="container">
-    <h1>Achamos <%= pluralize(@sitters.count, 'baby-sitter disponivel', 'baby-sitters disponiveis') %> </h1>
-  <% if @sitters.count == 0 %>
-    <%= link_to "Realizar nova busca", root_path, class: "btn btn-xs btn-pink" %>
-  <% else %>
-    <% @sitters.each do |sitter| %>
-      <%= render "shared/card", sitter: sitter %>
+<div id="body-min-height">
+  <div class="container">
+      <h1>Achamos <%= pluralize(@sitters.count, 'babá disponível', 'babás disponíveis') %> </h1>
+
+    <% if @sitters.count == 0 %>
+    <div class="center text-center">
+      <img width="200" height="200" src="https://image.ibb.co/g2od97/sad_baby.png" alt="sad baby" >
+      <h5>Pedimos desculpas, não temos nenhuma babá disponível na data e localização escolhida. <br>Que tal tentar de novo?</h5>
+      <%= link_to "Realizar nova busca", root_path, class: "btn btn-xs btn-pink" %>
+    </div>
+    <% else %>
+      <% @sitters.each do |sitter| %>
+        <%= render "shared/card", sitter: sitter %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
