@@ -57,13 +57,13 @@
                   Você ja reservou <%= sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %>
                 <% end %>
               <% else %>
-                Você nunca reservou <%= sitter.user.name.capitalize %>
+                <i class="far fa-calendar-alt off"> Você nunca reservou <%= sitter.user.name.capitalize %>
               <% end %>
             </p></li>
 
             <li><p><i class="fab fa-gratipay"></i>
               <% if Favorite.where(sitter_id: sitter.id).count == 0 %>
-                <%=  sitter.user.name.capitalize %> não é favorito de ninguem por enquanto.</p></li>
+                <%=  sitter.user.name.capitalize %> não é favorito de ninguém por enquanto.</p></li>
               <% else %>
                 <%=  sitter.user.name.capitalize %> é favorito de <%= pluralize(Favorite.where(sitter_id: sitter.id).count, 'familia', 'familias') %>.</p></li>
               <% end %>

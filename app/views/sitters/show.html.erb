@@ -61,7 +61,7 @@
  <div class="stat">
     <div class="stat-content">
       <% if Favorite.where(sitter_id: @sitter.id).count == 0 %>
-      <h3>Nenhum</h3>
+      <h3>Ninguém</h3>
       <p>tem <%= @sitter.user.name.capitalize %> como favorito.</p>
       <% else %>
       <h3><%= pluralize(Favorite.where(sitter_id: @sitter.id).count, 'familia', 'familias') %></h3>
