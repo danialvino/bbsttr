@@ -39,6 +39,7 @@
 
         <% if current_user.sitter? %>
           <h2><%= localize(booking.start_time, format: "%A, %e de %B de %Y às %H:%I") %></h2>
+
           <p>Finalizado : <%= localize(booking.end_time, format: "%A, %e de %B de %Y às %H:%I") %></p>
           <p>Contratador: <%= booking.user.name %></p>
           <p>Filhos: <% booking.user.children.each do |child| %>
@@ -55,16 +56,18 @@
             <% else %>
               <i class="fas fa-check-square"></i> Avaliação realizada!
             <% end %>
-
-          <span id="btn-wrapper-<%= booking.id %>">
+            <p>
+              <br>
+            <span id="btn-wrapper-<%= booking.id %>">
             <% unless booking.check_out %>
               <% if booking.check_in %>
-                <%= link_to "Check out", checkout_path(sitter_id: current_user.sitter.id, booking_id: booking.id), remote: true, class: "btn btn-pink", id: booking.id %>
+                <%= link_to "Check out", checkout_path(sitter_id: current_user.sitter.id, booking_id: booking.id), remote: true, class: "btn btn-light-blue", id: booking.id %>
               <% else %>
-                <%= link_to "Check in", checkin_path(sitter_id: current_user.sitter.id, booking_id: booking.id), remote: true, class: "btn btn-pink", id: booking.id %>
+               <%= link_to "Check in", checkin_path(sitter_id: current_user.sitter.id, booking_id: booking.id), remote: true, class: "btn btn-light-blue", id: booking.id %>
                <% end %>
             <% end %>
           </span>
+        </p>
 
         <% else %>
 

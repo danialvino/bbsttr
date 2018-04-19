@@ -3,7 +3,7 @@ document.getElementById(<%= @booking.id %>).remove()
 let btn_wrapper<%= @booking.id %> = document.getElementById("btn-wrapper-<%= @booking.id %>")
 
 let btn_x<%= @booking.id %> = `<%= link_to "Check out", checkout_path(sitter_id: current_user.id, booking_id: @booking.id),
-remote: true, class: "btn btn-pink", id: @booking.id %>`
+remote: true, class: "btn btn-light-blue", id: @booking.id %>`
 
 
 btn_wrapper<%= @booking.id %>.insertAdjacentHTML('beforeend', btn_x<%= @booking.id %>)
