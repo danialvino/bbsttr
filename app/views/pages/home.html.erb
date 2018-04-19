@@ -20,7 +20,7 @@
      <ul><li><%= text_field_tag :user_address, (current_user.nil? ? "" : current_user.address), placeholder: (current_user.nil? ? "Digite o seu endereço" : current_user.address), class: 'bord-form' %></li>
      <li><%= text_field_tag :start_time,
         params[:start_time], placeholder: (Time.now.change({ hour: 20, min: 30, sec: 0 })).strftime("%F as %H:%M"),
-        class: "flatpickr-input", required: true%></li>
+        class: "flatpickr-input bord-form", required: true%></li>
      <li><%= number_field_tag :end_time,
         params[:end_time], placeholder:"por 2 horas", class: 'bord-form',
          required: true %></li>
