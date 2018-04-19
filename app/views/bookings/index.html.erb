@@ -73,7 +73,7 @@
         <% else %>
 
           <h2><%= localize(booking.start_time, format:"%A, %e de %B de %Y às %H:%I") %></h2>
-          <p>Finalizado: <%= localize(booking.end_time, format:"%A, %e de %B de %Y às %H:%I") %></p>
+          <p>Data/horário final: <%= localize(booking.end_time, format:"%A, %e de %B de %Y às %H:%I") %></p>
           <p>Babá: <%= link_to booking.sitter.user.name, sitter_path(booking.sitter.id) %></p>
           <p>Contato: <%= booking.sitter.user.phone %></p>
           <p>Faturamento: R$<%= booking.sitter.price %>/hora</p>
