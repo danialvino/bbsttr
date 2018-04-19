@@ -5,7 +5,7 @@
 
     <div class="left-2">
       <%  if sitter.user.facebook_picture_url.nil? %>
-          <%  avatar_url = sitter.user.photo.url.nil? ? "http://placehold.it/200x200" : cl_image_path( sitter.user.photo.url(:profile) )%>
+          <%  avatar_url = sitter.user.photo.url.nil? ? "http://placehold.it/200x200" : cl_image_path( sitter.user.photo.url(:profile, secure: true) )%>
         <% else %>
           <% avatar_url = sitter.user.facebook_picture_url %>
         <% end %>
