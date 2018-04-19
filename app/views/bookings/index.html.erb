@@ -81,7 +81,7 @@
           <p><strong> Total: R$<%= ( booking.sitter.price * ((booking.end_time - booking.start_time)/ 3600) ) %> </strong></p>
 
             <% if Reviewssitter.where(booking: booking).count == 0 %>
-              <i class="fas fa-exclamation"></i> <%= link_to "Clique para avaliar a babá", new_booking_reviewssitter_path(booking) %>
+              <i class="fas fa-exclamation"></i> <%= link_to "Clique para avaliar babá", new_booking_reviewssitter_path(booking) %>
             <% else %>
               <i class="fas fa-check-square"></i> Avaliação realizada!
             <% end %>
