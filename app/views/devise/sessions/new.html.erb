@@ -6,20 +6,17 @@
         <img width="50" height="50" src="https://image.ibb.co/nbFcXS/baby_logo_sem_fundo.png" alt="logo icon">
       </div>
       <div id="main-region">
-        <h3>Entrar</h3>
+        <h4>Entrar</h4>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <!-- <div class="form-inputs"> -->
           <div id="box">
-<h2>Log-in Express</h2>
 <br>            <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
 <%= link_to omniauth_authorize_path(resource_name, provider), class: 'btn btn-social btn-facebook' do %><i class="fab fa-facebook-f"></i>Sign in with <%= OmniAuth::Utils.camelize(provider) %><% end %><br />
   <% end -%>
 <% end -%><br><hr>
+<h4>Ou</h4>
 <br>
-<h2>Conta Babáconfia</h2>
-<br>
-
           <h5>Email<%= f.input :email, required: false, autofocus: true, label: false %></h5>
             <h5>Senha<%= f.input :password, required: false, label: false %></h5>
             <h5><%= f.input :remember_me, label: "Lembrar", label_html: { class: 'teste' }, as: :boolean if devise_mapping.rememberable? %></h5>
