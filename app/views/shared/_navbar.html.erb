@@ -13,12 +13,12 @@
       <% if current_user.sitter? %>
 
         <%= link_to 'Painel'.html_safe, availables_path, class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to 'Agendamentos'.html_safe, bookings_path, class: "navbar-wagon-item navbar-wagon-link" %><% if Booking.where('start_time > ? AND sitter_id = ?', Time.now, current_user.sitter).count == 0 %><% else %><span class="badge"><%= Booking.where('start_time > ? AND sitter_id = ?', (DateTime.now - 3/24.0), current_user.sitter).count %></span><% end %>
+        <%= link_to 'Agendamentos'.html_safe, bookings_path, class: "navbar-wagon-item navbar-wagon-link" %><% if Booking.where('start_time > ? AND sitter_id = ?', DateTime.now-3/24.0, current_user.sitter).count == 0 %><% else %><span class="badge"><%= Booking.where('start_time > ? AND sitter_id = ?', DateTime.now-3/24.0, current_user.sitter).count %></span><% end %>
         <%= link_to 'Avaliações'.html_safe, reviewssitters_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <% else %>
       <!-- if user is a Parent -->
-        <%= link_to 'Agendamentos'.html_safe, bookings_path, class: "navbar-wagon-item navbar-wagon-link" %><% if Booking.where('start_time > ? AND user_id = ?', Time.now, current_user).count == 0 %><% else %><span class="badge"><%= Booking.where('start_time > ? AND user_id = ?', (DateTime.now - 3/24.0), current_user).count %></span><% end %>
+        <%= link_to 'Agendamentos'.html_safe, bookings_path, class: "navbar-wagon-item navbar-wagon-link" %><% if Booking.where('start_time > ? AND user_id = ?', DateTime.now-3/24.0, current_user).count == 0 %><% else %><span class="badge"><%= Booking.where('start_time > ? AND user_id = ?', DateTime.now-3/24.0, current_user).count %></span><% end %>
         <%= link_to 'Favoritos'.html_safe, favorites_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to t(".sign_in", default: "Quero ser babá"), new_sitter_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to 'Avaliações'.html_safe, reviewsparents_path, class: "navbar-wagon-item navbar-wagon-link" %>
