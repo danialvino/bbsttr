@@ -20,7 +20,7 @@
     <div class="center-1">
 
 
-        <% if Favorite.where(sitter_id: sitter.id, user_id: current_user).count > 0 %>
+        <% if Favorite.where(sitter_id: sitter.id, user_id: current_user.id).count > 0 %>
           <i class="fas fa-heart on" alt="Faz parte dos seus favoritos"></i>
         <% else %>
           <i class="far fa-heart off" alt="Não faz parte dos seus favoritos"></i>
