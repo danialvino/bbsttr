@@ -76,8 +76,10 @@
       <p class="text-justify">
         <%= @sitter.about %>
         <br><br>
-        Meus gostos : <%= @sitter.skills.join(", ") %>
-        <br><br></p>
+        Minhas abilidades : <ul><% @sitter.skills.each do |skill|%>
+          <li><%= skill %></li>
+        <% end %>
+        </ul><br><br></p>
         <hr/>
            <h2> Todas as avaliações que eu recebi </h2>
              <% if Reviewssitter.where(sitter_id: @sitter.id).count == 0 %>
