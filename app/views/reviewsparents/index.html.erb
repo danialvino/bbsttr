@@ -12,7 +12,7 @@
         <% if Reviewsparent.where(user_id: current_user).count == 0 %>
         <p>Você ainda não foi avaliado</p>
         <% else %>
-        <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= Reviewsparent.where(user_id: current_user).average(:rating).round(2)*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span>
+        <span style="display: block; width: 65px; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 0;"> <span style="display: block; width: <%= Reviewsparent.where(user_id: current_user).average(:rating).round(2)*20 %>%; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 -13px;"></span> </span>
         <p><%= Reviewsparent.where(user_id: current_user).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewsparent.count, 'avaliação', 'avaliações') %>)</p>
       <% end %>
     </div>
@@ -26,7 +26,7 @@
         <% if Reviewssitter.where(user_id: current_user).count == 0 %>
         <p>Você ainda não avaliou ninguém</p>
         <% else %>
-        <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= Reviewssitter.where(user_id: current_user).average(:rating).round(2)*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span>
+        <span style="display: block; width: 65px; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 0;"> <span style="display: block; width: <%= Reviewssitter.where(user_id: current_user).average(:rating).round(2)*20 %>%; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 -13px;"></span> </span>
         <p><%= Reviewssitter.where(user_id: current_user).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.where(user_id: current_user).count, 'avalição', 'avaliações') %>)</p>
       <% end %>
     </div>
@@ -50,7 +50,7 @@
                   <p>Sitter que fez a avaliaçao : <%= link_to review.sitter.user.name, sitter_path(review.sitter.id) %></p>
                   <p>Avaliaçao : <%= review.description %></p>
                   <p>Nota recebida: <%= review.rating %> / 5<br>
-                    <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span></p>
+                    <span style="display: block; width: 65px; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 -13px;"></span> </span></p>
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@
                   <p>Sitter avaliado : <%= link_to review.sitter.user.name, sitter_path(review.sitter.id) %></p>
                   <p>Avaliaçao : <%= review.description %></p>
                   <p>Nota dada : <%= review.rating %> / 5<br>
-                    <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span></p>
+                    <span style="display: block; width: 65px; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 -13px;"></span> </span></p>
                 </div>
               </div>
             </div>
