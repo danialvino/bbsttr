@@ -18,7 +18,7 @@
 
       <% else %>
       <!-- if user is a Parent -->
-        <%= link_to 'Agendamentos'.html_safe, bookings_path, class: "navbar-wagon-item navbar-wagon-link" %><% if Booking.where('start_time > ? AND user_id = ?', Time.now, current_user).count == 0 %><% else %><%= Booking.where('start_time > ? AND user_id = ?', Time.now, current_user).count %></span><% end %>
+        <%= link_to 'Agendamentos'.html_safe, bookings_path, class: "navbar-wagon-item navbar-wagon-link" %><% if Booking.where('start_time > ? AND user_id = ?', Time.now, current_user).count == 0 %><% else %><span class="badge"><%= Booking.where('start_time > ? AND user_id = ?', Time.now, current_user).count %></span><% end %>
         <%= link_to 'Favoritos'.html_safe, favorites_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to t(".sign_in", default: "Quero ser babá"), new_sitter_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to 'Avaliações'.html_safe, reviewsparents_path, class: "navbar-wagon-item navbar-wagon-link" %>
