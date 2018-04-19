@@ -38,9 +38,9 @@ load_and_authorize_resource
 
   def start_work
     @booking = Booking.find(params[:booking_id])
-    @booking.check_in = Time.now
-    UserMailer.checkout(@booking).deliver_now
+    @booking.check_in = (DateTime.now - 3/24.0)
     if @booking.save!
+    UserMailer.checkin(@booking).deliver_later
       respond_to do |format|
         format.js
       end
@@ -49,9 +49,9 @@ load_and_authorize_resource
 
   def finished_work
     @booking = Booking.find(params[:booking_id])
-    @booking.check_out = Time.now
-    UserMailer.checkin(@booking).deliver_now
+    @booking.check_out = (DateTime.now - 3/24.0)
     if @booking.save!
+    UserMailer.checkout(@booking).deliver_later
       respond_to do |format|
         format.js
       end

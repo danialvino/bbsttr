@@ -14,7 +14,8 @@ module Bbsttr
       generate.test_framework  :test_unit, fixture: false
 
     end
-
+    # config.time_zone = 'Brasilia'
+    # config.active_record.default_timezone = :utc
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
     config.exceptions_app = self.routes
