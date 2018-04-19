@@ -15,7 +15,7 @@
         <% if Reviewssitter.where(sitter_id: @sitter.id).count > 0 %>
           <i class="fas fa-star"></i> <%= Reviewssitter.where(sitter_id: @sitter.id).average(:rating).round(2) %></strong> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: @sitter.id).count, 'notas', 'avaliações') %>)
         <% else %>
-          <i class="fas fa-star"></i> Ainda não foi avaliada. </p>
+          <i class="fas fa-star"></i> Ainda não não recebeu avaliações. </p>
         <% end %>
 
       <% if Favorite.where(sitter_id: @sitter.id, user_id: current_user).count > 0 %>
