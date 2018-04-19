@@ -1,8 +1,12 @@
 <div id="body-min-height">
   <div class="container">
-    <h1>Você tem <%= pluralize(@favorites.count, 'baby-sitter favorita', 'baby-sitters favoritas') %> </h1>
+    <h1>Você tem <%= pluralize(@favorites.count, 'babá favorita', 'babás favoritas') %> </h1>
     <% if @favorites.count == 0 %>
-    Você ainda não tem nenhuma baby-sitter favorita.
+      <div class="center text-center">
+        <img width="200" height="200" src="https://image.ibb.co/g2od97/sad_baby.png" alt="sad baby" >
+        <h5>Você ainda não tem nenhuma babá favorita.</h5>
+      </div>
+
     <% else %>
     <% @favorites.each do |favorite| %>
       <%= render "shared/lightcard", sitter: favorite.sitter %>

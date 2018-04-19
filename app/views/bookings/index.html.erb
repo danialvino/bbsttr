@@ -1,8 +1,29 @@
   <div id="body-min-height">
 <div class="container">
 
-<h1>Meus bookings</h1>
+<h1>Meus agendamentos</h1>
 
+  <% if @bookings.count == 0 %>
+    <% if current_user.sitter? %>
+      <div class="center text-center">
+        <img width="200" height="200" src="https://image.ibb.co/g2od97/sad_baby.png" alt="sad baby" >
+        <h5>Você ainda não tem nenhum agendamento. <br>O que acha de divulgar o seu perfil do babáconfia para que as pessoas conheçam o seu trabalho? ;)</h5>
+        <%= social_share_button_tag("Share to Facebook", :url => sitter_url(current_user.sitter.id), desc: current_user.name) %>
+      </div>
+    <% end %>
+  <% end %>
+
+    <% if @bookings.count == 0 %>
+      <% unless current_user.sitter? %>
+        <div class="center text-center">
+        <img width="200" height="200" src="https://image.ibb.co/g2od97/sad_baby.png" alt="sad baby" >
+        <h5>Você ainda não tem nenhum agendamento. <br>Busque agora uma babá de confiança!</h5>
+        <%= link_to "Buscar babá", root_path, class: "btn btn-xs btn-pink" %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% else %>
 
 
 <div class="row">
@@ -32,7 +53,7 @@
             <% if Reviewsparent.where(booking: booking).count == 0 %>
               <i class="fas fa-exclamation"></i> <%= link_to "Clique para avaliar os pais", new_booking_reviewsparent_path(booking) %>
             <% else %>
-              <i class="fas fa-check-square"></i> Avaliação foi feita, obrigado !
+              <i class="fas fa-check-square"></i> Avaliação realizada!
             <% end %>
 
           <span id="btn-wrapper-<%= booking.id %>">
@@ -56,9 +77,9 @@
           <p><strong> Total: R$<%= ( booking.sitter.price * ((booking.end_time - booking.start_time)/ 3600) ) %> </strong></p>
 
             <% if Reviewssitter.where(booking: booking).count == 0 %>
-              <i class="fas fa-exclamation"></i> <%= link_to "Clique para avaliar a baby-sitter", new_booking_reviewssitter_path(booking) %>
+              <i class="fas fa-exclamation"></i> <%= link_to "Clique para avaliar a babá", new_booking_reviewssitter_path(booking) %>
             <% else %>
-              <i class="fas fa-check-square"></i> Avaliação foi feita, obrigado !
+              <i class="fas fa-check-square"></i> Avaliação realizada!
             <% end %>
         <% end %>
     </div>
