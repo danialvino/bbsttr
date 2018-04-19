@@ -48,7 +48,7 @@
       </li>
             <li><p>
               <% if user_signed_in? %>
-                <% @bookings_history = Booking.count("user_id = #{current_user.id} AND sitter_id = #{sitter.id}") %>
+                <% @bookings_history = Booking.count(sitter_id: sitter.id, user_id: current_user) %>
                 <% if @bookings_history == 0 %>
                 <i class="far fa-calendar-alt off"> </i>
                   Você nunca reservou <%= sitter.user.name.capitalize %>
