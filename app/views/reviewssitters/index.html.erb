@@ -10,7 +10,7 @@
       <div class="card-body">
         <h3>Nota geral recebida</h3>
         <% if Reviewssitter.where(sitter_id: current_user.sitter).count == 0 %>
-        <p>Você ainda não foi avaliado</p>
+        <p>Sem avaliações por enquanto</p>
         <% else %>
         <span style="display: block; width: 65px; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 0;"> <span style="display: block; width: <%= Reviewssitter.where(sitter_id: current_user.sitter).average(:rating).round(2)*20 %>%; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 -13px;"></span> </span>
         <p><%= Reviewssitter.where(sitter_id: current_user.sitter).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: current_user.sitter).count, 'avaliação', 'avaliações') %>)</p>
@@ -37,7 +37,7 @@
 
 <h1>Avaliações recebidas</h1>
   <% if @reviewssitters.count == 0 %>
-    <p>Você ainda não foi avaliada</p>
+    <p>Sem avaliações por enquanto</p>
   <% else %>
     <p>Você recebeu <%= pluralize(@reviewssitters.count, 'avaliação', 'avaliações') %> </p>
       <div class="row">
@@ -45,10 +45,10 @@
             <div class="col-sm-6">
               <div class="card-booking">
                 <div class="card-body">
-                  <p class="title">Baby-sitting : <%= localize(review.booking.start_time, format: "%A, %e de %B de %Y às %H:%I") %></p>
-                  <p>Endereço : <%= review.user.address %></p>
-                  <p>Familia que fez a avaliaçao : <%= link_to review.user.name %></p>
-                  <p>Avaliaçao : <%= review.description %></p>
+                  <p class="title">Baby-sitting: <%= localize(review.booking.start_time, format: "%A, %e de %B de %Y às %H:%I") %></p>
+                  <p>Endereço: <%= review.user.address %></p>
+                  <p>Família que fez a avaliaçao: <%= link_to review.user.name %></p>
+                  <p>Avaliação: <%= review.description %></p>
                   <p>Nota recebida: <%= review.rating %> / 5<br>
                     <span style="display: block; width: 65px; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 -13px;"></span> </span></p>
                 </div>
@@ -71,11 +71,11 @@
               <div class="card-booking">
                 <div class="card-body">
                   <p class="title">Baby-sitting : <%= localize(review.booking.start_time, format: "%A, %e de %B de %Y às %H:%I") %></p>
-                  <p>Endereço : <%= review.user.address %></p>
-                  <p>Familia avaliada : <%= review.user.name %></p>
-                  <p>Avaliaçao : <%= review.description %></p>
-                  <p>Nota dada : <%= review.rating %> / 5<br>
-                    <span style="display: block; width: 65px; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 -13px;"></span> </span></p>
+                  <p>Endereço: <%= review.user.address %></p>
+                  <p>Família avaliada: <%= review.user.name %></p>
+                  <p>Avaliação: <%= review.description %></p>
+                  <p>Nota dada: <%= review.rating %> / 5<br>
+                    <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= review.rating*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span> </span></p>
                 </div>
               </div>
             </div>

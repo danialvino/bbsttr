@@ -10,7 +10,7 @@
         <% end %>
           <img src="<%= avatar_url %>" alt="" width="150" class="img-circle">
 
-        <p><i class="fas fa-handshake"></i>  Estou no babáconfia desde <%= @sitter.user.created_at.strftime("%m/%Y") %></p>
+        <p><i class="fas fa-handshake"></i>  Estou no <strong>babáconfia</strong> desde <%= @sitter.user.created_at.strftime("%m/%Y") %></p>
         <p>
         <% if Reviewssitter.where(sitter_id: @sitter.id).count > 0 %>
           <i class="fas fa-star"></i> <%= Reviewssitter.where(sitter_id: @sitter.id).average(:rating).round(2) %></strong> / 5 (<%= pluralize(Reviewssitter.where(sitter_id: @sitter.id).count, 'notas', 'avaliações') %>)
@@ -72,18 +72,20 @@
 
   <div class="description">
     <div class="description-content">
-      <h2>Mais sobre mim</h2>
+      <h2>Um pouco sobre mim</h2>
+      <br>
       <p class="text-justify">
         <%= @sitter.about %>
         <br><br>
-        Minhas abilidades : <ul><% @sitter.skills.each do |skill|%>
+        Minhas habilidades: <ul><% @sitter.skills.each do |skill|%>
           <li><%= skill %></li>
         <% end %>
         </ul><br><br></p>
         <hr/>
-           <h2> Todas as avaliações que eu recebi </h2>
+           <h2>Todas as avaliações que eu recebi </h2>
+           <br>
              <% if Reviewssitter.where(sitter_id: @sitter.id).count == 0 %>
-     Ainda nunca foi avaliada
+     Por enquanto sem avaliações.
      <% else %>
      <br>
       <p class="text-justify">
