@@ -7,6 +7,7 @@
         <p>Data e Horário de Chegada: <strong><%= localize(@booking.start_time, format: "%A, %e de %B de %Y às %H:%I") %></strong>, até <strong><%= localize(@booking.end_time, format: "%A, %e de %B de %Y às %H:%I") %></strong>.</p>
         <p>Babá: <%= @booking.sitter.user.name %></p>
         <p>Contato: <%= @booking.sitter.user.phone %></p>
+        <p>Endereço: <%= @booking.user.address %></p>
         <p>Faturamento:</p>
         <p>R$<%= @booking.sitter.price %>/hora, você contratou por <%= (((@booking.end_time - @booking.start_time)/ 3600).round) %> horas</p>
         <p> Total: R$<%= ( @booking.sitter.price * ((@booking.end_time - @booking.start_time)/ 3600) ) %> </p>
@@ -25,6 +26,10 @@
     </div>
   </div>
   <br>
-<div class="text-center"><%= link_to "Reservar outra data", root_path, class: "btn btn-pink btn-xs", style: "transform: scale(0.8);" %></div>
+  <% if current_user.sitter? %>
+    <div class="text-center"><%= link_to "Voltar", :back, class: "btn btn-pink btn-xs", style: "transform: scale(0.8);" %></div>
+      <% else %>
+    <div class="text-center"><%= link_to "Reservar outra data", root_path, class: "btn btn-pink btn-xs", style: "transform: scale(0.8);" %></div>
+  <% end %>
 </div>
 </div>
