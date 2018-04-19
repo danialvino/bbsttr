@@ -72,11 +72,11 @@
         <% else %>
 
           <h2><%= localize(booking.start_time, format:"%A, %e de %B de %Y às %H:%I") %></h2>
-          <p>Finalizado : <%= localize(booking.end_time, format:"%A, %e de %B de %Y às %H:%I") %></p>
+          <p>Finalizado: <%= localize(booking.end_time, format:"%A, %e de %B de %Y às %H:%I") %></p>
           <p>Babá: <%= link_to booking.sitter.user.name, sitter_path(booking.sitter.id) %></p>
           <p>Contato: <%= booking.sitter.user.phone %></p>
           <p>Faturamento: R$<%= booking.sitter.price %>/hora</p>
-          <p>Duração : <%= Time.at(booking.end_time - booking.start_time).utc.strftime "%H horas, %M minutos e %S segundos" %></p>
+          <p>Duração: <%= Time.at(booking.end_time - booking.start_time).utc.strftime "%H horas, %M minutos e %S segundos" %></p>
           <p><strong> Total: R$<%= ( booking.sitter.price * ((booking.end_time - booking.start_time)/ 3600) ) %> </strong></p>
 
             <% if Reviewssitter.where(booking: booking).count == 0 %>
