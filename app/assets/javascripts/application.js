@@ -66,7 +66,9 @@ function loadflatpickr() {
       enableTime: true,
       minuteIncrement: 30,
       time_24hr: true,
-      "locale": Portuguese
+      "locale": Portuguese,
+      disableMobile: "true"
+
     });
   }
 }
