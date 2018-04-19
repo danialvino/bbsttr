@@ -30,8 +30,10 @@
         <div class="dropdown">
           <% if current_user.facebook_picture_url.nil? %>
             <% avatar_url = current_user.photo.url.nil? ? "http://placehold.it/30x30" : cl_image_path( current_user.photo.url(:avatar) ) %>
-            <% else %>
-         <% avatar_url = current_user.facebook_picture_url%>
+         <% elsif current_user.facebook_picture_url.present? && current_user.photo.url.present? %>
+             <% avatar_url = cl_image_path( current_user.photo.url(:avatar))%>
+          <% elsif current_user.facebook_picture_url.present? && %>
+             <% avatar_url = current_user.facebook_picture_url%>
           <% end %>
           <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
