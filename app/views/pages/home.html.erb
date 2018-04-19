@@ -15,7 +15,7 @@
       </div>
 
       <div class="col-md-4 home-search effect5">
-      <h1> Experimente </h1>
+      <h1>Experimente</h1>
      <%= form_tag sitters_path, method: :get do %>
      <ul><li><%= text_field_tag :user_address, (current_user.nil? ? "" : current_user.address), placeholder: (current_user.nil? ? "Digite o seu endereço" : current_user.address), class: 'bord-form' %></li>
      <li><%= text_field_tag :start_time,
