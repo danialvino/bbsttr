@@ -87,7 +87,7 @@
      <% else %>
      <br>
       <p class="text-justify">
-     <span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"><span style="display: block; width: <%= Reviewssitter.where(sitter_id: @sitter.id).average(:rating).round(2)*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span></span>
+     <span style="display: block; width: 65px; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 0;"><span style="display: block; width: <%= Reviewssitter.where(sitter_id: @sitter.id).average(:rating).round(2)*20 %>%; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 -13px;"></span></span>
 
     Nota média : <strong><%= Reviewssitter.where(sitter_id: @sitter.id).average(:rating).round(2) %></strong> / 5      (<%= pluralize(Reviewssitter.where(sitter_id: @sitter.id).count, 'notas', 'avaliações') %>)</p>
            </span>
