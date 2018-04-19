@@ -1,6 +1,6 @@
 <div class="card">
     <div class="left-1">
-      <h2><%= sitter.user.name.capitalize %></i><% if Reviewssitter.where(sitter_id: sitter.id).count > 0 %><span style="display: block; width: 65px; height: 13px; background: url(/assets/star-rating-sprite.png) 0 0;"> <span style="display: block; width: <%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2)*20 %>%; height: 13px; background: url(/assets/star-rating-sprite.png) 0 -13px;"></span></span><% else %><% end %></h2>
+      <h2><%= sitter.user.name.capitalize %></i><% if Reviewssitter.where(sitter_id: sitter.id).count > 0 %><span style="display: block; width: 65px; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 0;"> <span style="display: block; width: <%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2)*20 %>%; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 -13px;"></span></span><% else %><% end %></h2>
     </div>
 
     <div class="left-2">
