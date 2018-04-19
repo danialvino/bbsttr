@@ -47,8 +47,9 @@ class User < ApplicationRecord
     if self.sitter.nil?
       return false
     else
-      return self.sitter.user_id == self.id
+      return false if self.sitter.id.nil?
     end
+    true
   end
 
   private
