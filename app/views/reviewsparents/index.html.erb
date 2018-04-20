@@ -13,7 +13,7 @@
         <p>Você ainda não foi avaliado</p>
         <% else %>
         <span style="display: block; width: 65px; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 0;"> <span style="display: block; width: <%= Reviewsparent.where(user_id: current_user).average(:rating).round(2)*20 %>%; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 -13px;"></span> </span>
-        <p><%= Reviewsparent.where(user_id: current_user).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewsparent.count, 'avaliação', 'avaliações') %>)</p>
+        <p><%= Reviewsparent.where(user_id: current_user).average(:rating).round(2) %> / 5 (<%= pluralize(Reviewsparent.where(user_id: current_user).count, 'avaliação', 'avaliações') %>)</p>
       <% end %>
     </div>
     </div>
