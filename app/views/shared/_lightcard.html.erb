@@ -1,6 +1,6 @@
 <div class="card">
     <div class="left-1">
-      <h2><%= sitter.user.name.capitalize %></i><% if Reviewssitter.where(sitter_id: sitter.id).count > 0 %><span style="display: block; width: 65px; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 0;"> <span style="display: block; width: <%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2)*20 %>%; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 -13px;"></span></span><% else %><% end %></h2>
+      <h2><%= sitter.user.name.titleize %></i><% if Reviewssitter.where(sitter_id: sitter.id).count > 0 %><span style="display: block; width: 65px; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 0;"> <span style="display: block; width: <%= Reviewssitter.where(sitter_id: sitter.id).average(:rating).round(2)*20 %>%; height: 13px; background: url(<%= image_path("star-rating-sprite.png") %>) 0 -13px;"></span></span><% else %><% end %></h2>
     </div>
 
     <div class="left-2">
@@ -51,21 +51,22 @@
                 <% @bookings_history = Booking.where(sitter_id: sitter.id, user_id: current_user.id).count %>
                 <% if @bookings_history == 0 %>
                 <i class="far fa-calendar-alt off"> </i>
-                  Você nunca reservou <%= sitter.user.name.capitalize %>
+                  Você nunca reservou <%= sitter.user.name.titleize %>
                 <% else %>
                 <i class="fas fa-calendar-alt on"> </i>
-                  Você ja reservou <%= sitter.user.name.capitalize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %>
+                  Você ja reservou <%= sitter.user.name.titleize %> <%= pluralize(@bookings_history, 'vez', 'vezes') %>
                 <% end %>
               <% else %>
-                Você nunca reservou <%= sitter.user.name.capitalize %>
+                <i class="far fa-calendar-alt off"> </i>
+                Você nunca reservou <%= sitter.user.name.titleize %>
               <% end %>
             </p></li>
 
                         <li><p><i class="fab fa-gratipay"></i>
               <% if Favorite.where(sitter_id: sitter.id).count == 0 %>
-                <%=  sitter.user.name.capitalize %> não é favorito de nenhuma familia por enquanto.</p></li>
+                <%=  sitter.user.name.titleize %> não é favorito de nenhuma familia por enquanto.</p></li>
               <% else %>
-                <%=  sitter.user.name.capitalize %> é favorito de <%= pluralize(Favorite.where(sitter_id: sitter.id).count, 'familia', 'familias') %>.</p></li>
+                <%=  sitter.user.name.titleize %> é favorito de <%= pluralize(Favorite.where(sitter_id: sitter.id).count, 'familia', 'familias') %>.</p></li>
               <% end %>
                 <li><p>
 
@@ -81,11 +82,11 @@
       <% end %>
       <% end %>
       <% if friends_that_booked == [] %>
-          <i class="far fa-thumbs-up"> </i>Você não conhece ninguem que contratou <%= sitter.user.name.capitalize %></li>    <% else %>
-        <i class="far fa-thumbs-up"> </i><%= friends_that_booked[0]['name'] %> <%= simple_pluralize(friends_that_booked.count,"já reservou "," e mais #{friends_that_booked.count - 1} amigos seus ja reservaram ") %><%= sitter.user.name.capitalize %></li>
+          <i class="far fa-thumbs-up"> </i>Você não conhece ninguem que contratou <%= sitter.user.name.titleize %></li>    <% else %>
+        <i class="far fa-thumbs-up"> </i><%= friends_that_booked[0]['name'] %> <%= simple_pluralize(friends_that_booked.count,"já reservou "," e mais #{friends_that_booked.count - 1} amigos seus ja reservaram ") %><%= sitter.user.name.titleize %></li>
         <% end %>
         <% else %>
-        <i class="far fa-thumbs-up"> </i>Entre com o Facebook para ver qual dos seus amigos já reservaram <%= sitter.user.name.capitalize %></p></li>
+        <i class="far fa-thumbs-up"> </i>Entre com o Facebook para ver qual dos seus amigos já reservaram <%= sitter.user.name.titleize %></p></li>
             <% end %>
 
 
