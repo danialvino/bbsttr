@@ -33,7 +33,7 @@ class SittersController < ApplicationController
     end
     @sitter = Sitter.find(params[:id])
     @favorite = Favorite.new
-    @result_availables = available_hours?([@sitter, ])
+    # @result_availables = available_hours?(@sitter)
   end
 
   def new
