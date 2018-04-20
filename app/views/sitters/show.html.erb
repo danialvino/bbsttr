@@ -2,7 +2,7 @@
   <div class="profile text-center">
     <div class="main">
       <div class="main-content">
-        <h1><%= @sitter.user.name.capitalize %></h1>
+        <h1><%= @sitter.user.name.titleize %></h1>
         <%  if @sitter.user.facebook_picture_url.nil? %>
         <%  avatar_url = @sitter.user.photo.url.nil? ? "http://placehold.it/200x200" : cl_image_path( @sitter.user.photo.url(:profile, secure: true) )%>
         <% else %>
@@ -53,7 +53,7 @@
  <div class="stat">
     <div class="stat-content">
       <h3><i class="fab fa-facebook-f"></i></h3>
-      <p>Logue-se com Facebook para ver quem já contratou <%= @sitter.user.name.capitalize %></p>
+      <p>Logue-se com Facebook para ver quem já contratou <%= @sitter.user.name.titleize %></p>
     </div>
   </div>
 
@@ -62,10 +62,10 @@
     <div class="stat-content">
       <% if Favorite.where(sitter_id: @sitter.id).count == 0 %>
       <h3>Ninguém</h3>
-      <p>tem <%= @sitter.user.name.capitalize %> como favorito.</p>
+      <p>tem <%= @sitter.user.name.titleize %> como favorito.</p>
       <% else %>
       <h3><%= pluralize(Favorite.where(sitter_id: @sitter.id).count, 'familia', 'familias') %></h3>
-      <p>tem <%= @sitter.user.name.capitalize %> como favorito.</p>
+      <p>tem <%= @sitter.user.name.titleize %> como favorito.</p>
       <% end %>
     </div>
   </div>
